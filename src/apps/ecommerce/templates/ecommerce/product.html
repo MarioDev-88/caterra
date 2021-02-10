@@ -1,0 +1,60 @@
+{% extends 'ecommerce/layouts/ecommerce.layout.html' %}
+
+{% load static %}
+{% block content %}
+<div id="header_section_back">
+    <nav class="main-nav">
+        <div class="main-nav__logo">
+            <a href="{% url "ecommerce:home" %}">
+                <img src="{% static 'img/logo-color.png' %}" alt="TodoEnRefasLogo">
+            </a>
+        </div>
+        <ul class="main-nav__menu">
+            <li class="main-nav__item "><a class="{% if request.path == "/" %}active {% endif %}"
+                    href="{% url "ecommerce:home" %}">Inicio</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/acerca-de" %}active {% endif %}"
+                    href="{% url "ecommerce:about" %}">Nosotros</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/productos" %}active {% endif %}"
+                    href="{% url "ecommerce:products" %}">Productos</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"5" == "/blog" %}active {% endif %}"
+                    href="{% url "ecommerce:posts_list" %}">Blog</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"9" == "/contacto" %}active {% endif %}"
+                    href="{% url "ecommerce:contact" %}">Contacto</a></li>
+        </ul>
+    </nav>
+</div>
+    <div class="product-back">
+        <div class="product-container">
+            <div class="product-wrapper">
+                <div class="product-image">
+                    <img class="product-info__image" src="{{ product.imagen_url }}" alt="">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-info__title">{{ product.descripcion }}</h2>
+                    <ul class="product-metadata">
+                        <li><span class="product-metadata__title">Categoría:</span><span class="product-metadata__content">Motobombas</span></li>
+                    </ul>
+                    <p class="product-description">{{product.descripcion_adicional}}</p>
+                         <p class="product-description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero possimus eveniet ex mollitia
+                        numquam aut modi dolor adipisci tenetur rerum animi, quaerat illum, cum non a accusamus et.
+                        Ratione, ad? Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero possimus eveniet ex
+                        mollitia numquam aut modi dolor adipisci tenetur rerum animi, quaerat illum, cum non a accusamus
+                        et. Ratione, ad?
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero possimus eveniet ex mollitia
+                        numquam aut modi dolor adipisci tenetur rerum animi, quaerat illum, cum non a accusamus et.
+                        Ratione, ad?
+                    </p>
+                <div class="product-qty">
+                    <label for="qty">Cantidad:</label>
+                    <input type="number" name="qty" id="qty" min="0" placeholder="0">
+                    <button class="btn btn-success text-xs ml-2 add-to-cart-button">Agregar al carrito</button>
+                </div>
+                </div>
+            </div>
+            <div class="product-reviews">
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}

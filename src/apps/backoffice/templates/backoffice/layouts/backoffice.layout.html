@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+
+    <title>{{ title|default:"TodoEnRefas" }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;400;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{% static 'css/bundle.dist.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div id="site_wrapper">
+        <div id="content_wrapper">
+            <header id="main_header">
+                <div class="main-header__logo">
+                    <a href="/"><img src="{% static 'img/logo-color.png' %}" alt="TodoEnRefas Logo"></a>
+                </div>
+                <div class="main-header__user-menu">
+                    <a href="#"><img src="{% static 'backoffice/img/logo-sm-green.png' %}" alt="User avatar"></a>
+                </div>
+            </header>
+            <section id="subheader">
+                <h2 class="subheader__title">{{ subtitle|default:'Dashboard'}}</h2>
+            </section>
+            <section id="sidemenu">
+                <section class="side-menu__user-info">
+                    <div class="side-menu__logo">
+                        <img src="{% static 'backoffice/img/logo-sm-white.png' %}" alt="User avatar">
+                    </div>
+                    <div class="side-menu__username">
+                        <p>{{ user }}</p>
+                        <h5>
+                            {% if request.user.type == 'ADMIN'%}
+                            Administrador
+                            {% elif request.user.type == 'SELLER' %}
+                            Vendedor
+                            {% elif request.user.type == 'EDITOR' %}
+                            Editor
+                            {% endif %}
+                        </h5>
+                    </div>
+                </section>
+                <nav class="bo__main-nav">
+                    <ul>
+                        {% comment %} <li><a href="dashboard.html"
+                                class="bo__main-nav__item {% if request.path == "/administracion/" %}
+                                bo__main-nav__item--active {% endif %}"><img
+                                    src="{% static 'backoffice/img/ic-dashboard.png' %}" alt=""> Dashboard</a></li> {% endcomment %}
+                        <li><a href="{% url 'backoffice:sliders' %}"
+                                class="bo__main-nav__item {% if request.path|slice:":22" == "/administracion/slider" %}
+                                bo__main-nav__item--active {% endif %}"><img
+                                    src="{% static 'backoffice/img/ic-slider.png' %}" alt="">Slider</a>
+                        </li>
+                        <li><a href="{% url "backoffice:video" %}"
+                                class="bo__main-nav__item {% if request.path|slice:":21" == "/administracion/video" %}
+                                bo__main-nav__item--active {% endif %}"><img
+                                    src="{% static 'backoffice/img/ic-slider.png' %}" alt="">Video</a>
+                        </li>
+                        <li><a href="{% url 'backoffice:offers' %}"
+                                class="bo__main-nav__item {% if request.path|slice:":23" == "/administracion/ofertas" %}
+                                bo__main-nav__item--active {% endif %}"><img
+                                    src="{% static 'backoffice/img/ic-offers.png' %}" alt="">Ofertas</a>
+                        </li>
+                        <li><a href="{% url 'backoffice:posts' %}"
+                                class="bo__main-nav__item {% if request.path|slice:":21" == "/administracion/posts" %}
+                                bo__main-nav__item--active {% endif %}"><img src="
+                                {% static 'backoffice/img/ic-blog.png' %}" alt="">Blog</a></li>
+                                <li><a href="{% url 'backoffice:orders_list' %}" class="bo__main-nav__item {% if request.path|slice:":23" == "/administracion/pedidos" %}
+                                bo__main-nav__item--active {% endif %}"><img src="
+                                {% static 'backoffice/img/ic-blog.png' %}" alt="">Pedidos</a></li>
+                        {% comment %} <li><a href="products.html" class="bo__main-nav__item "><img
+                                    src="{% static 'backoffice/img/ic-products.png' %}" alt="">Productos</a></li>
+                        <li><a href="clients.html" class="bo__main-nav__item"><img
+                                    src="{% static 'backoffice/img/ic-clients.png' %}" alt="">Clientes</a></li> {% endcomment %}
+                        <li><a href="{% url 'backoffice:users_editors' %}"
+                                class="bo__main-nav__item {% if request.path|slice:":24" == "/administracion/usuarios" %}
+                                bo__main-nav__item--active {% endif %}"><img
+                                    src="{% static 'backoffice/img/ic-users.png' %}" alt="">Usuarios</a>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+            <main id="content">
+                <div class="content-container">
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+            {% block footer_actions %}
+            {% endblock footer_actions %}
+            </main>
+            <footer id="main_footer">
+                <p>&copy; 2020 Todos los derechos reservados. <a href="">Pitic Software Development</a></p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{% static 'js/bundle.dist.js' %}"></script>
+    {% block scripts %}
+    {% endblock scripts %}
+</body>
+
+</html>

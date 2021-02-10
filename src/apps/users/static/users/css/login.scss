@@ -1,0 +1,30 @@
+#login_back {
+  align-items: center;
+  background-color: $darkGray;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100%;
+}
+
+.login-form {
+  @apply bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4;
+  max-width: 300px;
+}
+
+.login-form__logo {
+  display: block;
+  margin-bottom: 20px;
+  max-width: 100%;
+}
+
+.login-form__button {
+  @apply btn btn-success text-sm;
+  display: block;
+  margin: 0 auto;
+}
+
+.login-form__alert {
+  @apply alert alert-danger;
+  margin-bottom: 20px;
+}

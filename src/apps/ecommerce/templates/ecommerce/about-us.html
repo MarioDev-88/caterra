@@ -1,0 +1,90 @@
+{% extends 'ecommerce/layouts/ecommerce.layout.html' %}
+
+{% load static %}
+{% block content %}
+<div id="header_section_back">
+     <nav class="main-nav">
+         <div class="main-nav__logo">
+             <a href="{% url "ecommerce:home" %}">
+                 <img src="{% static 'img/logo-color.png' %}" alt="TodoEnRefasLogo">
+             </a>
+         </div>
+         <ul class="main-nav__menu">
+             <li class="main-nav__item "><a class="{% if request.path == "/" %}active {% endif %}"
+                     href="{% url "ecommerce:home" %}">Inicio</a></li>
+             <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/acerca-de" %}active {% endif %}"
+                     href="{% url "ecommerce:about" %}">Nosotros</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/productos" %}active {% endif %}"
+                    href="{% url "ecommerce:products" %}">Productos</a></li>
+             <li class="main-nav__item"><a class="{% if request.path|slice:"5" == "/blog" %}active {% endif %}"
+                     href="{% url "ecommerce:posts_list" %}">Blog</a></li>
+             <li class="main-nav__item"><a class="{% if request.path|slice:"9" == "/contacto" %}active {% endif %}"
+                     href="{% url "ecommerce:contact" %}">Contacto</a></li>
+         </ul>
+     </nav>
+</div>
+<div id="about_use_section_back">
+    <div>
+
+        <section class="business-features">
+            <article class="business-features__item business-features__item__green">
+                <div class="business-features__icon">
+                    <img src="{% static 'backoffice/img/ic-10.png' %}" alt="">
+                </div>
+                <div class="business-features__content">
+                    <h4>Envío gratis</h4>
+                    <span>En compras mayores de $599.00</span>
+                </div>
+            </article>
+            <article class="business-features__item business-features__item__dark">
+                <div class="business-features__icon">
+                    <img src="{% static 'backoffice/img/ic-11.png' %}" alt="">
+                </div>
+                <div class="business-features__content">
+                    <h4>Devolución</h4>
+                    <span>¡Gratis!</span>
+                </div>
+            </article>
+            <article class="business-features__item business-features__item__black">
+                <div class="business-features__icon">
+                    <img src="{% static 'backoffice/img/ic-12.png' %}" alt="">
+                </div>
+                <div class="business-features__content">
+                    <h4>Atención personalizada</h4>
+
+                </div>
+            </article>
+        </section>
+        <section class="about-us-content">
+            <h2>Nosotros</h2>
+            <div class="about-us-content-container">
+                <div>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere consequatur, nihil excepturi
+                        enim, quidem placeat non ipsum natus dolores, autem commodi nesciunt fugit magni perspiciatis
+                        laborum aliquid cum voluptatem qui?
+
+                    </p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt cum magnam perferendis vero,
+                        cupiditate porro accusantium fugit quae vel corporis eligendi nesciunt nulla non, sit aliquam
+                        dolore natus esse sint.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt cum magnam perferendis vero,
+                        cupiditate porro accusantium fugit quae vel corporis eligendi nesciunt nulla non, sit aliquam
+                        dolore natus esse sint.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt cum magnam perferendis vero,
+                        cupiditate porro accusantium fugit quae vel corporis eligendi nesciunt nulla non, sit aliquam
+                        dolore natus esse sint.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt cum magnam perferendis vero,
+                        cupiditate porro accusantium fugit quae vel corporis eligendi nesciunt nulla non, sit aliquam
+                        dolore natus esse sint.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt cum magnam perferendis vero,
+                        cupiditate porro accusantium fugit quae vel corporis eligendi nesciunt nulla non, sit aliquam
+                        dolore natus esse sint.</p>
+                </div>
+
+                <img src="{% static 'backoffice/img/img-1.png' %}" alt="">
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,2 @@
+-r base.in
+psycopg2~=2.8

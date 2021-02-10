@@ -1,0 +1,61 @@
+{% extends 'backoffice/layouts/backoffice.layout.html' %}
+
+{% load static %}
+{% block content %}
+<form class="slider-form" action="{% url 'backoffice:post_edit' object.id %}" method="POST"
+    enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% if form.errors %}
+    {% for key,value in form.errors.items %}
+    <div class="login-form__alert" role="alert">
+        <p>{{key}}: {{ value }}</p>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+
+    {% if messages %}
+    <ul class="login-form__alert" role="alert">
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div class="form-group">
+        <label for="title">{{ form.title.label }}</label>
+        <input type="text" name="title" id="title" value="{{ object.title }}">
+    </div>
+
+    <div class="form-group">
+        {% if object.image %}
+        <img src="{{object.image.url}}" alt="">
+        {% endif %}
+
+        <label for="image">{{ form.image.label }}</label>
+        <input type="file" name="image" id="image">
+        <span for="" class="slider-form__image__warning">* La imagen debe tener resolución de 1920 x 600 px y no debe
+            pesar mas de 1MB.</span>
+    </div>
+
+    <div class="form-group">
+        <label for="content">{{ form.content.label }}</label>
+        <textarea name="content" id="content" required>{{ object.content }}</textarea>
+    </div>
+
+    <div class="form-group__actions">
+        <button class="btn btn-success" type="submit">Guardar</button>
+        <a class="btn btn-danger" href="{% url 'backoffice:posts' %}">Cancelar</a>
+    </div>
+</form>
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'vendor/tinymce/js/tinymce/tinymce.min.js' %}" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea'
+    });
+</script>
+{% endblock %}

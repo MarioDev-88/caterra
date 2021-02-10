@@ -1,0 +1,111 @@
+{% extends 'backoffice/layouts/backoffice.layout.html' %}
+
+{% block content %}
+<table class="table">
+    <thead class="table__head">
+        <tr>
+            <th colspan="2">Detalles del pedido</th>
+        </tr>
+    </thead>
+    <tbody class="table__body">
+        <tr>
+            <td>Cliente:</td>
+            <td>
+                {{ object.info_name }}
+            </td>
+        </tr>
+        <tr>
+            <td>Empresa:</td>
+            <td>
+                {{ object.info_business_name }}
+            </td>
+        </tr>
+        <tr>
+            <td>Dirección:</td>
+            <td>
+                {{ object.info_address_1 }}, {{ object.info_address_2 }}
+            </td>
+        </tr>
+        <tr>
+            <td>Ciudad:</td>
+            <td>
+                {{ object.info_city }}
+            </td>
+        </tr>
+        <tr>
+            <td>Estado:</td>
+            <td>
+                {{ object.info_state }}
+            </td>
+        </tr>
+        <tr>
+            <td>Código postal:</td>
+            <td>
+                {{ object.info_cp }}
+            </td>
+        </tr>
+        <tr>
+            <td>Email del cliente:</td>
+            <td>
+                {{ object.info_email }}
+            </td>
+        </tr>
+        <tr>
+            <td>Teléfono del cliente:</td>
+            <td>
+                {{ object.info_phone }}
+            </td>
+        </tr>
+        <tr>
+            <td>Fecha de creación:</td>
+            <td>
+                {{ object.created_at }}
+            </td>
+        </tr>
+        <tr>
+            <td>Monto:</td>
+            <td>
+                ${{ object.total }}
+            </td>
+        </tr>
+        <tr>
+            <td>Status:</td>
+            <td>
+               {% if order.status == "PENDING" %}Pendiente
+               de pago{% endif %}{% if order.status == "DELIVERED" %}Entregado{% endif %}
+               {% if order.status == "PAIDOUT" %}Pagado{% endif %}
+               {% if order.status == "SENT" %}Enviado{% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>Comentarios:</td>
+            <td>
+                {{ object.info_comments }}
+            </td>
+        </tr>
+        {% comment %} <tr>
+            <td>Correo electrónico:</td>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <td>Telefono:</td>
+            <td>{{ user.phone|default:"Sin registrar" }}</td>
+        </tr>
+        <tr>
+            <td>Tipo de usuario:</td>
+            <td>{{ user.type }}</td>
+        </tr>
+        <tr>
+            <td>Fecha de creación:</td>
+            <td>{{ user.created_at }}</td>
+        </tr>
+        <tr>
+            <td>Última actualización:</td>
+            <td>{{ user.updated_at }}</td>
+        </tr> {% endcomment %}
+    </tbody>
+</table>
+<div class="form-group__actions">
+    <a class="btn btn-success" href="{% url "backoffice:orders_list" %}" type="submit">Regresar</a>
+</div>
+{% endblock %}

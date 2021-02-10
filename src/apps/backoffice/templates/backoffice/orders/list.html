@@ -1,0 +1,44 @@
+{% extends 'backoffice/layouts/backoffice.layout.html' %}
+
+{% load static %}
+{% block content %}
+
+<article class="slider-item">
+        <table class="table table-auto w-full custom-table">
+            <thead class="table__head">
+                <th class="px-4 py-2" width="50%">Cliente</th>
+                <th class="px-4 py-2" width="30%">Fecha de creación</th>
+                <th class="px-4 py-2" width="20%">Acciones</th>
+            </thead>
+            <tbody class="table__body">
+                {% for order in object_list %}
+                    <tr>
+                        <td>{{ order.info_name }}</td>
+                        <td>{{ order.created_at }}</td>
+                        <td style="text-align: center">
+                            <a href="{% url 'backoffice:order_details' order.order_id %}"
+                                class="btn btn-sm btn-success text-xs"><img class="inline table__action-icon"
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAO5JREFUSEtjZKAxYKSx+QyjFhAMYaxB9P//fwGgzn4gDoCasAFIFzIyMn4gaCKaAlwWXACq00dTewFogSHFFgBdD3L1ehwGBQItAfmGAajuPz7LgOrAjsfwAVBfA1C8HofmRqA+kDxFFhDlA2KDipQ4uAh0vQGxBsPU4UtFE9BSUQF6KsIXDzjjgBQXkmUBNBXlAy1yQLPsAJAPimQQTTRACSKg4QuAOuMJ6IanJGJsgVtAIP2jm+UI8wmuYMKIA6BCkNftiXEVUM1BoAHgICTFArw5E91imAsJOQg5iGhrASGXkCs/WqMRDDmaBxEASiJaGVnV+DwAAAAASUVORK5CYII=" /></a>
+                            <a href="{% url 'backoffice:order_delete' order.order_id %}"
+                                class="btn btn-sm btn-danger text-xs"><img class="inline table__action-icon"
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAASZJREFUSEu1lY0RgjAMhekk4gTqBK6gE+gGwiTiBOoE4iawAUyCL3cplv4AhZa73nHXNF+SJq8iifyJyP6TSUDXdVcEccTa86KYKl6lEOI7FqQTAMcnHLxjpRNZNtjPASptdlYAnBcwvnmWrwAk188YgIXOpd8HIJkKGQC4LB/PyHXzs1ouHUD13KwENABspY8ewN3yXOlcHu+zUAEv7F4CAd7Igtr7PwfIgHp7FwhQAXDQAZ3RYrCaA0RwzrNqiaIDQpaoRvIkLYM7iH7JpD1rh8zdprSDuwoxaC3KkxqDxoAQWbilgiFLlFQGPC520mqhohrOB12kDxQrK2UzJX4tbDKvB0eFMYjuhvpaSkmNf5obejKtL5n1kufIgq/NLK3xdara/wD6iXAZt0W6kAAAAABJRU5ErkJggg==" /></a>
+                        </td>
+                    </tr>
+                {% empty %}
+                <h2>No hay registros</h2>
+                {% endfor %}
+            </tbody>
+        </table>
+</article>
+
+{% endblock content %}
+
+{% block footer_actions %}
+{% comment %} <div id="footer_actions">
+    <ul class="footer-actions">
+        <li class="footer-actions__item"><a href="{% url 'backoffice:post_create' %}"><img class="footer-actions__icon"
+                    src="{% static 'backoffice/img/ic-add.png' %}" alt="">Nuevo post</a>
+        </li>
+    </ul>
+</div> {% endcomment %}
+{% endblock footer_actions %}

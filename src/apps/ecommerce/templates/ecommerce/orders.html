@@ -1,0 +1,165 @@
+{% extends 'ecommerce/layouts/ecommerce.layout.html' %}
+
+{% load static %}
+{% load mathfilters %}
+{% block content %}
+<div id="header_section_back">
+    <nav class="main-nav">
+        <div class="main-nav__logo">
+            <a href="{% url "ecommerce:home" %}">
+                <img src="{% static 'img/logo-color.png' %}" alt="TodoEnRefasLogo">
+            </a>
+        </div>
+        <ul class="main-nav__menu">
+            <li class="main-nav__item "><a class="{% if request.path == "/" %}active {% endif %}"
+                    href="{% url "ecommerce:home" %}">Inicio</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/acerca-de" %}active {% endif %}"
+                    href="{% url "ecommerce:about" %}">Nosotros</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/productos" %}active {% endif %}"
+                    href="{% url "ecommerce:products" %}">Productos</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"5" == "/blog" %}active {% endif %}"
+                    href="{% url "ecommerce:posts_list" %}">Blog</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"9" == "/contacto" %}active {% endif %}"
+                    href="{% url "ecommerce:contact" %}">Contacto</a></li>
+        </ul>
+    </nav>
+</div>
+<div id="cart_back">
+    <div class="cart-container">
+        <div class="product-list">
+            <h1 class="cart-title">Mis pedidos</h1>
+            {% for order in orders %}
+                <div class="bg-gray-100 mb-2 p-2">
+                    <div class="flex justify-between">
+                        <h2 class="text-xl font-bold text-gray-600 pb-2">Creado el: <span
+                                class="pl-5 italic">{{ order.created_at }}</span></h2>
+                        <h2 class="text-xl font-bold text-gray-600 pb-2">Total del pedido: <span
+                                class="pl-5 italic text-red-700">${{ order.total }}</span></h2>
+                                <h2 class="text-xl font-bold text-gray-600 pb-2">Status: <span
+                                        class="pl-5 italic text-green-600">{% if order.status == "PENDING" %}Pendiente
+                                        de pago{% endif %}{% if order.status == "DELIVERED" %}Entregado{% endif %}
+                                        {% if order.status == "PAIDOUT" %}Pagado{% endif %}
+                                        {% if order.status == "SENT" %}Enviado{% endif %}
+                                        </span></h2>
+                    </div>
+
+                    {% for order_item in order.items %}
+                        <div class="flex mb-2 justify-between content-center">
+                            <img class="block max-w-xs w-1/12" src="{{ order_item.admin_info.imagen_url }}" alt="">
+                            <h3 class="text-s pl-2 flex items-center text-gray-600 w-10/12"><span class="font-bold pr-2">{{order_item.qty}} </span> x
+                                <span class="italic ml-2">{{ order_item.admin_info.descripcion }}</span></h3>
+                            <span class="text-red-600 flex items-center w-1/12">${{ order_item.admin_info.precio }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% empty %}
+                <h2>No tienes pedidos</h2>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script type="text/javascript" src="https://cdn.conekta.io/js/latest/conekta.js"></script>
+<script>
+    const productsTableBody = document.querySelector('.products-list-table-body');
+    let cart = JSON.parse(window.localStorage.getItem("TERCART"));
+    const cartItemRow = null;
+    const row = null;
+
+    cart.forEach(item => {
+        productsTableBody.insertAdjacentHTML('beforeend', `<tr>
+            <td class="product-list__description-field"><a
+                    class="cart-remove-item-button" data-item-id="${item.productId}" ><span
+                        data-item-id="${item.productId}"
+                        onclick="removeCartItem(event)">x</span></a><span>${item.productTitle}</span></td>
+            <td style="text-align: center;">$ ${parseFloat(item.productPrice).toFixed(2)}</td>
+            <td style="text-align: center;"><input class="item-qty-control" type="number" name="" id="" style="width: 70px;" value="${item.qty}" min="1" data-price="${item.productPrice}" data-product-id="${item.productId}"></td>
+            <td class="itemRowTotal" style="text-align: center;">$ ${parseFloat(item.qty * parseFloat(item.productPrice)).toFixed(2)}</td>
+        </tr>`);
+
+    });
+
+    // item qty controls
+    const itemsQtyControls = document.querySelectorAll(".item-qty-control");
+
+    itemsQtyControls.forEach(item => {
+        item.addEventListener("change", function (event) {
+            event.target.parentNode.parentNode.childNodes.forEach(cn => {
+                if (cn instanceof HTMLElement) {
+                    if (cn.classList.contains("itemRowTotal")) {
+                        const itemPrice = event.target.dataset.price;
+                        const itemId = event.target.dataset.productId;
+                        const itemQty = event.target.value;
+
+                        const newItemTotal = parseInt(itemQty) * parseFloat(itemPrice);
+
+                        cn.innerHTML = `$ ${newItemTotal.toFixed(2)}`
+
+                        refreshItemInCart(itemId, itemQty);
+                    }
+                }
+            })
+        })
+    });
+
+    calculateandRefreshTotal();
+
+    function refreshCart() {
+        let newCart = '';
+        cart.forEach(item => {
+            newCart += `<tr>
+                <td class="product-list__description-field"><a class="cart-remove-item-button"
+                        data-item-id="${item.productId}"><span data-item-id="${item.productId}"
+                            onclick="removeCartItem(event)">x</span></a><span>${item.productTitle}</span></td>
+                <td style="text-align: center;">$ ${parseFloat(item.productPrice).toFixed(2)}</td>
+                <td style="text-align: center;"><input class="item-qty-control" type="number" name="" id=""
+                        style="width: 70px;" value="${item.qty}" min="1" data-price="${item.productPrice}"
+                        data-product-id="${item.productId}"></td>
+                <td class="itemRowTotal" style="text-align: center;">$ ${parseFloat(item.qty *
+                    parseFloat(item.productPrice)).toFixed(2)}</td>
+            </tr>`;
+        });
+        console.log(newCart);
+        productsTableBody.innerHTML = newCart;
+    }
+
+    function removeCartItem(event) {
+        const itemId = event.target.dataset.itemId;
+
+        cart = cart.filter(item => {
+            if (item.productId !== itemId) {
+                return item;
+            }
+        });
+
+        window.localStorage.setItem("TERCART", JSON.stringify(cart))
+        refreshCart();
+        calculateandRefreshTotal()
+    }
+
+    function refreshItemInCart(itemId, qty) {
+        cart.forEach(item => {
+            if (item.productId === itemId) {
+                item.qty = qty;
+            }
+        });
+
+        window.localStorage.setItem("TERCART", JSON.stringify(cart));
+        calculateandRefreshTotal()
+    }
+
+    function calculateandRefreshTotal() {
+        let grandTotal = 0.00;
+
+        cart.forEach(item => {
+            grandTotal += parseInt(item.qty) * parseFloat(item.productPrice)
+        });
+
+        console.log(grandTotal)
+        document.querySelector("#grand_total").innerHTML = grandTotal.toFixed(2);
+
+    }
+</script>
+{% endblock scripts %}

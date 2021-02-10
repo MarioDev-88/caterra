@@ -1,0 +1,72 @@
+{% extends 'ecommerce/layouts/ecommerce.layout.html' %}
+
+{% load static %}
+{% block content %}
+<div id="header_section_back">
+    <nav class="main-nav">
+        <div class="main-nav__logo">
+            <a href="{% url "ecommerce:home" %}">
+                <img src="{% static 'img/logo-color.png' %}" alt="TodoEnRefasLogo">
+            </a>
+        </div>
+        <ul class="main-nav__menu">
+            <li class="main-nav__item "><a class="{% if request.path == "/" %}active {% endif %}"
+                    href="{% url "ecommerce:home" %}">Inicio</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/acerca-de" %}active {% endif %}"
+                    href="{% url "ecommerce:about" %}">Nosotros</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/productos" %}active {% endif %}"
+                    href="{% url "ecommerce:products" %}">Productos</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"5" == "/blog" %}active {% endif %}"
+                    href="{% url "ecommerce:posts_list" %}">Blog</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"9" == "/contacto" %}active {% endif %}"
+                    href="{% url "ecommerce:contact" %}">Contacto</a></li>
+        </ul>
+    </nav>
+</div>
+<div id="about_use_section_back">
+    <div>
+        <section class="w-full h-96 post-container mt-3">
+            <img class="mb-3" src="{{ post.header.url }}" alt="">
+            <h2 class="font-bold text-3xl m-0">{{ post.title }}</h2>
+            <span class="text-gray-500 text-sm italic mb-3 flex">{{ post.created_at }}</span>
+
+            <div class="pb-60">
+                {{ post.content|safe }}
+            </div>
+        </section>
+        <div class="comments-section border-t-1">
+            <h2 class="text-xl font-bold">Deja tu comentario</h2>
+            <form action="{% url "ecommerce:comment" post.id %}" method="post">
+            {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input type="text" name="name" id="name">
+                </div>
+                 <div class="form-group">
+                     <label for="email">Email:</label>
+                     <input type="email" name="email" id="email">
+                 </div>
+                  <div class="form-group">
+                      <label for="content">Comentario:</label>
+                        <textarea name="content" id="content" cols="30" rows="10"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-success" type="submit">Comentar</button>
+                  </div>
+            </form>
+            <div>
+                <h3 class="text-lg text-gray-600 font-bold">Comentarios anteriores:</h3>
+             {% for comment in comments %}
+                <div class="bg-gray-300 p-2 mb-2 max-w-full">
+                    <h5 class="text-gray-700">{{ comment.name }} comentó:</h5>
+                    <p class="pl-3 italic">
+                        {{ comment.content }}
+                    </p>
+                    <span class="text-xs text-gray-500 flex justify-end">{{ comment.created_at }}</span>
+                </div>
+             {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,61 @@
+{% extends 'ecommerce/layouts/ecommerce.layout.html' %}
+
+{% load static %}
+{% block content %}
+<div id="header_section_back">
+     <nav class="main-nav">
+         <div class="main-nav__logo">
+             <a href="{% url "ecommerce:home" %}">
+                 <img src="{% static 'img/logo-color.png' %}" alt="TodoEnRefasLogo">
+             </a>
+         </div>
+         <ul class="main-nav__menu">
+             <li class="main-nav__item "><a class="{% if request.path == "/" %}active {% endif %}"
+                     href="{% url "ecommerce:home" %}">Inicio</a></li>
+             <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/acerca-de" %}active {% endif %}"
+                     href="{% url "ecommerce:about" %}">Nosotros</a></li>
+             <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/productos" %}active {% endif %}"
+                     href="{% url "ecommerce:products" %}">Productos</a></li>
+             <li class="main-nav__item"><a class="{% if request.path|slice:"5" == "/blog" %}active {% endif %}"
+                     href="{% url "ecommerce:posts_list" %}">Blog</a></li>
+             <li class="main-nav__item"><a class="{% if request.path|slice:"9" == "/contacto" %}active {% endif %}"
+                     href="{% url "ecommerce:contact" %}">Contacto</a></li>
+         </ul>
+     </nav>
+</div>
+<div class="contact-map-back">
+</div>
+<div id="contact_back">
+
+    <div class="contact-content-section">
+        <form class="contact-section-form" action="{% url "ecommerce:contact" %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Asunto:</label>
+                <textarea name="subject" id="subject" cols="30" rows="10"></textarea>
+            </div>
+            <button class="btn btn-success">Enviar</button>
+        </form>
+        <div class="contact-text">
+            <h1>Gracias por contactarte</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, quibusdam eum modi quas repellendus
+                tenetur, non ipsa, molestiae iusto quasi incidunt. Possimus fuga odit minima maxime veniam, saepe porro
+                quisquam.</p>
+            <h1 class="mt-10">Información de contacto</h1>
+            <ul>
+                <li>Dirección de ejemplo</li>
+                <li>01(662)4568767</li>
+                <li>contacto@todoenreefas.com</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,309 @@
+{% extends 'ecommerce/layouts/ecommerce.layout.html' %}
+
+
+{% load static %}
+{% load mathfilters %}
+{% block content %}
+
+<!-- slider section -->
+<div id="slider_back">
+    <section class="slider">
+                <ul class="sliders">
+
+                    {% for slider in sliders %}
+                    <li class="glide__slide main-slider__item">
+                        <img src="{{ slider.image.url }}" alt="">
+                        <div class="main-slider__content">
+                            <h2 class="main-slider__content__title">{{ slider.title}}</h2>
+                            <a href="{{ slider.url }}" class="main-slider__content__action btn btn-success text-xs">Ver mas</a>
+                        </div>
+                    </li>
+                    {% endfor %}
+
+
+                </ul>
+
+            <nav class="main-nav">
+                <div class="main-nav__logo">
+                    <a href="{% url "ecommerce:home" %}">
+                        <img src="{% static 'img/logo-color.png' %}" alt="TodoEnRefasLogo">
+                    </a>
+                </div>
+                <ul class="main-nav__menu">
+                    <li class="main-nav__item "><a class="{% if request.path == "/" %}active {% endif %}"
+                            href="{% url "ecommerce:home" %}">Inicio</a></li>
+                    <li class="main-nav__item"><a
+                            class="{% if request.path|slice:"10" == "/acerca-de" %}active {% endif %}"
+                            href="{% url "ecommerce:about" %}">Nosotros</a></li>
+                    <li class="main-nav__item"><a
+                            class="{% if request.path|slice:"10" == "/productos" %}active {% endif %}"
+                            href="{% url "ecommerce:products" %}">Productos</a></li>
+                    <li class="main-nav__item"><a class="{% if request.path|slice:"5" == "/blog" %}active {% endif %}"
+                            href="{% url "ecommerce:posts_list" %}">Blog</a></li>
+                    <li class="main-nav__item"><a
+                            class="{% if request.path|slice:"9" == "/contacto" %}active {% endif %}"
+                            href="{% url "ecommerce:contact" %}">Contacto</a></li>
+                </ul>
+            </nav>
+
+    </section>
+</div>
+<!-- end of slider section -->
+<!-- search section -->
+<div id="search_section_back">
+    <section class="search-section">
+        <h4 class="search-section__title">¿Qué estás buscando?</h4>
+        <form class="search-section__form" action="">
+            <select class="search-section__select" name="machine_type" id="">
+                <option value="" selected disabled>Tipo de maquina</option>
+                <option value="1">Motosierra</option>
+                <option value="1">Podadora</option>
+            </select>
+            <select class="search-section__select" name="machine_brand" id="">
+                <option value="" selected disabled>Marca</option>
+                <option value="1">Stihl</option>
+                <option value="1">Truper</option>
+            </select>
+            <select class="search-section__select" name="machine_type" id="">
+                <option value="" selected disabled>Modelo</option>
+                <option value="1">2010</option>
+                <option value="1">2011</option>
+            </select>
+            <button class="btn btn-success" type="submit">Buscar</button>
+        </form>
+    </section>
+</div>
+<!-- end of search section -->
+<!-- video section -->
+<div id="video_section_back">
+    <section class="video-section">
+        <section class="business-features">
+            <article class="business-features__item business-features__item__green">
+                <div class="business-features__icon">
+                    <img src="{% static 'backoffice/img/ic-10.png' %}" alt="">
+                </div>
+                <div class="business-features__content">
+                    <h4>Envío gratis</h4>
+                    <span>En compras mayores de $599.00</span>
+                </div>
+            </article>
+            <article class="business-features__item business-features__item__dark">
+                <div class="business-features__icon">
+                    <img src="{% static 'backoffice/img/ic-11.png' %}" alt="">
+                </div>
+                <div class="business-features__content">
+                    <h4>Devolución</h4>
+                    <span>¡Gratis!</span>
+                </div>
+            </article>
+            <article class="business-features__item business-features__item__black">
+                <div class="business-features__icon">
+                    <img src="{% static 'backoffice/img/ic-12.png' %}" alt="">
+                </div>
+                <div class="business-features__content">
+                    <h4>Atención personalizada</h4>
+
+                </div>
+            </article>
+        </section>
+        <section class="video">
+            <div class="video-content">
+                <h2>{{ video.title }}</h2>
+                <p>{{ video.content }}</p>
+            </div>
+            <div class="video-player">
+                        {% autoescape off %}
+                            {{ video.code }}
+                        {% endautoescape %}
+            </div>
+        </section>
+    </section>
+</div>
+<!-- end of video section -->
+<!-- month offers section -->
+<div id="month_offers_back">
+    <div class="month-offers">
+        <h2 class="month-offers__title">Ofertas del mes</h2>
+        <div class="glide glide-products products-slider-container">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+
+                    {% for offer in offers %}
+                    <li class="glide__slide month-offers__item">
+                        <img class="month-offers__item__image" src="{{ offer.image.url }}" alt="">
+                        <h5 class="month-offers__item__title">{{offer.title}}</h5>
+                        <div class="month-offers__item__prices">
+                            <span
+                                class="month-offers__item__price--before month-offers__item__price">${{ offer.price }}</span>
+                            <span
+                                class="month-offers__item__price--after month-offers__item__price">${{ offer.price|sub:offer.discount }}</span>
+                        </div>
+                        <button class="btn text-xs bg-gray-600"><svg class="top-header-actions__icon"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg></button>
+                        <button class="btn btn-success text-xs my-1">Comprar</button>
+                    </li>
+
+                    {% empty %}
+                        <h2>No hay ofertas por el momento</h2>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- <div class="glide__bullets" data-glide-el="controls[nav]">
+                    <button class="glide__bullet" data-glide-dir="=0"></button>
+                    <button class="glide__bullet" data-glide-dir="=1"></button>
+                    <button class="glide__bullet" data-glide-dir="=2"></button>
+                </div> -->
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left month-offers__arrow month-offers__arrow--left"
+                    data-glide-dir="<">
+                    <</button> <button
+                        class="glide__arrow glide__arrow--right month-offers__arrow month-offers__arrow--right"
+                        data-glide-dir=">">>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of month offers section -->
+<!-- suggestions section -->
+<div id="suggestions_back">
+    <div class="suggestions">
+        <h3 class="suggestions__title">¿Que refacción estás buscando?</h3>
+        <div class="suggestions-icons">
+            <div class="suggestions-icons-item">
+                <img class="suggestions-icons-item__icon" src="{% static 'backoffice/img/ic-serv.png' %}" alt="">
+                <h5 class="suggestions-icons-item__title">Cadenas</h5>
+                <span class="suggestions-icons-item__subtitle">Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit.</span>
+                <a class="suggestions-icons-item__link" href="#">Ver mas</a>
+            </div>
+            <div class="suggestions-icons-item">
+                <img class="suggestions-icons-item__icon" src="{% static 'backoffice/img/ic-serv2.png' %}" alt="">
+                <h5 class="suggestions-icons-item__title">Rollos de Nylon</h5>
+                <span class="suggestions-icons-item__subtitle">Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit.</span>
+                <a class="suggestions-icons-item__link" href="#">Ver mas</a>
+            </div>
+            <div class="suggestions-icons-item">
+                <img class="suggestions-icons-item__icon" src="{% static 'backoffice/img/ic-serv3.png' %}" alt="">
+                <h5 class="suggestions-icons-item__title">Espadas</h5>
+                <span class="suggestions-icons-item__subtitle">Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit.</span>
+                <a class="suggestions-icons-item__link" href="#">Ver mas</a>
+            </div>
+            <div class="suggestions-icons-item">
+                <img class="suggestions-icons-item__icon" src="{% static 'backoffice/img/ic-serv4.png' %}" alt="">
+                <h5 class="suggestions-icons-item__title">Filtro de Aire</h5>
+                <span class="suggestions-icons-item__subtitle">Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit.</span>
+                <a class="suggestions-icons-item__link" href="#">Ver mas</a>
+            </div>
+            <div class="suggestions-icons-item">
+                <img class="suggestions-icons-item__icon" src="{% static 'backoffice/img/ic-serv5.png' %}" alt="">
+                <h5 class="suggestions-icons-item__title">Bujías</h5>
+                <span class="suggestions-icons-item__subtitle">Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit.</span>
+                <a class="suggestions-icons-item__link" href="#">Ver mas</a>
+            </div>
+            <div class="suggestions-icons-item">
+                <img class="suggestions-icons-item__icon" src="{% static 'backoffice/img/ic-serv6.png' %}" alt="">
+                <h5 class="suggestions-icons-item__title">Lubricantes</h5>
+                <span class="suggestions-icons-item__subtitle">Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit.</span>
+                <a class="suggestions-icons-item__link" href="#">Ver mas</a>
+            </div>
+            <div class="suggestions-icons-item">
+                <img class="suggestions-icons-item__icon" src="{% static 'backoffice/img/ic-serv7.png' %}" alt="">
+                <h5 class="suggestions-icons-item__title">Carburadores</h5>
+                <span class="suggestions-icons-item__subtitle">Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit.</span>
+                <a class="suggestions-icons-item__link" href="#">Ver mas</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of suggestions section -->
+<!-- featured products section -->
+<div id="month_offers_back">
+    <div class="month-offers">
+        <h2 class="month-offers__title">Productos</h2>
+        <div class="glide glide-featured-products products-slider-container">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide month-offers__item">
+                        <img class="month-offers__item__image" src="{% static 'backoffice/img/motosierra.jpg' %}" alt="">
+                        <h5 class="month-offers__item__title">Nombre del producto</h5>
+                        <div class="month-offers__item__prices">
+                            <span class="month-offers__item__price--before month-offers__item__price">$2,000.00</span>
+                            <span class="month-offers__item__price--after month-offers__item__price">$1,500.00</span>
+                        </div>
+                        <button class="btn text-xs bg-gray-600"><svg class="top-header-actions__icon"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg></button>
+                        <button class="btn btn-success text-xs my-1">Comprar</button>
+                    </li>
+                    <li class="glide__slide month-offers__item">
+                        <img class="month-offers__item__image" src="{% static 'backoffice/img/motosierra.jpg' %}" alt="">
+                        <h5 class="month-offers__item__title">Nombre del producto</h5>
+                        <div class="month-offers__item__prices">
+                            <span class="month-offers__item__price--before month-offers__item__price">$2,000.00</span>
+                            <span class="month-offers__item__price--after month-offers__item__price">$1,500.00</span>
+                        </div>
+                        <button class="btn text-xs bg-gray-600"><svg class="top-header-actions__icon"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg></button>
+                        <button class="btn btn-success text-xs my-1">Comprar</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left month-offers__arrow month-offers__arrow--left"
+                    data-glide-dir="<">
+                    <</button> <button
+                        class="glide__arrow glide__arrow--right month-offers__arrow month-offers__arrow--right"
+                        data-glide-dir=">">>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of featured products section -->
+<!-- ssl section -->
+<div id="ssl_section_back">
+    <section class="ssl-section">
+        <img class="ssl-belt" src="{% static 'backoffice/img/ssl-toolbelt.svg' %}" alt="">
+    </section>
+</div>
+<!-- end of ssl section -->
+<!-- brands section -->
+<div id="brands_section_back">
+    <section class="brands-section">
+        <ul>
+            <li class="brand-section__item"><img src="{% static 'backoffice/img/marca1.png' %}" alt=""></li>
+            <li class="brand-section__item"><img src="{% static 'backoffice/img/marca2.png' %}" alt=""></li>
+            <li class="brand-section__item"><img src="{% static 'backoffice/img/marca3.png' %}" alt=""></li>
+            <li class="brand-section__item"><img src="{% static 'backoffice/img/marca4.png' %}" alt=""></li>
+        </ul>
+    </section>
+</div>
+<!-- end of brands section -->
+
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function() {
+            $('.sliders').slick();
+        })
+    </script>
+{% endblock scripts %}

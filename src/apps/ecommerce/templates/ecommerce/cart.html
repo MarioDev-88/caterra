@@ -1,0 +1,257 @@
+{% extends 'ecommerce/layouts/ecommerce.layout.html' %}
+
+{% load static %}
+{% block content %}
+<div id="header_section_back">
+    <nav class="main-nav">
+        <div class="main-nav__logo">
+            <a href="{% url "ecommerce:home" %}">
+                <img src="{% static 'img/logo-color.png' %}" alt="TodoEnRefasLogo">
+            </a>
+        </div>
+        <ul class="main-nav__menu">
+            <li class="main-nav__item "><a class="{% if request.path == "/" %}active {% endif %}"
+                    href="{% url "ecommerce:home" %}">Inicio</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/acerca-de" %}active {% endif %}"
+                    href="{% url "ecommerce:about" %}">Nosotros</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/productos" %}active {% endif %}"
+                    href="{% url "ecommerce:products" %}">Productos</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"5" == "/blog" %}active {% endif %}"
+                    href="{% url "ecommerce:posts_list" %}">Blog</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"9" == "/contacto" %}active {% endif %}"
+                    href="{% url "ecommerce:contact" %}">Contacto</a></li>
+        </ul>
+    </nav>
+</div>
+<div id="cart_back">
+    <div class="cart-container">
+        <div class="product-list">
+            <h1 class="cart-title">Resumen del pedido</h1>
+            <h1 class="cart-subtitle">Productos en el carrito</h1>
+            <table class="product-list-table" border="1">
+            <thead>
+                <tr>
+                    <th width="50%" style="text-align: center;">Producto</th>
+                    <th width="20%" style="text-align: center;">Precio</th>
+                    <th width="20%" style="text-align: center;">Cantidad</th>
+                    <th width="10%" style="text-align: center;">Total</th>
+                </tr>
+            </thead>
+            <tbody class="products-list-table-body">
+                {% comment %} <tr>
+                    <td class="product-list__description-field"><a class="cart-remove-item-button"><span>x</span></a><span>Motosierra Stilh</span></td>
+                    <td style="text-align: center;">1,000.00</td>
+                    <td style="text-align: center;">1</td>
+                    <td style="text-align: center;">$1,000.00</td>
+                </tr>
+                <tr>
+                    <td class="product-list__description-field"><a
+                            class="cart-remove-item-button"><span>x</span></a><span>Motosierra Stilh</span></td>
+                    <td style="text-align: center;">1,000.00</td>
+                    <td style="text-align: center;">1</td>
+                    <td style="text-align: center;">$1,000.00</td>
+                </tr> {% endcomment %}
+            </tbody>
+            </table>
+            <h5 class="text-right italic font-bold">*Envío: $150.00</h5>
+            <h3 class="cart-total">Total del pedido: <span class="text-red-600 font-bold">$</span> <span
+                    id="grand_total" class="text-red-600 font-bold">0.00</span></h3>
+
+            <form action="{% url 'ecommerce:payment_preview' %}" method="post" class="order-info-form">
+            {% csrf_token %}
+
+                <h1 class="cart-subtitle">Datos del pedido</h1>
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input type="text" name="name" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Apellidos:</label>
+                    <input type="text" name="lastname" id="lastname" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Nombre de la empresa:</label>
+                    <input type="text" name="company" id="company">
+                </div>
+                <div class="form-group">
+                    <label for="address">Direccion:</label>
+                    <input type="text" name="address" id="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="neighborhood">Colonia:</label>
+                    <input type="text" name="neighborhood" id="neighborhood" required>
+                </div>
+                <div class="form-group flex">
+                    <div class="form-group w-1/2 mr-2">
+                        <label for="country">País:</label>
+                        <input type="text" name="country" id="country" required>
+                    </div>
+                    <div class="form-group w-1/2">
+                        <label for="state">Estado:</label>
+                        <input type="text" name="state" id="state" required>
+                    </div>
+                </div>
+                <div class="form-group flex">
+                    <div class="form-group w-1/2 mr-2">
+                        <label for="city">Ciudad:</label>
+                        <input type="text" name="city" id="city" required>
+                    </div>
+                    <div class="form-group w-1/2">
+                        <label for="cp">Código postal:</label>
+                        <input type="number" name="cp" id="cp" required>
+                    </div>
+                </div>
+                <div class="form-group flex">
+                    <div class="form-group w-1/2 mr-2">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="form-group w-1/2">
+                        <label for="phone">Telefono:</label>
+                        <input type="phone" name="phone" id="phone" required>
+                    </div>
+                </div>
+                <div class="form-group flex">
+                    <div class="form-group">
+                        <label for="comments">Comentarios:</label>
+                        <textarea name="comments" id="comments" cols="120" rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="form-group flex justify-center">
+                    <button class="btn btn-success cartSubmitButton">Proceder al pago</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    const productsTableBody = document.querySelector('.products-list-table-body');
+    let cart = JSON.parse(window.localStorage.getItem("TERCART") || '[]');
+    const cartItemRow = null;
+    const row = null;
+
+    cart.forEach(item => {
+        productsTableBody.insertAdjacentHTML('beforeend', `<tr>
+            <td class="product-list__description-field"><a
+                    class="cart-remove-item-button" data-item-id="${item.productId}" ><span
+                        data-item-id="${item.productId}"
+                        onclick="removeCartItem(event)">x</span></a><span>${item.productTitle}</span></td>
+            <td style="text-align: center;">$ ${parseFloat(item.productPrice).toFixed(2)}</td>
+            <td style="text-align: center;"><input class="item-qty-control" type="number" name="" id="" style="width: 70px;" value="${item.qty}" min="1" data-price="${item.productPrice}" data-product-id="${item.productId}"></td>
+            <td class="itemRowTotal" style="text-align: center;">$ ${parseFloat(item.qty * parseFloat(item.productPrice)).toFixed(2)}</td>
+        </tr>`);
+
+    });
+
+    // item qty controls
+    const itemsQtyControls = document.querySelectorAll(".item-qty-control");
+
+    itemsQtyControls.forEach(item => {
+        item.addEventListener("change", function(event) {
+            event.target.parentNode.parentNode.childNodes.forEach(cn => {
+               if(cn instanceof HTMLElement) {
+                   if (cn.classList.contains("itemRowTotal")){
+                       const itemPrice = event.target.dataset.price;
+                       const itemId = event.target.dataset.productId;
+                       const itemQty = event.target.value;
+
+                       const newItemTotal = parseInt(itemQty) * parseFloat(itemPrice);
+
+                       cn.innerHTML = `$ ${newItemTotal.toFixed(2)}`
+
+                       refreshItemInCart(itemId, itemQty);
+                   }
+               }
+            })
+        })
+    });
+
+    calculateandRefreshTotal();
+
+    function refreshCart() {
+        let newCart = '';
+        cart.forEach(item => {
+            newCart += `<tr>
+                <td class="product-list__description-field"><a class="cart-remove-item-button"
+                        data-item-id="${item.productId}"><span data-item-id="${item.productId}"
+                            onclick="removeCartItem(event)">x</span></a><span>${item.productTitle}</span></td>
+                <td style="text-align: center;">$ ${parseFloat(item.productPrice).toFixed(2)}</td>
+                <td style="text-align: center;"><input class="item-qty-control" type="number" name="" id=""
+                        style="width: 70px;" value="${item.qty}" min="1" data-price="${item.productPrice}"
+                        data-product-id="${item.productId}"></td>
+                <td class="itemRowTotal" style="text-align: center;">$ ${parseFloat(item.qty *
+                    parseFloat(item.productPrice)).toFixed(2)}</td>
+            </tr>`;
+        });
+        console.log(newCart);
+        productsTableBody.innerHTML = newCart;
+    }
+
+    function removeCartItem(event) {
+        const itemId = event.target.dataset.itemId;
+
+        cart = cart.filter(item => {
+            if (item.productId !== itemId) {
+                return item;
+            }
+        });
+
+        window.localStorage.setItem("TERCART", JSON.stringify(cart))
+        refreshCart();
+        calculateandRefreshTotal()
+    }
+
+    function refreshItemInCart(itemId, qty) {
+        cart.forEach(item => {
+            if (item.productId === itemId) {
+                item.qty = qty;
+            }
+        });
+
+        window.localStorage.setItem("TERCART", JSON.stringify(cart));
+        calculateandRefreshTotal()
+    }
+
+    function calculateandRefreshTotal() {
+        let grandTotal = 0.00;
+
+        cart.forEach(item => {
+            grandTotal += parseInt(item.qty) * parseFloat(item.productPrice)
+        });
+
+        if (cart.length > 0 ) {
+            grandTotal += 150.00;
+        }
+        console.log(grandTotal)
+        document.querySelector("#grand_total").innerHTML = grandTotal.toFixed(2);
+
+    }
+
+
+    // form submission
+    const submitButton = document.querySelector('.cartSubmitButton')
+
+    submitButton.addEventListener('click', (e) => {
+        e.preventDefault()
+        const form = document.querySelector('.order-info-form')
+
+        cart.forEach(item => {
+            const itemField = document.createElement('input');
+
+            itemField.setAttribute('type', 'hidden')
+            itemField.setAttribute('name', `products`)
+            itemField.setAttribute('value', `{"productId": "${item.productId}", "qty": ${item.qty}}`)
+
+            form.appendChild(itemField)
+        })
+
+        window.localStorage.setItem("TERCART", [])
+
+        form.submit()
+    })
+
+</script>
+{% endblock scripts %}

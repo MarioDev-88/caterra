@@ -1,0 +1,161 @@
+{% extends 'ecommerce/layouts/ecommerce.layout.html' %}
+
+{% load static %}
+{% load mathfilters %}
+{% block content %}
+<div id="header_section_back">
+    <nav class="main-nav">
+        <div class="main-nav__logo">
+            <a href="{% url "ecommerce:home" %}">
+                <img src="{% static 'img/logo-color.png' %}" alt="TodoEnRefasLogo">
+            </a>
+        </div>
+        <ul class="main-nav__menu">
+            <li class="main-nav__item "><a class="{% if request.path == "/" %}active {% endif %}"
+                    href="{% url "ecommerce:home" %}">Inicio</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/acerca-de" %}active {% endif %}"
+                    href="{% url "ecommerce:about" %}">Nosotros</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/productos" %}active {% endif %}"
+                    href="{% url "ecommerce:products" %}">Productos</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"5" == "/blog" %}active {% endif %}"
+                    href="{% url "ecommerce:posts_list" %}">Blog</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"9" == "/contacto" %}active {% endif %}"
+                    href="{% url "ecommerce:contact" %}">Contacto</a></li>
+        </ul>
+    </nav>
+</div>
+    <div id="products_back">
+            <h2 class="page-title">Products</h2>
+            <form action="{% url "ecommerce:products" %}" method="GET" class="products-filterbar">
+            <div class="products-filterbar__form-group">
+                <label for="q">Buscar:</label>
+                <input type="text" name="q" id="q">
+            </div>
+                <div class="products-filterbar__form-group">
+                    <label for="category">Categoría:</label>
+                    <select name="category" id="category">
+                        <option disabled {% if not request.GET.category %}selected{% endif %}>Selecciona una cateogría</option>
+                        <option value="">Todas las categorías</option>
+                        {% for line in lines.results %}
+                            <option value="{{ line.id }}" {% if line.id|stringformat:"i" == request.GET.category %}
+                                selected {% endif %}>
+                                {{ line.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                {% if request.GET.category %}
+
+                 <div class="products-filterbar__form-group">
+                     <label for="subcategory">Sub categoría:</label>
+                     <select name="subcategory" id="subcategory">
+                         <option disabled {% if not request.GET.subcategory %}selected{% endif %}>Selecciona una subcateogría
+                         </option>
+                         <option value="">Todas las subcategorías</option>
+                         {% for subline in sublines.results %}
+                         {% if subline.linea|stringformat:"i" == request.GET.category%}
+
+                         <option value="{{ subline.id }}" {% if subline.id|stringformat:"i" == request.GET.subcategory %}
+                             selected {% endif %}>
+                             {{ subline.nombre }}</option>
+                         {% endif %}
+                         {% endfor %}
+                     </select>
+                 </div>
+                {% endif %}
+                <div class="products-filterbar__form-group">
+                    <label for="price">Precio:</label>
+                    <select name="price" id="price">
+                        <option disabled {% if not request.GET.price %}selected{% endif %}>Selecciona un un rango de precio</option>
+                        <option value="">Todos los precios</option>
+                        <option value="1" {% if request.GET.price == "1" %}selected{% endif %}>$0 - $ 999.00
+                        </option>
+                        <option value="2" {% if request.GET.price == "2" %}selected{% endif %}>$1,000.00 - $4,999.00
+                        </option>
+                        <option value="3" {% if request.GET.price == "3" %}selected{% endif %}>$5,000.00 - $9,999.00
+                        </option>
+                        <option value="4" {% if request.GET.price == "4" %}selected{% endif %}>$10,000.00 - $19,999.00
+                        </option>
+                        <option value="5" {% if request.GET.price == "5" %}selected{% endif %}>Mas de $20,000.00
+                        </option>
+                    </select>
+                </div>
+                <div class="products-filterbar__form-group">
+                    <button type="submit" class="btn btn-success text-sm">Buscar</button>
+                </div>
+            </form>
+        <div class="products-container">
+            {% for product in products.results %}
+                <div class="product">
+                    <img class="product__image" src="{{ product.imagen_url }}" alt="">
+                    <a href="/productos/{{ product.codigo }}" class="product-title">{{ product.descripcion }}</a>
+                    <span class="product__price">${{ product.precio|floatformat:"2" }}</span>
+                    <button class="btn btn-success product__add-button add-product-to-cart" data-product-title="{{product.descripcion}}" data-product-id="{{product.codigo}}" data-product-price="{{product.precio}}">
+                        <svg class="top-header-actions__icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </button>
+                </div>
+            {% empty %}
+                <h1>No hay productos</h1>
+            {% endfor %}
+
+        </div>
+
+        <div class="products-pagination__container">
+        {% for first_page in first_pages %}
+            {% if first_page|add:1 > 0 %}
+            <a
+                href="/productos?page={{ first_page|add:1 }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}" class="{% if request.GET.page == first_page|add:1|stringformat:"i" %}actual_page{% endif %}">{{ first_page|add:1 }}</a>
+            {% endif %}
+        {% endfor %}
+            {% comment %} {% for page in pages %}
+            <a href="/productos?page={{ page|add:1 }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">{{page|add:1}}</a>
+            {% endfor %} {% endcomment %}
+
+        {% for last_page in last_pages %}
+            {% if last_page > 0 %}
+            <a
+                href="/productos?page={{ last_page|add:1 }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">{{ last_page|sub:1 }}</a>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        const addProductToCart = document.querySelectorAll('.add-product-to-cart');
+        let cart = window.localStorage.getItem("TERCART") ? JSON.parse(window.localStorage.getItem("TERCART")) : [];
+        addProductToCart.forEach((item) => {
+            item.addEventListener("click", function(event) {
+                event.preventDefault();
+                const productId = item.dataset.productId;
+                const productTitle = item.dataset.productTitle;
+                const productPrice = item.dataset.productPrice;
+
+                console.log(cart)
+                let productInCart = false;
+
+
+                    cart.forEach(cartItem => {
+                        if (cartItem.productId === productId) {
+                            cartItem.qty++;
+                            productInCart = true
+                        }
+                    });
+
+
+
+                if (!productInCart) {
+                    cart.push({productId: productId, productTitle: productTitle, productPrice: productPrice, qty: 1});
+                }
+
+                window.localStorage.setItem("TERCART", JSON.stringify(cart));
+                alert(`"${productTitle}" Agregado a tu carrito.`)
+
+            })
+        });
+    </script>
+{% endblock scripts %}
