@@ -18,7 +18,7 @@ class HomeView(View):
     template_name = "ecommerce/home.html"
 
     def dispatch(self, request, *args, **kwargs):
-        self.title = "TodoEnRefas"
+        self.title = "Caterra"
         self.offers = MonthOffer.objects.all()
         self.sliders = Slider.objects.all()
         self.video = Video.objects.first()
@@ -50,7 +50,7 @@ class ContactView(View):
         print(request.POST["name"])
 
         send_mail(
-            "Mensaje del sitio TodoEnRefas",
+            "Mensaje del sitio Caterra",
             request.POST["subject"],
             request.POST["email"],
             ["272f846743-39d2bf@inbox.mailtrap.io"],

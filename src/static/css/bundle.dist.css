@@ -18333,7 +18333,6 @@ video {
 .select-all {
   -webkit-user-select: all;
      -moz-user-select: all;
-      -ms-user-select: all;
           user-select: all;
 }
 
@@ -22148,7 +22147,7 @@ input:focus,
 }
 
 #top_header_back {
-  background-color: #6b6b6b;
+  background-color: #223300;
   display: flex;
   justify-content: center;
 }
@@ -22188,8 +22187,9 @@ input:focus,
 }
 
 #header_section_back {
-  background-image: url("../img/slider1.jpeg");
-  height: 300px;
+  background-image: url("../ecommerce/img/banner-titulo.png");
+  background-size: cover;
+  height: 450px;
   background-color: #6b6b6b;
   display: flex;
   justify-content: center;
@@ -22211,7 +22211,7 @@ div#footer_back {
 }
 
 .footer-image {
-  width: 400px;
+  width: 180px;
 }
 
 .footer-link-list {
@@ -22223,15 +22223,12 @@ div#footer_back {
 
 .footer-link-list__title {
   font-weight: bolder;
-  text-align: center;
   text-transform: uppercase;
-  text-decoration: underline;
 }
 
 .footer-link-list__item > a {
   display: block;
   font-weight: lighter;
-  text-align: center;
 }
 
 .footer-contact-info {
@@ -22404,11 +22401,11 @@ div.main-slider__content {
 }
 
 .main-nav {
-  background-color: #66932f;
+  background-color: #ffffff;
   border-radius: 10px;
   max-width: 350px;
   position: absolute;
-  width: 80%;
+  width: 90%;
 }
 
 .main-nav__logo {
@@ -22437,7 +22434,7 @@ div.main-slider__content {
 
 .main-nav__item > a {
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  color: white;
+  color: black;
   font-weight: lighter;
   display: block;
   padding: 20px;
@@ -22844,7 +22841,7 @@ div#ssl_section_back {
 
   ul.main-nav__menu {
     display: flex;
-    width: 80%;
+    width: 90%;
   }
 
   li.main-nav__item {
@@ -23086,24 +23083,34 @@ article.post {
   display: flex;
   justify-content: center;
   max-width: 1200px;
-  min-height: 800px;
   padding-top: 20px;
 }
 
 .contact-section-form {
   width: 85%;
-  max-width: 500px;
-}
-
-.contact-text {
-  padding-left: 50px;
 }
 
 .contact-text > h1 {
-  color: #66932f;
-  font-weight: bolder;
+  color: #000000;
+  font-weight: bold;
   font-size: 34px;
   text-transform: uppercase;
+  text-align: center;
+}
+
+.contact-text > h1:after {
+  content: "";
+  /* This is necessary for the pseudo element to work. */
+  display: block;
+  /* This will put the pseudo element on its own line. */
+  margin: 0 auto;
+  /* This will center the border. */
+  width: 6%;
+  /* Change this to whatever width you want. */
+  padding-top: 20px;
+  /* This creates some space between the element and the border. */
+  border-bottom: 2px solid #707070ab;
+  /* This creates the border. Replace black with whatever color you want. */
 }
 
 .contact-text > p {
@@ -41146,7 +41153,6 @@ div.cart-container {
   .sm\:select-all {
     -webkit-user-select: all;
        -moz-user-select: all;
-        -ms-user-select: all;
             user-select: all;
   }
 
@@ -62134,7 +62140,6 @@ div.cart-container {
   .md\:select-all {
     -webkit-user-select: all;
        -moz-user-select: all;
-        -ms-user-select: all;
             user-select: all;
   }
 
@@ -83122,7 +83127,6 @@ div.cart-container {
   .lg\:select-all {
     -webkit-user-select: all;
        -moz-user-select: all;
-        -ms-user-select: all;
             user-select: all;
   }
 
@@ -104110,7 +104114,6 @@ div.cart-container {
   .xl\:select-all {
     -webkit-user-select: all;
        -moz-user-select: all;
-        -ms-user-select: all;
             user-select: all;
   }
 

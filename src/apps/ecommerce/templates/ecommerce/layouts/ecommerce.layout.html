@@ -5,13 +5,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{% static 'favicon.png' %}">
+    <link rel="shortcut icon" href="{% static 'ic-13.png' %}">
 
-    <title>{{ title|default:"STC" }}</title>
+    <title>{{ title|default:"Caterra" }}</title>
     <link rel="stylesheet" href="{% static 'vendor/slick/slick.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/slick/slick-theme.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;400;800&display=swap" rel="stylesheet">
     <!-- Scripts -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Bootstrap -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/> -->
 
     <!-- {% comment %} <link rel="stylesheet" href="{% static 'vendor/glide/css/glide.core.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/glide/css/glide.theme.min.css' %}"> {% endcomment %} -->
@@ -22,6 +28,7 @@
 </head>
 
 <body>
+    <div class>
     <!-- top header section -->
     <div id="top_header_back">
         <section id="top_header">
@@ -89,7 +96,7 @@
     <!-- footer section -->
     <div id="footer_back">
         <footer class="main-footer">
-            <img class="footer-image" src="{% static 'backoffice/img/logo-footer.png' %}" alt="">
+            <img class="footer-image" src="{% static 'img/logo-blanco.png' %}" alt="">
             <ul class="footer-link-list">
                 <h6 class="footer-link-list__title">Volver a</h6>
                 <li class="footer-link-list__item"><a href="">Inicio</a></li>
@@ -98,11 +105,11 @@
                 <li class="footer-link-list__item"><a href="">Blog</a></li>
                 <li class="footer-link-list__item"><a href="">Contacto</a></li>
             </ul>
-            <ul class="footer-link-list">
+            <!-- <ul class="footer-link-list">
                 <h6 class="footer-link-list__title">Ver</h6>
                 <li class="footer-link-list__item"><a href="">Mi usuario</a></li>
                 <li class="footer-link-list__item"><a href="">Mi carrito</a></li>
-            </ul>
+            </ul> -->
             <ul class="footer-link-list">
                 <h6 class="footer-link-list__title">Legal</h6>
                 <li class="footer-link-list__item"><a href="">Terminos y condiciones</a></li>
@@ -111,9 +118,9 @@
             <div class="footer-contact-info">
                 <ul>
                     <li class="footer-contact-info__item"><a href=""><img src="{% static 'backoffice/img/ic-ph.png' %}"
-                                alt="">(662)3-876521</a></li>
+                                alt="">(662)1-123456</a></li>
                     <li class="footer-contact-info__item"><a href=""><img src="{% static 'backoffice/img/ic-ms.png' %}"
-                                alt="">info@todoenrefas.com</a></li>
+                                alt="">info@caterra.com</a></li>
                 </ul>
             </div>
         </footer>
@@ -122,7 +129,7 @@
     <!-- bottom footer -->
     <div id="footer_bottom_back">
         <section class="footer-bottom">
-            <p>© Todos los derechos reservados 2020. <a href="">Pitic Software Development</a></p>
+            <p>© Todos los derechos reservados 2021. <a href="piticmkt.com">Pitic Software Development</a></p>
         </section>
     </div>
     <!-- end bottom footer -->

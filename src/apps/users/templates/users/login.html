@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
-    <title>{{title}} | TodoEnRefas</title>
+    <title>{{title}} | Caterra</title>
     <link rel="stylesheet" href="{% static 'css/bundle.dist.css' %}">
 </head>
 
@@ -15,7 +15,7 @@
     <div id="login_back">
         <form action="{% url 'users:login_view' %}" method="POST" class="login-form">
             {% csrf_token %}
-            <img class="login-form__logo" src=" {% static 'img/logo-color.png' %}" alt="TodoEnRefas">
+            <img class="login-form__logo" src=" {% static 'img/logo-color.png' %}" alt="Caterra">
 
             {% if form.errors %}
             {% for key,value in form.errors.items %}

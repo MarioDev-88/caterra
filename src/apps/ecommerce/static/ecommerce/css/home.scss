@@ -45,11 +45,11 @@ div.main-slider__content {
 }
 
 .main-nav {
-    background-color: $primaryGreen;
+    background-color: #ffffff;
     border-radius: 10px;
     max-width: 350px;
     position: absolute;
-    width: 80%;
+    width: 90%;
 }
 
 .main-nav__logo {
@@ -79,7 +79,7 @@ div.main-slider__content {
 .main-nav__item {
     >a {
         border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-        color: white;
+        color: black;
         font-weight: lighter;
         display: block;
         padding: 20px;
@@ -441,6 +441,8 @@ div#ssl_section_back {
         position: absolute;
         top: 80px;
         width: 80%;
+        // padding-left: 10%;
+        // padding-right: 10%;
     }
 
     div.main-slider {
@@ -500,7 +502,7 @@ div#ssl_section_back {
 
     ul.main-nav__menu {
         display: flex;
-        width: 80%;
+        width: 90%;
     }
 
     li.main-nav__item {

@@ -12,9 +12,9 @@ load_dotenv(dotenv_path=env)
 
 def main():
     if os.environ.get("ENV") == "production":
-        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "todoenrefas.settings.production")
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "caterra.settings.production")
     elif os.environ.get("ENV") == "development":
-        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "todoenrefas.settings.development")
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "caterra.settings.development")
     else:
         sys.exit("No ENV variable configured.")
 
