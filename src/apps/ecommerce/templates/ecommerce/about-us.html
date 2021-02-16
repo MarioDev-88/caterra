@@ -22,11 +22,17 @@
                      href="{% url "ecommerce:contact" %}">Contacto</a></li>
          </ul>
      </nav>
+
+    <div class="container text-center" style="padding-top: 15%;">
+        <h1 style="color: #ffffff; font-size: 46px;">NOSOTROS</h1>
+    </div>
+
+
 </div>
-<div id="about_use_section_back">
+<div id="about_use_section_back" style="margin-top: 4%; margin-bottom: 4%;">
     <div>
 
-        <section class="business-features">
+        <!-- <section class="business-features">
             <article class="business-features__item business-features__item__green">
                 <div class="business-features__icon">
                     <img src="{% static 'backoffice/img/ic-10.png' %}" alt="">
@@ -54,8 +60,48 @@
 
                 </div>
             </article>
-        </section>
-        <section class="about-us-content">
+        </section> -->
+
+        <div class="row container" align="center">
+            <div class="col-md-4">
+                <img src="{% static 'ecommerce/img/ic-20.png' %}">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'ecommerce/img/ic-21.png' %}">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'ecommerce/img/ic-20.png' %}">
+            </div>
+        </div>
+
+        <div class="container">
+            <p style="text-align: center; color: #707070; margin-top: 4%; margin-bottom: 4%; line-height: 170%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt odio nisi, vitae sagittis leo hendrerit eget. Cras pharetra volutpat vehicula. Nunc volutpat tincidunt nisi eget pretium. Sed id diam blandit, convallis orci feugiat, convallis orci. Quisque faucibus imperdiet enim id rutrum. Curabitur id neque et massa euismod tincidunt. Donec quis tellus neque. Vestibulum felis ligula, ornare iaculis dapibus ac, rutrum vitae sem. Maecenas maximus auctor sem, in finibus ligula tincidunt et.
+            </p>
+        </div>
+
+        <div class="row container" align="center">
+            <div class="col-md-4 mision-vision">
+                <img src="{% static 'ecommerce/img/ic-mision.png' %}" width="100px">
+                <h1>MISIÓN</h1>
+                <p style="text-align: center; color: #707070; line-height: 170%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt odio nisi, vitae sagittis leo hendrerit eget. Cras pharetra volutpat vehicula. Nunc volutpat tincidunt nisi eget pretium.</p>
+            </div>
+            <div class="col-md-4 mision-vision">
+                <img src="{% static 'ecommerce/img/ic-mision.png' %}" width="100px">
+                <h1>VISIÓN</h1>
+                <p style="text-align: center; color: #707070; line-height: 170%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt odio nisi, vitae sagittis leo hendrerit eget. Cras pharetra volutpat vehicula. Nunc volutpat tincidunt nisi eget pretium.</p>
+            </div>
+            <div class="col-md-4 mision-vision">
+                <img src="{% static 'ecommerce/img/ic-mision.png' %}" width="100px">
+                <h1>VALORES</h1>
+                <p style="text-align: center; color: #707070; line-height: 170%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt odio nisi, vitae sagittis leo hendrerit eget. Cras pharetra volutpat vehicula. Nunc volutpat tincidunt nisi eget pretium.</p>
+            </div>
+        </div>
+
+        <!-- <div class="container" style="width: 100%;">
+            <img src="{% static 'ecommerce/img/banner-titulo.png' %}">
+        </div> -->
+
+        <!-- <section class="about-us-content">
             <h2>Nosotros</h2>
             <div class="about-us-content-container">
                 <div>
@@ -84,7 +130,12 @@
 
                 <img src="{% static 'backoffice/img/img-1.png' %}" alt="">
             </div>
-        </section>
+        </section> -->
     </div>
 </div>
+
+<div>
+    <img src="{% static 'ecommerce/img/banner-titulo.png' %}">
+</div>
+
 {% endblock content %}
