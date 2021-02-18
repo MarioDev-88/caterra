@@ -33,6 +33,9 @@ class HomeView(View):
 class AboutView(TemplateView):
     template_name = "ecommerce/about-us.html"
 
+class AgentsView(TemplateView):
+    template_name = "ecommerce/agents.html"
+
 
 class PostListView(ListView):
     template_name = "ecommerce/posts-list.html"
