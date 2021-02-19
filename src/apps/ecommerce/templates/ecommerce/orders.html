@@ -15,8 +15,10 @@
                     href="{% url "ecommerce:home" %}">Inicio</a></li>
             <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/acerca-de" %}active {% endif %}"
                     href="{% url "ecommerce:about" %}">Nosotros</a></li>
-            <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/productos" %}active {% endif %}"
-                    href="{% url "ecommerce:products" %}">Productos</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/propiedades" %}active {% endif %}"
+                    href="{% url "ecommerce:properties" %}">Propiedades</a></li>
+            <!-- <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/productos" %}active {% endif %}"
+                    href="{% url "ecommerce:products" %}">Productos</a></li> -->
             <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/agentes" %}active {% endif %}"
                     href="{% url "ecommerce:agents" %}">Agentes</a></li>
             <li class="main-nav__item"><a class="{% if request.path|slice:"5" == "/blog" %}active {% endif %}"
