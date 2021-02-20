@@ -3,12 +3,6 @@
 {% load static %}
 {% block content %}
 
-<style>
-
-</style>
-
-
-
 
 <div id="header_section_back">
     <nav class="main-nav">
@@ -42,159 +36,252 @@
 
 </div>
 
-<!-- <style type="text/css">
-    @font-face {
-        font-family: "My Custom Font";
-        src: url({'static_root/fonts/LibreBaskerville-Bold.tff'}) format("truetype");
-    }
-    p.customfont { 
-        font-family: "My Custom Font", Verdana, Tahoma;
-    }
-</style> 
-<p class="customfont">Hello world!</p> -->
+
+<!-- -------------------------------------------------------------------------- -->
 
 
-<!-- SIDEBAR -->
-
-<!-- Section: Price -->
-<!-- <section class="mb-4">
-
-    <h6 class="font-weight-bold mb-3">Price</h6>
-
-    <form>
-        <div class="d-flex align-items-center mt-4 pb-1">
-            <div class="md-form md-outline my-0">
-                <input id="from" type="text" class="form-control mb-0">
-                <label for="form">$ Min</label>
-            </div>
-            <p class="px-2 mb-0 text-muted"> - </p>
-            <div class="md-form md-outline my-0">
-                <input id="to" type="text" class="form-control mb-0">
-                <label for="to">$ Max</label>
+<div class="container">
+    <div class="row py-3">
+        <div class="col-3" id="sticky-sidebar">
+            <div class="sticky-top">
+                <form class="contact-section-form" action="{% url "ecommerce:contact" %}" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="tipo_inmueble">TIPO DE INMUEBLE</label>
+                            <select class="form-control">
+                                <option value="">Tipo de Inmueble</option>
+                                <option value="casa">Casa</option>
+                                <option value="casa_suelo_mixto">Casa con uso de suelo mixto</option>
+                                <option value="oficina">Oficina</option>
+                                <option value="terreno">Terreno</option>
+                                <option value="local_comercial">Local Comercial</option>
+                                <option value="edificio">Edificio</option>
+                                <option value="bodega">Bodega</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipo_operacion">TIPO DE OPERACION</label>
+                            <select class="form-control">
+                                <option value="">Tipo de Operación</option>
+                                <option value="venta">Venta</option>
+                                <option value="renta">Renta</option>
+                                <option value="exclusiva">Exclusiva</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>PRECIO</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="number" placeholder="Desde" class="form-control" name="precio-desde" id="precio-desde">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" placeholder="Hasta" class="form-control" name="precio-hasta" id="precio-hasta">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ciudad">CIUDAD</label>
+                            <input type="text" placeholder="Ciudad" class="form-control" name="ciudad" id="ciudad">
+                        </div>
+                        <div class="form-group">
+                            <label for="colonia">COLONIA</label>
+                            <input type="text" placeholder="Colonia" class="form-control" name="colonia" id="colonia">
+                        </div>
+                        <div class="form-group">
+                            <label for="cp">CÓDIGO POSTAL</label>
+                            <input type="number" placeholder="Código Postal" class="form-control" name="cp" id="cp">
+                        </div>
+                        <div class="form-group">
+                            <label>RECÁMARAS</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="number" placeholder="Desde" class="form-control" name="recamaras-desde" id="recamaras-desde">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" placeholder="Hasta" class="form-control" name="recamaras-hasta" id="recamaras-hasta">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>BAÑOS</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="number" placeholder="Desde" class="form-control" name="banos-desde" id="banos-desde">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" placeholder="Hasta" class="form-control" name="banos-hasta" id="banos-hasta">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>TAMAÑO DE LA PROPIEDAD</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="number" placeholder="Desde" class="form-control" name="tamano-desde" id="tamano-desde">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" placeholder="Hasta" class="form-control" name="tamano-hasta" id="tamano-hasta">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="reset" class="btn btn-block"
+                        style="
+                            color: #486600;
+                            border-color: #486600;
+                            border-radius: 36px;
+                            padding-left: 2%;
+                            padding-right: 2%;
+                            ">LIMPIAR</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-block"
+                        style="
+                            color: #486600;
+                            border-color: #486600;
+                            border-radius: 36px;
+                            padding-left: 2%;
+                            padding-right: 2%;
+                            ">FILTRAR</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </form>
-
-</section> -->
-<!-- Section: Price -->
-
-<!-- end SIDEBAR -->
-
-<div class="container" style="margin-top: 5%; margin-bottom: 5%;">
-    <div class="row" style="margin-top: 3%; margin-bottom: 3%;">
-        <div class="col-md-6">
-            <img class="img-responsive" src="{% static 'ecommerce/img/img-propiedad.png' %}">
-            <div style="background-color: #f1f1f1; padding: 3%;">
-                <h1 style="font-size: 20pt;">Monsectetur Propiedad Ejemplo</h1>
-                <p style="text-align: justify;">122 Lorem ipsum dolor sit amet.</p>
-                <p style="color: #486600">$1,300,000</p>
-                <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i class="fas fa-bath"></i>&nbsp;2&nbsp;&nbsp;&nbsp;<i class="fas fa-th-large"></i> 103 m2</p>
-                <div class="row">
-                    <div class="col-md-4">
-                        <p>Hace 3 Meses</p>
+        <div class="col order-2" id="main">
+            <div class="main container" style="margin-top: 5%; margin-bottom: 5%;">
+                <div class="row" style="margin-top: 3%; margin-bottom: 3%;">
+                    <div class="col-md-6">
+                        <img class="img-responsive" src="{% static 'ecommerce/img/img-propiedad.png' %}">
+                        <div style="background-color: #f1f1f1; padding: 3%;">
+                            <h1 style="font-size: 20pt;">Monsectetur Propiedad Ejemplo</h1>
+                            <p style="text-align: justify;">122 Lorem ipsum dolor sit amet.</p>
+                            <p style="color: #486600">$1,300,000</p>
+                            <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i class="fas fa-bath"></i>&nbsp;2&nbsp;&nbsp;&nbsp;<i class="fas fa-th-large"></i> 103 m2</p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p>Hace 3 Meses</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p><i class="far fa-clone"></i> Comparar</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="reset" class="btn"
+                                        style="
+                                            color: #486600;
+                                            border-color: #486600;
+                                            border-radius: 36px;
+                                            padding-left: 8%;
+                                            padding-right: 8%;
+                                            ">DETALLES</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <p><i class="far fa-clone"></i> Comparar</p>
-                    </div>
-                    <div class="col-md-4">
-                        <button type="reset" class="btn"
-                            style="
-                                color: #486600;
-                                border-color: #486600;
-                                border-radius: 36px;
-                                padding-left: 8%;
-                                padding-right: 8%;
-                                ">DETALLES</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <img class="img-responsive" src="{% static 'ecommerce/img/img-propiedad.png' %}">
-            <div style="background-color: #f1f1f1; padding: 3%;">
-                <h1 style="font-size: 20pt;">Monsectetur Propiedad Ejemplo</h1>
-                <p style="text-align: justify;">122 Lorem ipsum dolor sit amet.</p>
-                <p style="color: #486600">$1,300,000</p>
-                <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i class="fas fa-bath"></i>&nbsp;2&nbsp;&nbsp;&nbsp;<i class="fas fa-th-large"></i> 103 m2</p>
-                <div class="row">
-                    <div class="col-md-4">
-                        <p>Hace 3 Meses</p>
-                    </div>
-                    <div class="col-md-4">
-                        <p><i class="far fa-clone"></i> Comparar</p>
-                    </div>
-                    <div class="col-md-4">
-                        <button type="reset" class="btn"
-                            style="
-                                color: #486600;
-                                border-color: #486600;
-                                border-radius: 36px;
-                                padding-left: 8%;
-                                padding-right: 8%;
-                                ">DETALLES</button>
+                    <div class="col-md-6">
+                        <img class="img-responsive" src="{% static 'ecommerce/img/img-propiedad.png' %}">
+                        <div style="background-color: #f1f1f1; padding: 3%;">
+                            <h1 style="font-size: 20pt;">Monsectetur Propiedad Ejemplo</h1>
+                            <p style="text-align: justify;">122 Lorem ipsum dolor sit amet.</p>
+                            <p style="color: #486600">$1,300,000</p>
+                            <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i class="fas fa-bath"></i>&nbsp;2&nbsp;&nbsp;&nbsp;<i class="fas fa-th-large"></i> 103 m2</p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p>Hace 3 Meses</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p><i class="far fa-clone"></i> Comparar</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="reset" class="btn"
+                                        style="
+                                            color: #486600;
+                                            border-color: #486600;
+                                            border-radius: 36px;
+                                            padding-left: 8%;
+                                            padding-right: 8%;
+                                            ">DETALLES</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            
+                <div class="row" style="margin-top: 3%; margin-bottom: 3%;">
+                    <div class="col-md-6">
+                        <img class="img-responsive" src="{% static 'ecommerce/img/img-propiedad.png' %}">
+                        <div style="background-color: #f1f1f1; padding: 3%;">
+                            <h1 style="font-size: 20pt;">Monsectetur Propiedad Ejemplo</h1>
+                            <p style="text-align: justify;">122 Lorem ipsum dolor sit amet.</p>
+                            <p style="color: #486600">$1,300,000</p>
+                            <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i class="fas fa-bath"></i>&nbsp;2&nbsp;&nbsp;&nbsp;<i class="fas fa-th-large"></i> 103 m2</p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p>Hace 3 Meses</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p><i class="far fa-clone"></i> Comparar</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="reset" class="btn"
+                                        style="
+                                            color: #486600;
+                                            border-color: #486600;
+                                            border-radius: 36px;
+                                            padding-left: 8%;
+                                            padding-right: 8%;
+                                            ">DETALLES</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img class="img-responsive" src="{% static 'ecommerce/img/img-propiedad.png' %}">
+                        <div style="background-color: #f1f1f1; padding: 3%;">
+                            <h1 style="font-size: 20pt;">Monsectetur Propiedad Ejemplo</h1>
+                            <p style="text-align: justify;">122 Lorem ipsum dolor sit amet.</p>
+                            <p style="color: #486600">$1,300,000</p>
+                            <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i class="fas fa-bath"></i>&nbsp;2&nbsp;&nbsp;&nbsp;<i class="fas fa-th-large"></i> 103 m2</p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p>Hace 3 Meses</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p><i class="far fa-clone"></i> Comparar</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="reset" class="btn"
+                                        style="
+                                            color: #486600;
+                                            border-color: #486600;
+                                            border-radius: 36px;
+                                            padding-left: 8%;
+                                            padding-right: 8%;
+                                            ">DETALLES</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
             </div>
+
+
         </div>
     </div>
-
-    <div class="row" style="margin-top: 3%; margin-bottom: 3%;">
-        <div class="col-md-6">
-            <img class="img-responsive" src="{% static 'ecommerce/img/img-propiedad.png' %}">
-            <div style="background-color: #f1f1f1; padding: 3%;">
-                <h1 style="font-size: 20pt;">Monsectetur Propiedad Ejemplo</h1>
-                <p style="text-align: justify;">122 Lorem ipsum dolor sit amet.</p>
-                <p style="color: #486600">$1,300,000</p>
-                <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i class="fas fa-bath"></i>&nbsp;2&nbsp;&nbsp;&nbsp;<i class="fas fa-th-large"></i> 103 m2</p>
-                <div class="row">
-                    <div class="col-md-4">
-                        <p>Hace 3 Meses</p>
-                    </div>
-                    <div class="col-md-4">
-                        <p><i class="far fa-clone"></i> Comparar</p>
-                    </div>
-                    <div class="col-md-4">
-                        <button type="reset" class="btn"
-                            style="
-                                color: #486600;
-                                border-color: #486600;
-                                border-radius: 36px;
-                                padding-left: 8%;
-                                padding-right: 8%;
-                                ">DETALLES</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <img class="img-responsive" src="{% static 'ecommerce/img/img-propiedad.png' %}">
-            <div style="background-color: #f1f1f1; padding: 3%;">
-                <h1 style="font-size: 20pt;">Monsectetur Propiedad Ejemplo</h1>
-                <p style="text-align: justify;">122 Lorem ipsum dolor sit amet.</p>
-                <p style="color: #486600">$1,300,000</p>
-                <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i class="fas fa-bath"></i>&nbsp;2&nbsp;&nbsp;&nbsp;<i class="fas fa-th-large"></i> 103 m2</p>
-                <div class="row">
-                    <div class="col-md-4">
-                        <p>Hace 3 Meses</p>
-                    </div>
-                    <div class="col-md-4">
-                        <p><i class="far fa-clone"></i> Comparar</p>
-                    </div>
-                    <div class="col-md-4">
-                        <button type="reset" class="btn"
-                            style="
-                                color: #486600;
-                                border-color: #486600;
-                                border-radius: 36px;
-                                padding-left: 8%;
-                                padding-right: 8%;
-                                ">DETALLES</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
+
+
+
+
+
+
+
+
 
 {% endblock content %}
