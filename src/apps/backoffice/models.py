@@ -9,7 +9,7 @@ from tinymce.models import HTMLField
 class Slider(models.Model):
     title = models.CharField(max_length=255)
     url = models.CharField(max_length=255)
-    image = models.ImageField(upload_to="sliders", max_length=255)
+    image = models.ImageField(upload_to="static/img/media/sliders", max_length=255)
     order = models.PositiveSmallIntegerField()
 
     class Meta:
@@ -20,7 +20,7 @@ class Slider(models.Model):
 
 
 class Video(models.Model):
-    title = models.CharField("Titulo del video", max_length=255)
+    title = models.CharField("Título del video", max_length=255)
     content = models.TextField("Contenido")
     code = models.TextField("Código del video")
 
@@ -29,7 +29,7 @@ class Video(models.Model):
 
 
 class MonthOffer(models.Model):
-    title = models.CharField("Titulo", max_length=255)
+    title = models.CharField("Título", max_length=255)
     admintotal_id = models.CharField("AdminTotal ID", max_length=50)
     description = models.CharField("Descripción", max_length=255)
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -41,7 +41,7 @@ class MonthOffer(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField("Titulo", max_length=255)
+    title = models.CharField("Título", max_length=255)
     image = models.ImageField("Imagen", upload_to="posts")
     header = models.ImageField("Header", upload_to="posts_headers")
     content = HTMLField("Contenido")
