@@ -1,0 +1,35 @@
+{% extends 'backoffice/layouts/backoffice.layout.html' %}
+
+{% block content %}
+{% load static %}
+
+        {% for offer in object_list %}
+        <article class="slider-item">
+            <img src="{{ offer.image.url }}" alt="{{ offer.title }}">
+            <div class="slider-item__footer">
+                <h2 class="slider-item__title">{{ offer.title }}</h2>
+
+                <ul class="slider-item__actions">
+                    <li><a href="{% url 'backoffice:offers_edit' offer.id %}"><img
+                                src="{% static 'img/backoffice/ic-edit.png' %}" alt=""><span>Editar</span></a></li>
+                    <li><a href="{% url 'backoffice:offers_delete' offer.id %}"
+                            class="slider-item__delete__button" data-id={{ offer.id }}
+                            data-title="{{ offer.title }}"><img src="{% static 'img/backoffice/ic-delete.png' %}"
+                                alt="">Eliminar</a></li>
+                </ul>
+
+            </div>
+        </article>
+        {% empty %}
+        <h2>No hay registros</h2>
+        {% endfor %}
+
+{% endblock content %}
+
+{% block footer_actions %}
+    <div id="footer_actions">
+        <ul class="footer-actions">
+        <li class="footer-actions__item"><a href="{% url 'backoffice:offers_create' %}"><img class="footer-actions__icon"src="{% static 'img/backoffice/ic-add.png' %}" alt="">Nueva oferta</a></li>
+        </ul>
+    </div>
+{% endblock footer_actions %}
