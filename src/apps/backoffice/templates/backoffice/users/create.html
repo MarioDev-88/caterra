@@ -1,0 +1,31 @@
+{% extends 'backoffice/layouts/backoffice.layout.html' %}
+
+{% block content %}
+
+<form class="slider-form" action="{% url 'backoffice:users_create' %}" method="POST">
+    {% csrf_token %}
+
+    {% if form.errors %}
+    {% for key,value in form.errors.items %}
+    <div class="login-form__alert" role="alert">
+        <p>{{key}}: {{ value }}</p>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+
+    {% if messages %}
+    <ul class="login-form__alert" role="alert">
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {{form}}
+    <div class="form-group__actions">
+        <button class="btn btn-success" type="submit">Guardar</button>
+        <a class="btn btn-danger" href="{% url 'backoffice:users_editors' %}">Cancelar</a>
+    </div>
+</form>
+
+{%endblock%}

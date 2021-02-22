@@ -1,0 +1,71 @@
+{% extends 'backoffice/layouts/backoffice.layout.html' %}
+
+{% block content %}
+{% load static %}
+<ul class="users-tabs">
+<li class="users-tabs__item {% if request.path|slice:":33" == "/administracion/usuarios/editores" %} users-tabs__item--active {% endif %}"><a class="users-tabs__item" href="{% url 'backoffice:users_editors' %}"
+    class="">Editores</a>
+    </li>
+    <li class="users-tabs__item {% if request.path|slice:":35" == "/administracion/usuarios/vendedores" %} users-tabs__item--active {% endif %} "><a  href="{% url 'backoffice:users_sellers' %}"
+            class="">Vendedores</a>
+    </li>
+    <li class="users-tabs__item {% if request.path|slice:":40" == "/administracion/usuarios/administradores" %} users-tabs__item--active {% endif %}"><a href="{% url 'backoffice:users_admins' %}"
+            class="">Administradores</a></li>
+</ul>
+<div class="table-wrapper w-10/12">
+    <table class=" table table-auto  w-full custom-table">
+        <thead class="table__head">
+            <th class="px-4 py-2" width="40%">Nombre</th>
+            <th class="px-4 py-2" width="20%">Telefono</th>
+            <th class="px-4 py-2" width="20%">Email</th>
+            <th class="px-4 py-2" wisth="20%">Acciones</th>
+        </thead>
+        <tbody class="table__body">
+
+            {% for user in object_list %}
+                <tr>
+                <td >{{ user }}</td>
+                <td style="text-align: center">{{ user.phone }}</td>
+                <td style="text-align: center">{{ user.email }}</td>
+                <td  style="text-align: center">
+                    <a
+                        href="{% url 'backoffice:users_details' user.id %}"
+                        class="btn btn-sm btn-success text-xs"
+                        ><img
+                            class="inline table__action-icon"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAO5JREFUSEtjZKAxYKSx+QyjFhAMYaxB9P//fwGgzn4gDoCasAFIFzIyMn4gaCKaAlwWXACq00dTewFogSHFFgBdD3L1ehwGBQItAfmGAajuPz7LgOrAjsfwAVBfA1C8HofmRqA+kDxFFhDlA2KDipQ4uAh0vQGxBsPU4UtFE9BSUQF6KsIXDzjjgBQXkmUBNBXlAy1yQLPsAJAPimQQTTRACSKg4QuAOuMJ6IanJGJsgVtAIP2jm+UI8wmuYMKIA6BCkNftiXEVUM1BoAHgICTFArw5E91imAsJOQg5iGhrASGXkCs/WqMRDDmaBxEASiJaGVnV+DwAAAAASUVORK5CYII="
+                    /></a>
+                    <a
+                        href="{% url 'backoffice:users_update' user.id %}"
+                        class="btn btn-sm btn-warning text-xs"
+                        ><img
+                            class="inline table__action-icon"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAQZJREFUSEvVlGsRgkAURtkEGsEG2kBsQAMzmEAjWMEERhAbYAKNYAP8vpldB653gX3ww51xGK5wzn2wa4qZl5mZXyQL2rZdIsm9TfRijHl3k04SWPgNwI2FNrjuupJUQQ3gVrS5J0kVMHNKFkJyQBVnxoIFti1XvEtIg3tNEicQPecw2W8peSBeujlMrkAZKDsgJWxLFTxkD9y1/SvR9tRoBSNwx7wj6zJYMBHe67mUeCvIAfd+prngqiAn3CfgVl8PnLKDPR+cAbJf4YFnLvhPBRBUCPIY0FZQ5g7Q+4ogOOGPo0KPgmsV1AjK4zcargleCPJHEYfdYIfyPnqNHhXRZPvi/ws+xMCAGU/0VT8AAAAASUVORK5CYII="
+                    /></a>
+                    <a
+                        href="{% url 'backoffice:users_delete' user.id %}"
+                        class="btn btn-sm btn-danger text-xs"
+                        ><img
+                            class="inline table__action-icon"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAASZJREFUSEu1lY0RgjAMhekk4gTqBK6gE+gGwiTiBOoE4iawAUyCL3cplv4AhZa73nHXNF+SJq8iifyJyP6TSUDXdVcEccTa86KYKl6lEOI7FqQTAMcnHLxjpRNZNtjPASptdlYAnBcwvnmWrwAk188YgIXOpd8HIJkKGQC4LB/PyHXzs1ouHUD13KwENABspY8ewN3yXOlcHu+zUAEv7F4CAd7Igtr7PwfIgHp7FwhQAXDQAZ3RYrCaA0RwzrNqiaIDQpaoRvIkLYM7iH7JpD1rh8zdprSDuwoxaC3KkxqDxoAQWbilgiFLlFQGPC520mqhohrOB12kDxQrK2UzJX4tbDKvB0eFMYjuhvpaSkmNf5obejKtL5n1kufIgq/NLK3xdara/wD6iXAZt0W6kAAAAABJRU5ErkJggg=="
+                    /></a>
+                </td>
+            </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">No hay registros</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
+
+{% block footer_actions %}
+<div id="footer_actions">
+    <ul class="footer-actions">
+    <li class="footer-actions__item"><a href="{% url 'backoffice:users_create' %}"><img class="footer-actions__icon"src="{% static 'backoffice/img/ic-add.png' %}" alt="">Nuevo usuario</a></li>
+    </ul>
+</div>
+{% endblock footer_actions %}

@@ -1,0 +1,75 @@
+{% extends 'ecommerce/layouts/ecommerce.layout.html' %}
+
+{% load static %}
+{% block content %}
+<div id="header_section_back">
+    <nav class="main-nav">
+        <div class="main-nav__logo">
+            <a href="{% url "ecommerce:home" %}">
+                <img src="{% static 'img/logo-negro.png' %}" class="img-responsive" style="width: 30%;" alt="CaterraLogo">
+            </a>
+        </div>
+        <ul class="main-nav__menu">
+            <li class="main-nav__item "><a class="{% if request.path == "/" %}active {% endif %}"
+                    href="{% url "ecommerce:home" %}">Inicio</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/acerca-de" %}active {% endif %}"
+                    href="{% url "ecommerce:about" %}">Nosotros</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/propiedades" %}active {% endif %}"
+                    href="{% url "ecommerce:properties" %}">Propiedades</a></li>
+            <!-- <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/productos" %}active {% endif %}"
+                    href="{% url "ecommerce:products" %}">Productos</a></li> -->
+            <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/agentes" %}active {% endif %}"
+                    href="{% url "ecommerce:agents" %}">Agentes</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"5" == "/blog" %}active {% endif %}"
+                    href="{% url "ecommerce:posts_list" %}">Blog</a></li>
+            <li class="main-nav__item"><a class="{% if request.path|slice:"9" == "/contacto" %}active {% endif %}"
+                    href="{% url "ecommerce:contact" %}">Contacto</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="post-list-back">
+
+    <div class="post-list-content">
+        <div class="post-list-container">
+            {% for post in object_list %}
+                <article class="post">
+                    <img class="post-list-post-image" src="{{ post.image.url }}" alt="">
+                    <h2 class="posts-list-post-title">{{ post.title }}</h2>
+                    <span class="posts-list-post-date">{{ post.created_at }}</span>
+                    <div class="posts-list-post-content-container">
+                    {% autoescape off %}
+                        {{ post.content|slice:":500" }} ...
+                    {% endautoescape %}
+                    </div>
+                    <a class="btn btn-success text-xs mt-5 inline-block"
+                        href="{% url "ecommerce:post_single" post.slug %}">Ver mas</a>
+                </article>
+            {% empty %}
+                <h1>No hay posts</h1>
+            {% endfor %}
+        </div>
+        <div class="posts-pagination__container">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                <a class="btn btn-success" href="?page=1">&laquo; Primera</a>
+                <a class="btn btn-success" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+                {% endif %}
+
+                <span class="current">
+                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                <a class="btn btn-success" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+                <a class="btn btn-success" href="?page={{ page_obj.paginator.num_pages }}">Última &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</div>
+<div class="posts-list-pagination-links">
+
+    {% comment %} {{$posts->links()}} {% endcomment %}
+</div>
+{% endblock content %}

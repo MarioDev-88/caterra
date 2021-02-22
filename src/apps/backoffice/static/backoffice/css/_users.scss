@@ -1,0 +1,20 @@
+.users-tabs {
+    color: white;
+    display: flex;
+    background-color: $primaryGreen;
+    margin-bottom: 50px;
+}
+
+.users-tabs__item {
+    padding: 10px;
+    text-align: center;
+    min-width: 300px;
+}
+
+.users-tabs__item--active {
+    background-color: white;
+    border: 1px solid $primaryGreen;
+    box-sizing: border-box;
+    color: $primaryGreen;
+    font-weight: bolder;
+}

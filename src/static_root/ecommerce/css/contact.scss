@@ -1,0 +1,39 @@
+#contact_back {
+    display: flex;
+    justify-content: center;
+}
+
+.contact-map-back {
+    background-image: url("../img/map.png");
+    height: 300px;
+}
+
+.contact-content-section {
+    align-items: flex-start;
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    min-height: 800px;
+    padding-top: 20px;
+}
+
+.contact-section-form {
+    width: 85%;
+    max-width: 500px;
+}
+
+.contact-text {
+    padding-left: 50px;
+
+    >h1 {
+        color: $primaryGreen;
+        font-weight: bolder;
+        font-size: 34px;
+        text-transform: uppercase;
+    }
+
+    >p {
+        font-weight: lighter;
+        text-align: justify;
+    }
+}

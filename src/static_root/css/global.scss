@@ -1,0 +1,124 @@
+// body
+body {
+  font-size: 16px;
+  font-family: "Mukta", sans-serif;
+}
+
+// buttons
+.btn {
+  @apply text-white font-bold py-2 px-4 rounded;
+
+  &:focus {
+    @apply outline-none shadow-outline;
+  }
+}
+
+.btn-sm {
+  padding: 5px;
+}
+
+.btn-info {
+  @apply bg-blue-700;
+}
+
+.btn-success {
+  @apply bg-green-500;
+}
+
+.btn-warning {
+  @apply bg-yellow-500;
+}
+
+.btn-danger {
+  @apply bg-red-700;
+}
+
+// forms
+
+label {
+  @apply block text-gray-700 text-sm font-bold mb-2;
+}
+
+
+input,
+textarea {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+
+  &:focus {
+    @apply outline-none shadow-outline;
+  }
+}
+
+.form-group {
+  @apply mb-4;
+}
+
+.form-group__actions {
+  @apply mb-4;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  justify-self: center;
+  align-self: center;
+  width: 50%;
+}
+
+// Alerts
+.alert {
+  @apply border px-4 py-3 rounded relative;
+  width: 100%;
+}
+
+.alert-danger {
+  @apply bg-red-100 border-red-400 text-red-700;
+}
+
+.success {
+  @apply border px-4 py-3 rounded relative;
+  width: 100%;
+}
+
+.alert-success {
+  @apply bg-green-100 border-green-400 text-green-700;
+}
+
+// containers
+.content-container {
+  display: flex;
+  padding-top: 20px;
+}
+
+// tables
+.table {
+  border-collapse: collapse;
+  border: 1px #333 solid;
+  width: 100%;
+}
+
+.table__head {
+  background-color: $darkGray;
+  color: white;
+
+  > tr > th {
+    box-sizing: border-box;
+    padding: 10px 0px;
+  }
+}
+
+.table__body {
+  box-sizing: border-box;
+  > tr {
+    width: 100%;
+    > td {
+      box-sizing: border-box;
+      border-collapse: collapse;
+      border: 1px #333 solid;
+      padding: 5px;
+    }
+  }
+}
+
+.table__action-icon {
+  height: 20px;
+  width: 20px;
+}
