@@ -1,0 +1,27 @@
+.label{
+    font-size: 13pt;
+}
+
+
+
+.big-button{
+    background-color: #486600;
+    border-radius: 65px;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-weight: lighter;
+    font-size: 24pt;
+    color: white;
+}
+
+.big-button:hover{
+    text-decoration: none;
+    color: black;
+}
+
+
+.fa-envelope{
+    color: #486600;
+}
+
+

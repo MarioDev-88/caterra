@@ -1,0 +1,17 @@
+.clear-button{
+    color: #486600;
+    border-color: #486600;
+    border-radius: 36px;
+    padding-left: 8%;
+    padding-right: 8%;
+}
+
+.clear-button:hover{
+    color: white;
+    background-color: #486600;
+
+}
+
+.property-card{
+    margin: 1% 0;
+}
