@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Slider, MonthOffer, Post, Video
+from .models import Slider, Post, Video
 
 
 class PostAdminManager(admin.ModelAdmin):
@@ -8,6 +8,5 @@ class PostAdminManager(admin.ModelAdmin):
 
 
 admin.site.register(Slider)
-admin.site.register(MonthOffer)
 admin.site.register(Video)
 admin.site.register(Post, PostAdminManager)

@@ -10,8 +10,8 @@ from django.views.generic import (
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 
-from .models import Slider, Video, MonthOffer, Post
-from .forms import SliderForm, VideoForm, MonthOfferForm, PostForm
+from .models import Slider, Video, Post, Propiedad
+from .forms import SliderForm, VideoForm, PostForm, CrearPropiedadForm
 from apps.users.decorators import allowed_users
 from apps.users.models import User, Admin, Editor, Seller
 from apps.users.forms import CustomUserChangeForm, UserCreationForm, UserForm
@@ -95,57 +95,6 @@ class VideoUpdateView(UpdateView):
         context["subtitle"] = "Actualizar Video"
 
         return context
-
-
-@method_decorator(allowed_users(allowed_roles=["ADMIN", "SELLER", "EDITOR"]), name="dispatch")
-class MonthOfferListView(ListView):
-    template_name = "backoffice/month-offers/list.html"
-    model = MonthOffer
-
-    def get_context_data(self, **kwargs):
-        context = super(MonthOfferListView, self).get_context_data(**kwargs)
-        context["title"] = "Ofertas del mes"
-        context["subtitle"] = "Ofertas del mes"
-
-        return context
-
-
-@method_decorator(allowed_users(allowed_roles=["ADMIN", "SELLER", "EDITOR"]), name="dispatch")
-class MonthOfferCreateView(CreateView):
-    template_name = "backoffice/month-offers/create.html"
-    model = MonthOffer
-    form_class = MonthOfferForm
-    success_url = reverse_lazy("backoffice:offers")
-
-    def get_context_data(self, **kwargs):
-        context = super(MonthOfferCreateView, self).get_context_data(**kwargs)
-        context["title"] = "Nueva oferta del mes"
-        context["subtitle"] = "Nueva ofertas del mes"
-
-        return context
-
-
-@method_decorator(allowed_users(allowed_roles=["ADMIN", "SELLER", "EDITOR"]), name="dispatch")
-class MonthOfferUpdateView(UpdateView):
-    template_name = "backoffice/month-offers/update.html"
-    model = MonthOffer
-    form_class = MonthOfferForm
-    success_url = reverse_lazy("backoffice:offers")
-
-    def get_context_data(self, **kwargs):
-        context = super(MonthOfferUpdateView, self).get_context_data(**kwargs)
-        context["title"] = "Actualizar oferta del mes"
-        context["subtitle"] = "Actualizar ofertas del mes"
-
-        return context
-
-
-@method_decorator(allowed_users(allowed_roles=["ADMIN", "SELLER", "EDITOR"]), name="dispatch")
-class MonthOfferDeleteView(DeleteView):
-    template_name = "backoffice/month-offers/month-offer-confirm-delete.html"
-    model = MonthOffer
-    success_url = reverse_lazy("backoffice:offers")
-
 
 @method_decorator(allowed_users(allowed_roles=["ADMIN", "SELLER", "EDITOR"]), name="dispatch")
 class PostListView(ListView):
@@ -292,33 +241,18 @@ class UserDeleteView(DeleteView):
     success_url = reverse_lazy("backoffice:users_editors")
 
 
+
+# Propiedades
 @method_decorator(allowed_users(allowed_roles=["ADMIN", "SELLER", "EDITOR"]), name="dispatch")
-class OrderListView(ListView):
-    template_name = "backoffice/orders/list.html"
-    model = Order
-    login_url = reverse_lazy("users:login")
+class PropiedadCreateView(CreateView):
+    template_name = "backoffice/propiedades/crear.html"
+    model = Propiedad
+    form_class = CrearPropiedadForm
+    success_url = reverse_lazy("backoffice:offers")
 
     def get_context_data(self, **kwargs):
-        context = super(OrderListView, self).get_context_data(**kwargs)
-        context["subtitle"] = "Pedidos"
+        context = super(PropiedadCreateView, self).get_context_data(**kwargs)
+        context["title"] = "Nueva Propiedad"
+        context["subtitle"] = "Nueva Propiedad"
 
         return context
-
-
-@method_decorator(allowed_users(allowed_roles=["ADMIN", "SELLER", "EDITOR"]), name="dispatch")
-class OrderDetailView(DetailView):
-    template_name = "backoffice/orders/detail.html"
-    model = Order
-    login_url = reverse_lazy("users:login")
-
-    def get_context_data(self, **kwargs):
-        context = super(OrderDetailView, self).get_context_data(**kwargs)
-        context["subtitle"] = "Pedidos"
-
-        return context
-
-
-class OrderDeleteView(DeleteView):
-    template_name = "backoffice/orders/order-delete-confirmation.html"
-    model = Order
-    success_url = reverse_lazy("backoffice:orders_list")

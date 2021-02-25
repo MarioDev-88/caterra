@@ -121,7 +121,7 @@
         border-top: 4px solid #000000;
         position: relative;
         ">
-        <form class="contact-section-form" action="{% url "ecommerce:contact" %}" method="POST">
+        <form class="contact-section-form" action="{% url 'ecommerce:contact' %}" method="POST">
             {% csrf_token %}
             <!-- <div class="row">
                 <div class="col-md-6">

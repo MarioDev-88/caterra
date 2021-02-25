@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 
 import requests
 
-from apps.backoffice.models import MonthOffer, Slider, Video, Post, Comment
+from apps.backoffice.models import Slider, Video, Post, Comment
 from .models import Order, OrderItem
 from apps.users.decorators import allowed_users
 

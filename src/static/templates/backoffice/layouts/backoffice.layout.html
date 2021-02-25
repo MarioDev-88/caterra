@@ -49,37 +49,30 @@
                 <nav class="bo__main-nav">
                     <ul>
                         {% comment %} <li><a href="dashboard.html"
-                                class="bo__main-nav__item {% if request.path == "/administracion/" %}
+                                class="bo__main-nav__item {% if request.path == '/administracion/' %}
                                 bo__main-nav__item--active {% endif %}"><img
                                     src="{% static 'img/backoffice/ic-dashboard.png' %}" alt=""> Dashboard</a></li> {% endcomment %}
                         <li><a href="{% url 'backoffice:sliders' %}"
-                                class="bo__main-nav__item {% if request.path|slice:":22" == "/administracion/slider" %}
+                                class="bo__main-nav__item {% if request.path|slice:':22' == '/administracion/slider' %}
                                 bo__main-nav__item--active {% endif %}"><img
                                     src="{% static 'img/backoffice/ic-slider.png' %}" alt="">Slider</a>
                         </li>
-                        <li><a href="{% url "backoffice:video" %}"
-                                class="bo__main-nav__item {% if request.path|slice:":21" == "/administracion/video" %}
+                        <li><a href="{% url 'backoffice:video' %}"
+                                class="bo__main-nav__item {% if request.path|slice:':21' == '/administracion/video' %}
                                 bo__main-nav__item--active {% endif %}"><img
                                     src="{% static 'img/backoffice/ic-slider.png' %}" alt="">Video</a>
                         </li>
-                        <li><a href="{% url 'backoffice:offers' %}"
-                                class="bo__main-nav__item {% if request.path|slice:":23" == "/administracion/ofertas" %}
+                        <li><a href="{% url 'backoffice:propiedades_crear' %}"
+                                class="bo__main-nav__item {% if request.path|slice:':23' == '/administracion/ofertas' %}
                                 bo__main-nav__item--active {% endif %}"><img
-                                    src="{% static 'img/backoffice/ic-offers.png' %}" alt="">Ofertas</a>
+                                    src="{% static 'img/backoffice/ic-offers.png' %}" alt="">Propiedades</a>
                         </li>
                         <li><a href="{% url 'backoffice:posts' %}"
-                                class="bo__main-nav__item {% if request.path|slice:":21" == "/administracion/posts" %}
+                                class="bo__main-nav__item {% if request.path|slice:':21' == '/administracion/posts' %}
                                 bo__main-nav__item--active {% endif %}"><img src="
                                 {% static 'img/backoffice/ic-blog.png' %}" alt="">Blog</a></li>
-                                <li><a href="{% url 'backoffice:orders_list' %}" class="bo__main-nav__item {% if request.path|slice:":23" == "/administracion/pedidos" %}
-                                bo__main-nav__item--active {% endif %}"><img src="
-                                {% static 'img/backoffice/ic-blog.png' %}" alt="">Pedidos</a></li>
-                        {% comment %} <li><a href="products.html" class="bo__main-nav__item "><img
-                                    src="{% static 'img/backoffice/ic-products.png' %}" alt="">Productos</a></li>
-                        <li><a href="clients.html" class="bo__main-nav__item"><img
-                                    src="{% static 'img/backoffice/ic-clients.png' %}" alt="">Clientes</a></li> {% endcomment %}
                         <li><a href="{% url 'backoffice:users_editors' %}"
-                                class="bo__main-nav__item {% if request.path|slice:":24" == "/administracion/usuarios" %}
+                                class="bo__main-nav__item {% if request.path|slice:':24' == '/administracion/usuarios' %}
                                 bo__main-nav__item--active {% endif %}"><img
                                     src="{% static 'img/backoffice/ic-users.png' %}" alt="">Usuarios</a>
                         </li>
