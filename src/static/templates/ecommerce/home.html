@@ -296,14 +296,14 @@
     <h1>PROPIEDADES</h1>
     <div class="row">
         
-        {% for i in 'queque' %}
+        {% for propiedad in propiedades %}
         <div class="col-md-4 property-card">
-            <img class="img-responsive" src="{% static 'ecommerce/img/img-propiedad.png' %}">
+            <img class="img-responsive" src="{{propiedad.imagen.url}}">
             <div style="background-color: #f1f1f1; padding: 3%;">
-                <h1 style="font-size: 20pt;">Monsectetur Propiedad Ejemplo</h1>
-                <p style="text-align: justify;">122 Lorem ipsum dolor sit amet.</p>
-                <p style="color: #486600">$1,300,000</p>
-                <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i class="fas fa-bath"></i>&nbsp;2&nbsp;&nbsp;&nbsp;<i class="fas fa-th-large"></i> 103 m2</p>
+                <h1 style="font-size: 20pt;">{{propiedad.nombre}}</h1>
+                <p style="text-align: justify;">{{propiedad.direccion}}</p>
+                <p style="color: #486600">${{propiedad.precio}}</p>
+                <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i class="fas fa-bath"></i>&nbsp;{{propiedad.banos}}&nbsp;&nbsp;&nbsp;<i class="fas fa-th-large"></i> {{propiedad.construccion}} m2</p>
                 <div class="row">
                     <div class="col-md-4">
                         <p>Hace 3 Meses</p>

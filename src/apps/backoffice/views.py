@@ -10,8 +10,8 @@ from django.views.generic import (
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 
-from .models import Slider, Video, Post, Propiedad
-from .forms import SliderForm, VideoForm, PostForm, CrearPropiedadForm
+from .models import Slider, Video, Post, Propiedad, Agente
+from .forms import SliderForm, VideoForm, PostForm, PropiedadForm, AgenteForm
 from apps.users.decorators import allowed_users
 from apps.users.models import User, Admin, Editor, Seller
 from apps.users.forms import CustomUserChangeForm, UserCreationForm, UserForm
@@ -244,15 +244,95 @@ class UserDeleteView(DeleteView):
 
 # Propiedades
 @method_decorator(allowed_users(allowed_roles=["ADMIN", "SELLER", "EDITOR"]), name="dispatch")
-class PropiedadCreateView(CreateView):
-    template_name = "backoffice/propiedades/crear.html"
+class PropiedadListView(ListView):
+    template_name = "backoffice/propiedades/list.html"
     model = Propiedad
-    form_class = CrearPropiedadForm
-    success_url = reverse_lazy("backoffice:offers")
+
+    def get_context_data(self, **kwargs):
+        context = super(PropiedadListView, self).get_context_data(**kwargs)
+        context["title"] = "Propiedades"
+        context["subtitle"] = "Propiedades"
+
+        return context
+
+
+@method_decorator(allowed_users(allowed_roles=["ADMIN", "SELLER", "EDITOR"]), name="dispatch")
+class PropiedadCreateView(CreateView):
+    template_name = "backoffice/propiedades/create.html"
+    model = Propiedad
+    form_class = PropiedadForm
+    success_url = reverse_lazy("backoffice:propiedades")
 
     def get_context_data(self, **kwargs):
         context = super(PropiedadCreateView, self).get_context_data(**kwargs)
         context["title"] = "Nueva Propiedad"
         context["subtitle"] = "Nueva Propiedad"
+
+        return context
+
+@method_decorator(allowed_users(allowed_roles=["ADMIN", "SELLER", "EDITOR"]), name="dispatch")
+class PropiedadDeleteView(DeleteView):
+    template_name = "backoffice/propiedades/confirm-delete.html"
+    model = Propiedad
+    success_url = reverse_lazy("backoffice:propiedades")
+
+@method_decorator(allowed_users(allowed_roles=["ADMIN", "SELLER", "EDITOR"]), name="dispatch")
+class PropiedadUpdateView(UpdateView):
+    template_name = "backoffice/propiedades/update.html"
+    model = Propiedad
+    form_class = PropiedadForm
+    success_url = reverse_lazy("backoffice:propiedades")
+
+    def get_context_data(self, **kwargs):
+        context = super(PropiedadUpdateView, self).get_context_data(**kwargs)
+        context["title"] = "Actualizar propiedad"
+        context["subtitle"] = "Actualizar propiedad"
+
+        return context
+
+#Agentes
+@method_decorator(allowed_users(allowed_roles=["ADMIN", "SELLER", "EDITOR"]), name="dispatch")
+class AgenteListView(ListView):
+    template_name = "backoffice/agentes/list.html"
+    model = Agente
+
+    def get_context_data(self, **kwargs):
+        context = super(AgenteListView, self).get_context_data(**kwargs)
+        context["title"] = "Agentes"
+        context["subtitle"] = "Agentes"
+
+        return context
+
+@method_decorator(allowed_users(allowed_roles=["ADMIN", "SELLER", "EDITOR"]), name="dispatch")
+class AgenteCreateView(CreateView):
+    template_name = "backoffice/agentes/create.html"
+    model = Agente
+    form_class = AgenteForm
+    success_url = reverse_lazy("backoffice:agentes")
+
+    def get_context_data(self, **kwargs):
+        context = super(AgenteCreateView, self).get_context_data(**kwargs)
+        context["title"] = "Nuevo Agente"
+        context["subtitle"] = "Nuevo Agente"
+
+        return context
+
+@method_decorator(allowed_users(allowed_roles=["ADMIN", "SELLER", "EDITOR"]), name="dispatch")
+class AgenteDeleteView(DeleteView):
+    template_name = "backoffice/agentes/confirm-delete.html"
+    model = Agente
+    success_url = reverse_lazy("backoffice:agentes")
+
+@method_decorator(allowed_users(allowed_roles=["ADMIN", "SELLER", "EDITOR"]), name="dispatch")
+class AgenteUpdateView(UpdateView):
+    template_name = "backoffice/agentes/update.html"
+    model = Agente
+    form_class = AgenteForm
+    success_url = reverse_lazy("backoffice:agentes")
+
+    def get_context_data(self, **kwargs):
+        context = super(AgenteUpdateView, self).get_context_data(**kwargs)
+        context["title"] = "Actualizar agente"
+        context["subtitle"] = "Actualizar agente"
 
         return context

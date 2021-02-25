@@ -1,0 +1,42 @@
+{% extends 'backoffice/layouts/backoffice.layout.html' %}
+
+{% load static %}
+{% block content %}
+<form class="slider-form" action="{% url 'backoffice:agentes_update' object.id %}" method="POST"
+    enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% if form.errors %}
+    {% for key,value in form.errors.items %}
+    <div class="login-form__alert" role="alert">
+        <p>{{key}}: {{ value }}</p>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+
+    {% if messages %}
+    <ul class="login-form__alert" role="alert">
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {{form.as_p}}
+    
+    <div class="form-group__actions">
+        <button class="btn btn-success" type="submit">Guardar</button>
+        <a class="btn btn-danger" href="{% url 'backoffice:agentes' %}">Cancelar</a>
+    </div>
+</form>
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'vendor/tinymce/js/tinymce/tinymce.min.js' %}" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea'
+    });
+</script>
+{% endblock %}

@@ -19,7 +19,14 @@ from .views import (
     UserDetailView,
     UserUpdateView,
     UserCreateView,
+    PropiedadListView,
     PropiedadCreateView,
+    PropiedadDeleteView,
+    PropiedadUpdateView,
+    AgenteListView,
+    AgenteCreateView,
+    AgenteDeleteView,
+    AgenteUpdateView,
 )
 
 app_name = "backoffice"
@@ -41,6 +48,13 @@ urlpatterns = [
     path("usuarios/<int:pk>", UserDetailView.as_view(), name="users_details"),
     path("usuarios/<int:pk>/actualizar", UserUpdateView.as_view(), name="users_update"),
     path("usuarios/crear", UserCreateView.as_view(), name="users_create"),
-    path("propiedades/crear", PropiedadCreateView.as_view(), name="propiedades_crear"),
+    path("propiedades/", PropiedadListView.as_view(), name="propiedades"),
+    path("propiedades/crear", PropiedadCreateView.as_view(), name="propiedades_create"),
+    path("propiedades/<int:pk>/delete", PropiedadDeleteView.as_view(), name="propiedades_delete"),
+    path("propiedades/<int:pk>/actualizar", PropiedadUpdateView.as_view(), name="propiedades_update"),
+    path("agentes/", AgenteListView.as_view(), name="agentes"),
+    path("agentes/crear", AgenteCreateView.as_view(), name="agentes_create"),
+    path("agentes/<int:pk>/delete", AgenteDeleteView.as_view(), name="agentes_delete"),
+    path("agentes/<int:pk>/actualizar", AgenteUpdateView.as_view(), name="agentes_update"),
     path("", DasboardView.as_view(), name="dashboard"),
 ]

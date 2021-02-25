@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Slider, Video, Post, Propiedad
+from .models import Slider, Video, Post, Propiedad, Agente
 
 
 class SliderForm(forms.ModelForm):
@@ -20,7 +20,12 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ["title", "image", "content", "header"]
 
-class CrearPropiedadForm(forms.ModelForm):
+class PropiedadForm(forms.ModelForm):
     class Meta:
         model = Propiedad
+        fields = ('__all__')
+
+class AgenteForm(forms.ModelForm):
+    class Meta:
+        model = Agente
         fields = ('__all__')

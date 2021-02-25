@@ -93,6 +93,7 @@ class Propiedad(models.Model):
     ]
 
     nombre = models.CharField(max_length=120)
+    imagen = models.ImageField("Imagen", upload_to="propiedades", null=True, blank=True)
     tipo_inmueble = models.CharField(max_length=20, choices=TIPO_INMUEBLE, null=True, blank=True)
     tipo_operacion = models.CharField(max_length=20, choices=TIPO_OPERACION, null=True, blank=True)
     direccion = models.CharField(max_length=200, null=True, blank=True)
@@ -145,3 +146,17 @@ class Propiedad(models.Model):
     prop_cita = models.CharField(max_length=120, null=True, blank=True)
     prop_llaves = models.CharField(max_length=120, null=True, blank=True)
     prop_horario = models.CharField(max_length=120, null=True, blank=True)
+
+
+#Agente
+class Agente(models.Model):
+    nombre = models.CharField(max_length=120)
+    aPaterno = models.CharField(max_length=120, null=False, blank=False)
+    aMaterno = models.CharField(max_length=120, null=False, blank=False)
+    foto = models.ImageField("Imagen", upload_to="agentes", null=True, blank=True)
+    texto = models.CharField(max_length=120, null=False, blank=False)
+    telefono = models.CharField(max_length=120, null=False, blank=False)
+    correo = models.EmailField(max_length=120, null=False, blank=False)
+
+    def __str__(self):
+        return '{} {} {}'.format(self.nombre, self.aPaterno, self.aMaterno)

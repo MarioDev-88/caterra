@@ -1,0 +1,34 @@
+{% extends 'backoffice/layouts/backoffice.layout.html' %}
+
+{% load static %}
+{% block content %}
+{% for propiedad in object_list %}
+<article class="slider-item">
+    <img src="{{ propieadad.header.url }}" alt="">
+    <div class="slider-item__footer">
+        <h2 class="slider-item__title">{{ propiedad.nombre }}</h2>
+
+        <ul class="slider-item__actions">
+            <li><a href="{% url 'backoffice:propiedades_update' propiedad.id %}"><img
+                        src="{% static 'img/backoffice/ic-edit.png' %}" alt=""><span>Editar</span></a></li>
+            <li><a href="{% url 'backoffice:propiedades_delete' propiedad.id %}" class="slider-item__delete__button" data-id=""
+                    data-title=""><img src="{% static 'img/backoffice/ic-delete.png' %}" alt="">Eliminar</a></li>
+        </ul>
+
+
+    </div>
+</article>
+{% empty %}
+<h2>No hay registros</h2>
+{% endfor %}
+{% endblock content %}
+
+{% block footer_actions %}
+<div id="footer_actions">
+    <ul class="footer-actions">
+        <li class="footer-actions__item"><a href="{% url 'backoffice:propiedades_create' %}"><img
+                    class="footer-actions__icon" src="{% static 'img/backoffice/ic-add.png' %}" alt="">Nueva Propiedad</a>
+        </li>
+    </ul>
+</div>
+{% endblock footer_actions %}

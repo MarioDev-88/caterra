@@ -21,13 +21,13 @@
 <div class="container" style="margin-top: 5%; margin-bottom: 5%;">
     <div class="row" style="margin-top: 3%; margin-bottom: 3%;">
         
-        {% for i in 'queuqe' %}
+        {% for agente in object_list %}
             
         <div class="col-md-4">
             <img class="img-responsive" src="{% static 'ecommerce/img/img-agente.png' %}">
-            <h1 style="font-size: 20pt;">Bernardo</h1>
-            <p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at elit et massa aliquam faucibus et non urna. Praesent ac justo vitae tellus placerat pellentesque.</p>
-            <p><span style="color: #486600"><i class="far fa-envelope"></i></span>    agente@caterra.com.mx</p>
+            <h1 style="font-size: 20pt;">{{agente}}</h1>
+            <p style="text-align: justify;">{{agente.texto}}</p>
+            <p><span style="color: #486600"><i class="far fa-envelope"></i></span>    {{agente.correo}}</p>
             <div align="right" style="margin: 3% 0;">
                 <a href="" class="btn clear-button"> VER PERIL</a>
             </div>

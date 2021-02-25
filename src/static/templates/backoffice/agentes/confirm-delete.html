@@ -1,0 +1,9 @@
+{% extends 'backoffice/layouts/backoffice.layout.html' %}
+
+{% block content %}
+<form method="post" class="bo-delete-form">
+    {% csrf_token %}
+    <h3>¿Estás seguro que deseas eliminar "{{ object }}"?</h3>
+    <button class="btn btn-danger text-xs" type="submit" value="Confirmar">Confirmar</button>
+</form>
+{% endblock content %}

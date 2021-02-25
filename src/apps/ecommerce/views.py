@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 
 import requests
 
-from apps.backoffice.models import Slider, Video, Post, Comment
+from apps.backoffice.models import Slider, Video, Post, Comment, Propiedad, Agente
 from .models import Order, OrderItem
 from apps.users.decorators import allowed_users
 
@@ -19,25 +19,41 @@ class HomeView(View):
 
     def dispatch(self, request, *args, **kwargs):
         self.title = "Caterra"
-        self.offers = MonthOffer.objects.all()
+        self.propiedades = Propiedad.objects.all()
         self.sliders = Slider.objects.all()
         self.video = Video.objects.first()
 
         return super(HomeView, self).dispatch(request, *args, **kwargs)
 
     def get(self, request):
-        ctx = {"offers": self.offers, "sliders": self.sliders, "video": self.video}
+        ctx = {"propiedades": self.propiedades, "sliders": self.sliders, "video": self.video}
         return render(request, self.template_name, ctx)
 
 
 class AboutView(TemplateView):
     template_name = "ecommerce/about-us.html"
 
-class AgentsView(TemplateView):
+class AgentsView(ListView):
     template_name = "ecommerce/agents.html"
+    model = Agente
 
-class PropertiesView(TemplateView):
+    def get_context_data(self, **kwargs):
+        context = super(AgentsView, self).get_context_data(**kwargs)
+        context["title"] = "Agentes"
+        context["subtitle"] = "Agentes"
+
+        return context
+
+class PropertiesView(ListView):
     template_name = "ecommerce/properties.html"
+    model = Propiedad
+
+    def get_context_data(self, **kwargs):
+        context = super(PropertiesView, self).get_context_data(**kwargs)
+        context["title"] = "Propiedades"
+        context["subtitle"] = "Propiedades"
+
+        return context
 
 
 class PostListView(ListView):

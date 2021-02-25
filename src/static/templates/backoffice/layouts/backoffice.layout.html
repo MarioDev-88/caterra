@@ -62,10 +62,15 @@
                                 bo__main-nav__item--active {% endif %}"><img
                                     src="{% static 'img/backoffice/ic-slider.png' %}" alt="">Video</a>
                         </li>
-                        <li><a href="{% url 'backoffice:propiedades_crear' %}"
-                                class="bo__main-nav__item {% if request.path|slice:':23' == '/administracion/ofertas' %}
+                        <li><a href="{% url 'backoffice:propiedades' %}"
+                                class="bo__main-nav__item {% if request.path|slice:':27' == '/administracion/propiedades' %}
                                 bo__main-nav__item--active {% endif %}"><img
                                     src="{% static 'img/backoffice/ic-offers.png' %}" alt="">Propiedades</a>
+                        </li>
+                        <li><a href="{% url 'backoffice:agentes' %}"
+                                class="bo__main-nav__item {% if request.path|slice:':23' == '/administracion/agentes' %}
+                                bo__main-nav__item--active {% endif %}"><img
+                                    src="{% static 'img/backoffice/ic-offers.png' %}" alt="">Agentes</a>
                         </li>
                         <li><a href="{% url 'backoffice:posts' %}"
                                 class="bo__main-nav__item {% if request.path|slice:':21' == '/administracion/posts' %}
