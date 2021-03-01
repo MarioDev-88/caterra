@@ -1,0 +1,89 @@
+{% extends 'ecommerce/layouts/ecommerce.layout.html' %}
+
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+
+{% block estilos-adicionales %}
+<link rel="stylesheet" href="{% static 'css/ecommerce/property-detail.css' %}">
+{% endblock estilos-adicionales %}
+    
+
+{% include './includes/header.html' with seccion=object.nombre %}
+
+
+<!-- -------------------------------------------------------------------------- -->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <div>
+                <img src="{{object.imagen.url}}" alt="">
+            </div>
+            <div>
+                video
+            </div>
+
+            <!-- Informacion de propiedad -->
+            <div class="row property-card">
+                <div class="col-lg-6 col-sm-12">
+                    <p>Tipo de propiedad: {{object.tipo_inmueble | title}}</p>
+                    <p>Colonia: {{object.colonia | title}}</p>
+                    <p>Tamaño de propiedad: {{object.terreno | title}} m2</p>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <p>Dirección: {{object.direccion | title}}</p>
+                    <p>Código Postal: {{object.cp}}</p>                    
+                </div>
+            </div>
+
+            <!-- Características -->
+            <div class="property-card">
+                <h1 class="text-center">CARACTERÍSTICAS</h1>
+                <br>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-12">
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detalles -->
+            <div class="property-card">
+                <h1 class="text-center">DETALLES</h1>
+                <br>
+                <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Ea, velit consectetur! Dignissimos doloremque quaerat quae aperiam omnis accusantium 
+                    ipsam eveniet, eos impedit necessitatibus quo nostrum architecto ipsum dicta ducimus in.
+                </p>
+
+            </div>
+
+
+        </div>
+        <div class="col-lg-4">
+            info
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

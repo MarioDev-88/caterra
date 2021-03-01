@@ -14,7 +14,8 @@ from .views import (
     single_post_view,
     create_comment_view,
     AgentsView,
-    PropertiesView
+    PropertiesView,
+    PropertyDetailView,
 )
 
 app_name = "ecommerce"
@@ -27,6 +28,7 @@ urlpatterns = [
     path("productos/", ProductsView.as_view(), name="products"),
     path("agentes/", AgentsView.as_view(), name="agents"),
     path("propiedades/", PropertiesView.as_view(), name="properties"),
+    path("propiedades/<pk>", PropertyDetailView.as_view(), name="property_detail"),
     path("productos/<str:id>", ProductView.as_view(), name="product"),
     path("carrito/", CartView.as_view(), name="cart"),
     path("pago/", OrderCreate.as_view(), name="payment_preview"),

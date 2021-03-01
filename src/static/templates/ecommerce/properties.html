@@ -19,7 +19,7 @@
     <div class="row py-3">
         <div class="col-3" id="sticky-sidebar">
             <div class="sticky-top">
-                <form class="contact-section-form" action="{% url "ecommerce:contact" %}" method="POST">
+                <form class="contact-section-form" action="{% url 'ecommerce:contact' %}" method="POST">
                     {% csrf_token %}
                     <div class="row">
                         <div class="form-group">
@@ -153,7 +153,7 @@
                                             <p><i class="far fa-clone"></i> Comparar</p>
                                         </div>
                                         <div class="col-md-4">
-                                            <a href="" class="btn clear-button">DETALLES</a>
+                                            <a href="{% url  'ecommerce:property_detail' propiedad.id %}" class="btn clear-button">DETALLES</a>
                                         </div>
                                     </div>
                                 </div>

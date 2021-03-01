@@ -3,7 +3,7 @@ import json
 
 from django.shortcuts import render, HttpResponseRedirect, reverse, HttpResponse
 from django.utils.decorators import method_decorator
-from django.views.generic import View, TemplateView, ListView
+from django.views.generic import View, TemplateView, ListView, DetailView
 from django.core.mail import send_mail
 
 import requests
@@ -54,6 +54,13 @@ class PropertiesView(ListView):
         context["subtitle"] = "Propiedades"
 
         return context
+
+class PropertyDetailView(DetailView):
+    template_name = "ecommerce/property-detail.html"
+    model = Propiedad
+
+
+
 
 
 class PostListView(ListView):

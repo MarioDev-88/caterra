@@ -239,14 +239,7 @@
                     <br>
                     <div class="row">
                         <div class="col-md-6">
-                            <button type="reset" class="btn btn-block"
-                        style="
-                            color: #486600;
-                            border-color: #486600;
-                            border-radius: 36px;
-                            padding-left: 2%;
-                            padding-right: 2%;
-                            ">LIMPIAR</button>
+                            <button type="reset" class="btn btn-block clear-button">LIMPIAR</button>
                         </div>
                         <div class="col-md-6">
                             <button type="submit" class="btn btn-block"
@@ -312,7 +305,7 @@
                         <p><i class="far fa-clone"></i> Comparar</p>
                     </div>
                     <div class="col-md-4">
-                        <a href="" class="btn clear-button">DETALLES</a>
+                        <a href="{% url  'ecommerce:property_detail' propiedad.id %}" class="btn clear-button">DETALLES</a>
                     </div>
                 </div>
             </div>
@@ -324,118 +317,6 @@
 </div>
 
 <!-- end Propiedades -->
-
-
-
-<!-- suggestions section -->
-<!-- <div id="suggestions_back">
-    <div class="suggestions">
-        <h3 class="suggestions__title">¿Que refacción estás buscando?</h3>
-        <div class="suggestions-icons">
-            <div class="suggestions-icons-item">
-                <img class="suggestions-icons-item__icon" src="{% static 'backoffice/img/ic-serv.png' %}" alt="">
-                <h5 class="suggestions-icons-item__title">Cadenas</h5>
-                <span class="suggestions-icons-item__subtitle">Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit.</span>
-                <a class="suggestions-icons-item__link" href="#">Ver mas</a>
-            </div>
-            <div class="suggestions-icons-item">
-                <img class="suggestions-icons-item__icon" src="{% static 'backoffice/img/ic-serv2.png' %}" alt="">
-                <h5 class="suggestions-icons-item__title">Rollos de Nylon</h5>
-                <span class="suggestions-icons-item__subtitle">Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit.</span>
-                <a class="suggestions-icons-item__link" href="#">Ver mas</a>
-            </div>
-            <div class="suggestions-icons-item">
-                <img class="suggestions-icons-item__icon" src="{% static 'backoffice/img/ic-serv3.png' %}" alt="">
-                <h5 class="suggestions-icons-item__title">Espadas</h5>
-                <span class="suggestions-icons-item__subtitle">Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit.</span>
-                <a class="suggestions-icons-item__link" href="#">Ver mas</a>
-            </div>
-            <div class="suggestions-icons-item">
-                <img class="suggestions-icons-item__icon" src="{% static 'backoffice/img/ic-serv4.png' %}" alt="">
-                <h5 class="suggestions-icons-item__title">Filtro de Aire</h5>
-                <span class="suggestions-icons-item__subtitle">Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit.</span>
-                <a class="suggestions-icons-item__link" href="#">Ver mas</a>
-            </div>
-            <div class="suggestions-icons-item">
-                <img class="suggestions-icons-item__icon" src="{% static 'backoffice/img/ic-serv5.png' %}" alt="">
-                <h5 class="suggestions-icons-item__title">Bujías</h5>
-                <span class="suggestions-icons-item__subtitle">Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit.</span>
-                <a class="suggestions-icons-item__link" href="#">Ver mas</a>
-            </div>
-            <div class="suggestions-icons-item">
-                <img class="suggestions-icons-item__icon" src="{% static 'backoffice/img/ic-serv6.png' %}" alt="">
-                <h5 class="suggestions-icons-item__title">Lubricantes</h5>
-                <span class="suggestions-icons-item__subtitle">Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit.</span>
-                <a class="suggestions-icons-item__link" href="#">Ver mas</a>
-            </div>
-            <div class="suggestions-icons-item">
-                <img class="suggestions-icons-item__icon" src="{% static 'backoffice/img/ic-serv7.png' %}" alt="">
-                <h5 class="suggestions-icons-item__title">Carburadores</h5>
-                <span class="suggestions-icons-item__subtitle">Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit.</span>
-                <a class="suggestions-icons-item__link" href="#">Ver mas</a>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- end of suggestions section -->
-<!-- featured products section -->
-<!-- <div id="month_offers_back">
-    <div class="month-offers">
-        <h2 class="month-offers__title">Productos</h2>
-        <div class="glide glide-featured-products products-slider-container">
-            <div class="glide__track" data-glide-el="track">
-                <ul class="glide__slides">
-                    <li class="glide__slide month-offers__item">
-                        <img class="month-offers__item__image" src="{% static 'backoffice/img/motosierra.jpg' %}" alt="">
-                        <h5 class="month-offers__item__title">Nombre del producto</h5>
-                        <div class="month-offers__item__prices">
-                            <span class="month-offers__item__price--before month-offers__item__price">$2,000.00</span>
-                            <span class="month-offers__item__price--after month-offers__item__price">$1,500.00</span>
-                        </div>
-                        <button class="btn text-xs bg-gray-600"><svg class="top-header-actions__icon"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg></button>
-                        <button class="btn btn-success text-xs my-1">Comprar</button>
-                    </li>
-                    <li class="glide__slide month-offers__item">
-                        <img class="month-offers__item__image" src="{% static 'backoffice/img/motosierra.jpg' %}" alt="">
-                        <h5 class="month-offers__item__title">Nombre del producto</h5>
-                        <div class="month-offers__item__prices">
-                            <span class="month-offers__item__price--before month-offers__item__price">$2,000.00</span>
-                            <span class="month-offers__item__price--after month-offers__item__price">$1,500.00</span>
-                        </div>
-                        <button class="btn text-xs bg-gray-600"><svg class="top-header-actions__icon"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg></button>
-                        <button class="btn btn-success text-xs my-1">Comprar</button>
-                    </li>
-                </ul>
-            </div>
-            <div class="glide__arrows" data-glide-el="controls">
-                <button class="glide__arrow glide__arrow--left month-offers__arrow month-offers__arrow--left"
-                    data-glide-dir="<">
-                    <</button> <button
-                        class="glide__arrow glide__arrow--right month-offers__arrow month-offers__arrow--right"
-                        data-glide-dir=">">>
-                </button>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- end of featured products section -->
 
 
 <div class="agentes" style="background: url('static/ecommerce/img/patron-agentes.png'); background-size: cover;">

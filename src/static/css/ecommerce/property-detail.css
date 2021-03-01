@@ -1,0 +1,19 @@
+.property-card{
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    line-height: 40px;
+    
+    margin: 3% 0;
+    padding: 3%;
+}
+
+h1{
+    font-size: 1.75rem;
+    font-weight: bolder;
+    color: #223300;
+    text-align: center;
+}
+
+.fa-check{
+    color: #223300;
+}

@@ -1,3 +1,13 @@
+@font-face{
+    font-family: Avenir;
+    src: url(../../fonts/AvenirNextLTPro-Regular.otf);
+}
+
+body{
+    font-family: Avenir;
+    letter-spacing: 1px;
+}
+
 .clear-button{
     color: #486600;
     border-color: #486600;
@@ -14,4 +24,9 @@
 
 .property-card{
     margin: 1% 0;
+}
+
+.container{
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
