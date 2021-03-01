@@ -21990,7 +21990,7 @@ input:focus,
   background-color: white;
   display: grid;
   grid-template-areas: "header header" "subheader subheader" "sidemenu content" "sidemenu footer";
-  grid-template-rows: 60px 60px auto 50px;
+  grid-template-rows: 80px 60px auto 50px;
   grid-template-columns: 20% auto;
   max-width: 1500px;
   min-height: 100vh;
@@ -22003,7 +22003,7 @@ input:focus,
   display: flex;
   grid-area: header;
   justify-content: space-between;
-  height: 60px;
+  height: 80px;
   padding: 0px 20px;
 }
 
@@ -22013,11 +22013,11 @@ input:focus,
 }
 
 .main-header__logo > a > img {
-  width: 200px;
+  width: 90px;
 }
 
 .main-header__user-menu > a > img {
-  width: 50px;
+  width: 80px;
 }
 
 #subheader {
@@ -22050,11 +22050,15 @@ input:focus,
 }
 
 .side-menu__logo {
-  max-width: 80px;
+  width: 100px;
+  background-color: white;
+  padding:2%;
+  border-radius: 15%;
 }
 
 .side-menu__username {
   color: white;
+  padding:2%;
 }
 
 .side-menu__username > p {
