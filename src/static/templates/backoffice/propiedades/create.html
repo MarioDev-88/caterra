@@ -22,7 +22,13 @@
     </ul>
     {% endif %}
 
-        {{form.as_p}}
+    
+    {% if user.type == 'AGENTE' %}
+    {{form}}
+    {% else %}
+    {{form.agente.label}}
+    {{form.agente}}
+    {% endif %}
 
     <div class="form-group__actions">
         <button class="btn btn-success" type="submit">Guardar</button>

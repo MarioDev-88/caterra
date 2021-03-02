@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form class="slider-form" action="{% url 'backoffice:users_create' %}" method="POST">
+<form class="slider-form" action="{% url 'backoffice:users_create' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
     {% if form.errors %}
@@ -22,6 +22,9 @@
     </ul>
     {% endif %}
     {{form}}
+    {{agente_form}}
+    
+        
     <div class="form-group__actions">
         <button class="btn btn-success" type="submit">Guardar</button>
         <a class="btn btn-danger" href="{% url 'backoffice:users_editors' %}">Cancelar</a>

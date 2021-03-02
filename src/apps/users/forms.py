@@ -1,30 +1,32 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, ReadOnlyPasswordHashField
 
-from .models import User
+from .models import User, Agente
+
+
 
 
 class CustomUserCreationForm(UserCreationForm):
 
-    password = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
+    password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Confirmación de contraseña", widget=forms.PasswordInput)
 
-    class Meta:
+    class Meta(UserCreationForm.Meta):
         model = User
-        fields = ("first_name", "first_surname", "last_surname", "email", "password")
+        fields = ("first_name", "first_surname", "last_surname", "email", "phone", "type")
 
     def clean_password(self):
-        password = self.cleaned_data.get("password")
+        password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
 
-        if password and password2 and password != password2:
-            raise forms.ValidationError("Passwords doen't match.")
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError("Las contraseñas no coinciden")
 
-        return password
+        return password1
 
     def save(self, commit=True):
         user = super(CustomUserCreationForm, self).save(commit=False)
-        user.set_password(self.cleaned_data["password"])
+        user.set_password(self.cleaned_data["password1"])
 
         if commit:
             user.save()
@@ -61,6 +63,7 @@ class LoginForm(forms.Form):
 
 
 class UserForm(forms.ModelForm):
+    
     class Meta:
         model = User
         fields = (
@@ -69,7 +72,6 @@ class UserForm(forms.ModelForm):
             "last_surname",
             "phone",
             "email",
-            "password",
             "type",
         )
 
@@ -82,5 +84,10 @@ class CustomerForm(forms.ModelForm):
             "first_surname",
             "phone",
             "email",
-            "password",
         )
+
+
+class AgenteForm(forms.ModelForm):
+    class Meta:
+        model = Agente
+        fields = ('foto', 'texto')
