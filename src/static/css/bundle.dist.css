@@ -22003,8 +22003,8 @@ input:focus,
   display: flex;
   grid-area: header;
   justify-content: space-between;
-  height: 80px;
-  padding: 0px 20px;
+  height: 100px;
+  padding: 20px 20px;
 }
 
 .main-header__logo {
@@ -22013,7 +22013,12 @@ input:focus,
 }
 
 .main-header__logo > a > img {
-  width: 90px;
+  width: 60px;
+}
+
+.main-header__logo > img {
+  width:95px;
+  text-align:center;
 }
 
 .main-header__user-menu > a > img {
@@ -22035,6 +22040,15 @@ input:focus,
   padding-left: 20px;
   text-transform: uppercase;
 }
+
+.sidebar-item a{
+  font-size: 14px;
+}
+
+.sidebar-item a{
+  font-size: 14px;
+}
+
 
 #sidemenu {
   background-color: #66932f;
@@ -22058,7 +22072,7 @@ input:focus,
 
 .side-menu__username {
   color: white;
-  padding:2%;
+  padding:5%;
 }
 
 .side-menu__username > p {
@@ -22066,6 +22080,7 @@ input:focus,
 }
 
 .side-menu__username > span {
+  color: red;
   font-weight: lighter;
 }
 
