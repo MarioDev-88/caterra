@@ -14,8 +14,14 @@
     <title>{{ title|default:"Caterra" }}</title>
     <!-- Custom CSS -->
     <link href="{% static 'assets/libs/flot/css/float-chart.css' %}" rel="stylesheet">
-    <!-- Custom CSS -->
+    <link href="{% static 'assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS prop -->
+    <link href="{% static 'assets/libs/jquery-steps/jquery.steps.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/libs/jquery-steps/steps.css' %}" rel="stylesheet">
+    
     <link href="{% static 'dist/css/style.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/extra-libs/multicheck/multicheck.css' %}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -241,6 +247,10 @@
                     {% block content %}
                     {% endblock content %}
                 </div>
+                <div>
+                    {% block contentU %}
+                    {% endblock contentU %}
+                </div>
             {% block footer_actions %}
             {% endblock footer_actions %}
             </main>
@@ -249,9 +259,9 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer id="main_footer" class="footer text-center">
+            <div id="main_footer" class="footer text-center">
                 <p>&copy; 2020 Todos los derechos reservados. <a href="">Pitic Software Development</a></p>
-            </footer>
+            </div>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
@@ -279,7 +289,7 @@
     <!--Custom JavaScript -->
     <script src="{% static 'dist/js/custom.min.js' %}"></script>
     <!--This page JavaScript -->
-    <!-- <script src="../../dist/js/pages/dashboards/dashboard1.js"></script> -->
+    <script src="{% static 'dist/js/pages/dashboards/dashboard1.js' %}"></script>
     <!-- Charts js Files -->
     <script src="{% static 'assets/libs/flot/excanvas.js' %}"></script>
     <script src="{% static 'assets/libs/flot/jquery.flot.js' %}"></script>
