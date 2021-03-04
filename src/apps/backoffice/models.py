@@ -58,7 +58,6 @@ class Comment(models.Model):
         return self.email
 
 
-
 # Propieadad
 class Propiedad(models.Model):
 
@@ -96,22 +95,26 @@ class Propiedad(models.Model):
     imagen = models.ImageField("Imagen", upload_to="propiedades", null=True, blank=True)
     tipo_inmueble = models.CharField(max_length=20, choices=TIPO_INMUEBLE, null=True, blank=True)
     tipo_operacion = models.CharField(max_length=20, choices=TIPO_OPERACION, null=True, blank=True)
-    direccion = models.CharField(max_length=200, null=True, blank=True)
-    colonia = models.CharField(max_length=100, null=True, blank=True)
-    ciudad = models.CharField(max_length=100, null=True, blank=True)
-    estado = models.CharField(max_length=100, null=True, blank=True)
-    cp = models.CharField(max_length=5, null=True, blank=True)
-    entre_calle_1 = models.CharField(max_length=100, null=True, blank=True)
-    entre_calle_2 = models.CharField(max_length=100, null=True, blank=True)
-    clave = models.CharField(max_length=100, null=True, blank=True)
-    captada_por = models.CharField(max_length=100, null=True, blank=True)
-    construccion = models.CharField(max_length=20, null=True, blank=True)
-    terreno = models.CharField(max_length=20, null=True, blank=True)
-    frente = models.CharField(max_length=20, null=True, blank=True)
-    fondo = models.CharField(max_length=20, null=True, blank=True)
-    precio = models.CharField(max_length=20, null=True, blank=True)
-    moneda = models.CharField(max_length=20, choices=MONEDA, null=True, blank=True)
-    mantenimiento_mensual = models.CharField(max_length=20, null=True, blank=True)
+    
+    direccion = models.CharField("Dirección", max_length=200, null=True, blank=True)
+    colonia = models.CharField("Colonia", max_length=100, null=True, blank=True)
+    ciudad = models.CharField("Ciudad/Municipio", max_length=100, null=True, blank=True)
+    estado = models.CharField("Estado",max_length=100, null=True, blank=True)
+    cp = models.CharField("C.P.", max_length=5, null=True, blank=True)
+    entre_calle_1 = models.CharField("Calle 1", max_length=100, null=True, blank=True)
+    entre_calle_2 = models.CharField("Calle 2", max_length=100, null=True, blank=True)
+    clave = models.CharField("Clave", max_length=100, null=True, blank=True)
+    captada_por = models.CharField("Captada por", max_length=100, null=True, blank=True)
+    
+    construccion = models.CharField("Construcción", max_length=20, null=True, blank=True)
+    terreno = models.CharField("Terreno", max_length=20, null=True, blank=True)
+    frente = models.CharField("Frente", max_length=20, null=True, blank=True)
+    fondo = models.CharField("Fondo", max_length=20, null=True, blank=True)
+    
+    precio = models.CharField("Precio", max_length=20, null=True, blank=True)
+    moneda = models.CharField("Moneda", max_length=20, choices=MONEDA, null=True, blank=True)
+    mantenimiento_mensual = models.CharField("Matenimiento Mensual", max_length=20, null=True, blank=True)
+    
     cubiculos = models.CharField(max_length=20, null=True, blank=True)
     areas_trabajo = models.CharField(max_length=20, null=True, blank=True)
     banos = models.CharField(max_length=20, null=True, blank=True)
@@ -132,6 +135,7 @@ class Propiedad(models.Model):
     edad = models.CharField(max_length=20, null=True, blank=True)
     topografia = models.CharField(max_length=20, null=True, blank=True)
     forma = models.CharField(max_length=20, null=True, blank=True)
+    
     estado_conservacion = models.CharField(max_length=20, choices=ESTADO_CONSERVACION, null=True, blank=True)
     observaciones = models.CharField(max_length=500, null=True, blank=True)
     instalaciones_especiales = models.CharField(max_length=500, null=True, blank=True)

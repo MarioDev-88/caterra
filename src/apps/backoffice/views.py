@@ -270,6 +270,7 @@ class PropiedadCreateView(CreateView):
 
         return context
 
+
 @method_decorator(allowed_users(allowed_roles=["ADMIN", "SELLER", "EDITOR"]), name="dispatch")
 class PropiedadDeleteView(DeleteView):
     template_name = "backoffice/propiedades/confirm-delete.html"

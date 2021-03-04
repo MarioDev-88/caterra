@@ -26,7 +26,7 @@ from .views import (
     AgenteListView,
     AgenteCreateView,
     AgenteDeleteView,
-    AgenteUpdateView,
+    AgenteUpdateView
 )
 
 app_name = "backoffice"
