@@ -94,7 +94,7 @@ class Propiedad(models.Model):
         ('MALO', 'Malo'),
     ]
 
-    agente = models.ForeignKey(Agente, on_delete=models.CASCADE, default=settings.AUTH_USER_MODEL)
+    agente = models.ForeignKey(Agente, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=120)
     imagen = models.ImageField("Imagen", upload_to="propiedades", null=True, blank=True)
     tipo_inmueble = models.CharField(max_length=20, choices=TIPO_INMUEBLE, null=True, blank=True)

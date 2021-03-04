@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form class="slider-form" action="{% url 'backoffice:users_create' %}" method="POST" enctype="multipart/form-data">
+<form id='user_form' class="slider-form" action="{% url 'backoffice:users_create' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
     {% if form.errors %}
@@ -22,7 +22,9 @@
     </ul>
     {% endif %}
     {{form}}
-    {{agente_form}}
+    <div id='agente_form'>
+        {{agente_form}}
+    </div>
     
         
     <div class="form-group__actions">

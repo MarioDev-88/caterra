@@ -147,9 +147,17 @@ class PostDeleteView(DeleteView):
 
 
 
+@method_decorator(allowed_users(allowed_roles=["ADMIN", "AGENTE", "EDITOR"]), name="dispatch")
+class UserListView(ListView):
+    model = User
+    template_name = "backoffice/users/list.html"
 
+    def get_context_data(self, **kwargs):
+        context = super(UserListView, self).get_context_data(**kwargs)
+        context["title"] = "Usuarios"
+        context["subtitle"] = "Usuarios"
 
-
+        return context
 
 
 @method_decorator(allowed_users(allowed_roles=["ADMIN", "AGENTE", "EDITOR"]), name="dispatch")
@@ -164,6 +172,18 @@ class EditorUserListView(ListView):
 
         return context
 
+
+@method_decorator(allowed_users(allowed_roles=["ADMIN", "AGENTE", "EDITOR"]), name="dispatch")
+class AgenteUserListView(ListView):
+    model = Agente
+    template_name = "backoffice/users/list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(AgenteUserListView, self).get_context_data(**kwargs)
+        context["title"] = "Usuarios agentes"
+        context["subtitle"] = "Usuarios agemtes"
+
+        return context
 
 @method_decorator(allowed_users(allowed_roles=["ADMIN", "AGENTE", "EDITOR"]), name="dispatch")
 class AdminListView(ListView):
@@ -220,20 +240,20 @@ def register_user(request):
     return render(request, 'backoffice/users/create.html', context)
 
 
-# class UserCreateView(CreateView):
-#     template_name = "backoffice/users/create.html"
-#     model = User
-#     form_class = CustomUserCreationForm
-#     agente_form = AgenteForm
-#     success_url = reverse_lazy("backoffice:users_editors")
+class UserCreateView(CreateView):
+    template_name = "backoffice/users/create.html"
+    model = User
+    form_class = CustomUserCreationForm
+    agente_form = AgenteForm
+    success_url = reverse_lazy("backoffice:users_editors")
 
-#     def get_context_data(self, **kwargs):
-#         context = super(UserCreateView, self).get_context_data(**kwargs)
-#         context["title"] = "Nuevo usuario"
-#         context["subtitle"] = "Nuevo usuario"
-#         context["agente_form"] = AgenteForm
+    def get_context_data(self, **kwargs):
+        context = super(UserCreateView, self).get_context_data(**kwargs)
+        context["title"] = "Nuevo usuario"
+        context["subtitle"] = "Nuevo usuario"
+        context["agente_form"] = AgenteForm
 
-#         return context
+        return context
 
 
 
@@ -357,6 +377,29 @@ class AgenteCreateView(CreateView):
         context["subtitle"] = "Nuevo Agente"
 
         return context
+
+def register_agente(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        # form.initial['type'] = [2]
+        agente_form = AgenteForm(request.POST, request.FILES)
+
+        if form.is_valid() and agente_form.is_valid():
+            user = form.save()
+            agente = agente_form.save(commit=False)
+            agente.user = user
+            agente.save()
+
+
+            return redirect("backoffice:agentes")
+    
+    else:
+        form = CustomUserCreationForm()
+        agente_form = AgenteForm()
+    
+    context = {'form' : form, 'agente_form':agente_form, 'title':'Nuevo agente', 'subtitle':'Nuevo agente'}
+    return render(request, 'backoffice/agentes/create.html', context)
+
 
 @method_decorator(allowed_users(allowed_roles=["ADMIN", "AGENTE", "EDITOR"]), name="dispatch")
 class AgenteDeleteView(DeleteView):

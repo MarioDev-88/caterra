@@ -45,13 +45,13 @@
             <div class="container">
                 <div class="row" style="display: flex; align-items: center;">
                     <div class="col-md-2">
-                        <p><i class="fas fa-phone-volume"></i> (662) 123 4567</p>
+                        <p><i class="fas fa-phone-volume"></i> (662) 187 5495</p>
                     </div>
                     <div class="col-md-3">
-                        <p><i class="fas fa-map-marker-alt"></i> Lorem Ipsum #12 Col. Ipsum</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Blvd. Jesus García Morales km. 6.5 #335</p>
                     </div>
                     <div class="col-md-3">
-                        <p><i class="far fa-envelope"></i> contacto@caterra.com.mx</p>
+                        <p><i class="far fa-envelope"></i> administracion@caterra.mx</p>
                     </div>
                     <div class="col-md-2">
                         <p>
@@ -105,9 +105,9 @@
             <div class="footer-contact-info">
                 <ul>
                     <li class="footer-contact-info__item"><a href=""><img src="{% static 'backoffice/img/ic-ph.png' %}"
-                                alt="">(662) 112 3456</a></li>
+                                alt="">(662) 187 5495</a></li>
                     <li class="footer-contact-info__item"><a href=""><img src="{% static 'backoffice/img/ic-ms.png' %}"
-                                alt="">info@caterra.com</a></li>
+                                alt="">administracion@caterra.mx</a></li>
                 </ul>
             </div>
         </footer>
@@ -124,7 +124,7 @@
     <!-- auth modal -->
     <div class="auth-modal">
         <div class="modal-window">
-            <form class="auth-modal__login-form" method="POST" action="{% url "users:login_view" %}">
+            <form class="auth-modal__login-form" method="POST" action="{% url 'users:login_view' %}">
             {% csrf_token %}
                 <h3 class="auth-modal__form-title">iniciar sesión</h3>
                 <div class="form-control">

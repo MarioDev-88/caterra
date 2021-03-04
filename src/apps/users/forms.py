@@ -8,12 +8,57 @@ from .models import User, Agente
 
 class CustomUserCreationForm(UserCreationForm):
 
-    password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
-    password2 = forms.CharField(label="Confirmación de contraseña", widget=forms.PasswordInput)
+    password1 = forms.CharField(
+        label="Contraseña", 
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder' : 'Contraseña'
+            }
+        )
+    )
+
+    password2 = forms.CharField(
+        label="Confirmación de contraseña", 
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder' : 'Confirmación de contraseña'
+            }
+        )
+    )
 
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ("first_name", "first_surname", "last_surname", "email", "phone", "type")
+
+        widgets = {
+            'first_name': forms.TextInput(
+                attrs={                
+                    'placeholder' : 'Nombre',                
+                }
+            ),
+            'first_surname': forms.TextInput(
+                attrs={                
+                    'placeholder' : 'Primer apellido',                
+                }
+            ),
+            'last_surname': forms.TextInput(
+                attrs={               
+                    'placeholder' : 'Segundo apellido',                
+                }
+            ),
+            'email': forms.TextInput(
+                attrs={               
+                    'placeholder' : 'Correo',                
+                }
+            ),
+            'phone': forms.TextInput(
+                attrs={   
+                    'id' : 'phone-mask',   
+                    'class' : 'phone-inputmask',
+                    'placeholder' : 'Teléfono',                
+                }
+            ),
+        }
 
     def clean_password(self):
         password1 = self.cleaned_data.get("password1")
@@ -91,3 +136,16 @@ class AgenteForm(forms.ModelForm):
     class Meta:
         model = Agente
         fields = ('foto', 'texto')
+
+        widgets = {
+            'texto': forms.Textarea(
+                attrs={                
+                    'placeholder' : 'Escribe tu mensaje aquí...',                
+                }
+            ),
+        }
+
+        # def __init__(self, *args, **kwargs):
+        #     super(AgenteForm, self).__init__(*args, **kwargs)
+        #     self.fields['foto'].required = False
+        #     self.fields['texto'].required = False
