@@ -10,7 +10,7 @@
     {% if form.errors %}
     {% for key,value in form.errors.items %}
     <div class="login-form__alert" role="alert">
-        <p>{{key}}: {{ value }}</p>
+        <p>{{ value }}</p>
     </div>
 
     {% endfor %}
@@ -82,6 +82,10 @@
 {% block scripts %}
 <script src="{% static 'assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js' %}"></script>
 <script src="{% static 'dist/js/pages/mask/mask.init.js' %}"></script>
-<script src="{% static 'js/create_agente.js' %}"></script>
+
+<script>
+    $('#id_type').hide()
+    $('#id_type option[value="AGENTE"]').prop('selected', true);
+</script>
 {% endblock scripts %}
     

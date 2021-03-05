@@ -58,6 +58,11 @@ class CustomUserCreationForm(UserCreationForm):
                     'placeholder' : 'Teléfono',                
                 }
             ),
+            'type': forms.Select(
+                attrs={ 
+                    'class' : 'select2 form-control custom-select',
+                }
+            ),
         }
 
     def clean_password(self):

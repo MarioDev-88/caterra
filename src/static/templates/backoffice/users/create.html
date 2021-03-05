@@ -1,5 +1,7 @@
 {% extends 'backoffice/layouts/backofficelayout.html' %}
 
+{% load static %}
+
 {% block content %}
 
 <form id='user_form' class="slider-form" action="{% url 'backoffice:users_create' %}" method="POST" enctype="multipart/form-data">
@@ -8,7 +10,7 @@
     {% if form.errors %}
     {% for key,value in form.errors.items %}
     <div class="login-form__alert" role="alert">
-        <p>{{key}}: {{ value }}</p>
+        <p>{{ value }}</p>
     </div>
 
     {% endfor %}
@@ -22,9 +24,6 @@
     </ul>
     {% endif %}
     {{form}}
-    <div id='agente_form'>
-        {{agente_form}}
-    </div>
     
         
     <div class="form-group__actions">
@@ -34,3 +33,16 @@
 </form>
 
 {%endblock%}
+
+
+{% block scripts %}
+<script src="{% static 'assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js' %}"></script>
+<script src="{% static 'dist/js/pages/mask/mask.init.js' %}"></script>
+
+<script>
+    $('#id_type option[value="AGENTE"]').remove();
+</script>
+    
+{% endblock scripts %}
+
+    
