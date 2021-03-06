@@ -1,8 +1,28 @@
 {% extends 'ecommerce/layouts/ecommerce.layout.html' %}
 
 {% load static %}
-{% block content %}
+{% load humanize %}
 
+{% block estilos-adicionales %}
+<style>
+
+    .img-container{
+        height: 400px;
+        width: 380px;
+    }
+
+    img{
+        height: 100%;
+        width: auto;
+    }
+
+    .texto{
+        height: 80px;
+    }
+</style>
+{% endblock estilos-adicionales %}
+
+{% block content %}
 
 {% include './includes/header.html' with seccion="AGENTES" %}
 
@@ -12,12 +32,25 @@
         {% for agente in object_list %}
             
         <div class="col-md-4">
-            <img class="img-responsive" src="{{agente.foto.url}}">
-            <h1 style="font-size: 20pt;">{{agente.user}}</h1>
-            <p style="text-align: justify;">{{agente.texto}}</p>
-            <p><span style="color: #486600"><i class="far fa-envelope"></i></span>    {{agente.user.email}}</p>
-            <div align="right" style="margin: 3% 0;">
-                <a href="" class="btn clear-button"> VER PERIL</a>
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <div class="img-container d-flex justify-content-center">
+                        <img src="{{agente.foto.url}}">
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <br>
+                    <h1 style="font-size: 20pt;">{{agente.user|title}}</h1>
+                    <br>
+                    <div class="texto">
+                        <p style="text-align: justify;">{{agente.texto|truncatechars:210}}</p>
+                    </div>
+                    <br>
+                    <p><span style="color: #486600"><i class="far fa-envelope"></i></span>    {{agente.user.email}}</p>
+                    <div align="right" style="margin: 3% 0;">
+                        <a href="{%url 'ecommerce:agent_profile' agente.id %}" class="btn clear-button"> VER PERIL</a>
+                    </div>
+                </div>
             </div>
         </div>
         {% endfor %}

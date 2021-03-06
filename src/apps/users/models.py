@@ -97,8 +97,8 @@ class Cliente(User):
 
 class Agente(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    foto = models.ImageField(upload_to="agentes", null=True, blank=True)
-    texto = models.TextField(max_length=1000, null=True, blank=True)
+    foto = models.ImageField(upload_to="agentes", null=False, blank=False)
+    texto = models.TextField(max_length=1000, null=False, blank=False)
 
     def __str__(self):
         return "{} {}".format(self.user.first_name, self.user.first_surname)

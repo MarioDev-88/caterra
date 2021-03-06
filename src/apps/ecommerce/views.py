@@ -46,6 +46,17 @@ class AgentsView(ListView):
 
         return context
 
+class AgentProfileView(DetailView):
+    template_name = 'ecommerce/agent-profile.html'
+    model = Agente
+
+    def get_context_data(self, **kwargs):
+        context = super(AgentProfileView, self).get_context_data(**kwargs)
+        propiedades = Propiedad.objects.filter(agente=self.kwargs['pk'])
+        context["propiedades"] = propiedades
+
+        return context
+
 class PropertiesView(ListView):
     template_name = "ecommerce/properties.html"
     model = Propiedad
@@ -60,9 +71,6 @@ class PropertiesView(ListView):
 class PropertyDetailView(DetailView):
     template_name = "ecommerce/property-detail.html"
     model = Propiedad
-
-
-
 
 
 class PostListView(ListView):

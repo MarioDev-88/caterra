@@ -14,6 +14,7 @@ from .views import (
     single_post_view,
     create_comment_view,
     AgentsView,
+    AgentProfileView,
     PropertiesView,
     PropertyDetailView,
 )
@@ -27,6 +28,7 @@ urlpatterns = [
     path("contacto/", ContactView.as_view(), name="contact"),
     path("productos/", ProductsView.as_view(), name="products"),
     path("agentes/", AgentsView.as_view(), name="agents"),
+    path("agentes/<pk>", AgentProfileView.as_view(), name="agent_profile"),
     path("propiedades/", PropertiesView.as_view(), name="properties"),
     path("propiedades/<pk>", PropertyDetailView.as_view(), name="property_detail"),
     path("productos/<str:id>", ProductView.as_view(), name="product"),

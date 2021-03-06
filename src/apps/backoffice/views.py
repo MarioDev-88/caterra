@@ -14,7 +14,7 @@ from .models import Slider, Video, Post, Propiedad
 from .forms import SliderForm, VideoForm, PostForm, PropiedadForm
 from apps.users.decorators import allowed_users
 from apps.users.models import User, Admin, Editor, Agente
-from apps.users.forms import CustomUserCreationForm, CustomUserChangeForm, UserCreationForm, UserForm, AgenteForm
+from apps.users.forms import CustomUserCreationForm, CustomUserChangeForm, UserCreationForm, UserForm, AgenteForm, AgenteUpdateForm
 from apps.ecommerce.models import Order
 
 
@@ -364,24 +364,9 @@ class AgenteListView(ListView):
 
         return context
 
-@method_decorator(allowed_users(allowed_roles=["ADMIN", "AGENTE", "EDITOR"]), name="dispatch")
-class AgenteCreateView(CreateView):
-    template_name = "backoffice/agentes/create.html"
-    model = Agente
-    form_class = AgenteForm
-    success_url = reverse_lazy("backoffice:agentes")
-
-    def get_context_data(self, **kwargs):
-        context = super(AgenteCreateView, self).get_context_data(**kwargs)
-        context["title"] = "Nuevo Agente"
-        context["subtitle"] = "Nuevo Agente"
-
-        return context
-
 def register_agente(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
-        # form.initial['type'] = [2]
         agente_form = AgenteForm(request.POST, request.FILES)
 
         if form.is_valid() and agente_form.is_valid():
@@ -402,21 +387,59 @@ def register_agente(request):
 
 
 @method_decorator(allowed_users(allowed_roles=["ADMIN", "AGENTE", "EDITOR"]), name="dispatch")
+class AgenteDetailView(DetailView):
+    template_name = "backoffice/agentes/details.html"
+    model = User
+    login_url = reverse_lazy("users:login")
+
+    def dispatch(self, request, *args, **kwargs):
+        return super(AgenteDetailView, self).dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(AgenteDetailView, self).get_context_data(**kwargs)
+        context["title"] = "Detalles de usuario"
+
+        return context
+
+@method_decorator(allowed_users(allowed_roles=["ADMIN", "AGENTE", "EDITOR"]), name="dispatch")
 class AgenteDeleteView(DeleteView):
     template_name = "backoffice/agentes/confirm-delete.html"
-    model = Agente
+    model = User
     success_url = reverse_lazy("backoffice:agentes")
 
 @method_decorator(allowed_users(allowed_roles=["ADMIN", "AGENTE", "EDITOR"]), name="dispatch")
 class AgenteUpdateView(UpdateView):
     template_name = "backoffice/agentes/update.html"
-    model = Agente
-    form_class = AgenteForm
+    model = User
+    form_class = CustomUserChangeForm
     success_url = reverse_lazy("backoffice:agentes")
+
+    def get_object(self):
+        pk = self.kwargs.get('pk')
+        return get_object_or_404(User, pk=pk)
 
     def get_context_data(self, **kwargs):
         context = super(AgenteUpdateView, self).get_context_data(**kwargs)
         context["title"] = "Actualizar agente"
         context["subtitle"] = "Actualizar agente"
+        context['agente_form'] = AgenteUpdateForm()
 
         return context
+    
+    def form_valid(self, form):
+        context = self.get_context_data(form=form)
+        user_to_edit = User.objects.get(pk=self.kwargs['pk'])
+        agente_form = context['agente_form'].save(commit=False)
+        agente = user_to_edit.agente
+
+        foto_nueva = self.request.FILES.get('foto')
+
+        if foto_nueva is not None:
+            agente.foto = self.request.FILES['foto']
+
+        agente.texto = self.request.POST['texto']
+        agente.save()
+        
+        super(AgenteUpdateView, self).form_valid(form)
+
+        return redirect('backoffice:agentes')

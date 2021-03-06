@@ -103,6 +103,41 @@ class CustomUserChangeForm(UserChangeForm):
             "password",
         )
 
+        widgets = {
+            'first_name': forms.TextInput(
+                attrs={                
+                    'placeholder' : 'Nombre',                
+                }
+            ),
+            'first_surname': forms.TextInput(
+                attrs={                
+                    'placeholder' : 'Primer apellido',                
+                }
+            ),
+            'last_surname': forms.TextInput(
+                attrs={               
+                    'placeholder' : 'Segundo apellido',                
+                }
+            ),
+            'email': forms.TextInput(
+                attrs={               
+                    'placeholder' : 'Correo',                
+                }
+            ),
+            'phone': forms.TextInput(
+                attrs={   
+                    'id' : 'phone-mask',   
+                    'class' : 'phone-inputmask',
+                    'placeholder' : 'Teléfono',                
+                }
+            ),
+            'type': forms.Select(
+                attrs={ 
+                    'class' : 'select2 form-control custom-select',
+                }
+            ),
+        }
+
     def clean_password(self):
         return self.initial["password"]
 
@@ -154,3 +189,27 @@ class AgenteForm(forms.ModelForm):
         #     super(AgenteForm, self).__init__(*args, **kwargs)
         #     self.fields['foto'].required = False
         #     self.fields['texto'].required = False
+
+class AgenteUpdateForm(forms.ModelForm):
+        class Meta:
+            model = Agente
+            fields = ('foto', 'texto')
+
+            widgets = {
+                'texto': forms.Textarea(
+                    attrs={                
+                        'placeholder' : 'Escribe tu mensaje aquí...',                
+                    }
+                ),
+            }
+
+            def save(self, user, commit=True):
+                instance = super(AgenteUpdateForm, self).save(commit=False)
+                print('***************************')
+                print(instance)
+                print(instance.user)
+                if not self.instance.pk:
+                    if commit:
+                        instance.user = user
+                        instance.save()
+                return instance
