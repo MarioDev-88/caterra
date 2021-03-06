@@ -30,6 +30,11 @@
 <![endif]-->
     <!-- Styles -->
     <link href="{% static 'css/bundle.dist.css' %}" rel="stylesheet">
+    
+    {% block estilos-adicionales %}
+        
+    {% endblock estilos-adicionales %}
+        
 </head>
 
 <body>
@@ -159,8 +164,8 @@
                                 <h5>
                                     {% if request.user.type == 'ADMIN'%}
                                     Administrador
-                                    {% elif request.user.type == 'SELLER' %}
-                                    Vendedor
+                                    {% elif request.user.type == 'AGENTE' %}
+                                    Agente
                                     {% elif request.user.type == 'EDITOR' %}
                                     Editor
                                     {% endif %}
@@ -180,11 +185,18 @@
                                 <span class="hide-menu">Video</span>
                             </a>
                         </li>
+                        <li class="sidebar-item {% if request.path|slice:':23' == '/administracion/agentes' %}
+                        bo__main-nav__item--active {% endif %}">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'backoffice:agentes' %}" aria-expanded="false">
+                                <img src="{% static 'img/backoffice/ic-offers.png' %}" alt="">
+                                <span class="hide-menu">Agentes</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item {% if request.path|slice:':27' == '/administracion/propiedades' %}
                         bo__main-nav__item--active {% endif %}">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'backoffice:propiedades' %}" aria-expanded="false">
                                 <img src="{% static 'img/backoffice/ic-offers.png' %}" alt="">
-                                <span class="hide-menu">Agentes</span>
+                                <span class="hide-menu">Propiedades</span>
                             </a>
                         </li>
                         <li class="sidebar-item {% if request.path|slice:':21' == '/administracion/posts' %}

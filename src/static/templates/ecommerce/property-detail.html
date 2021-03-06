@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-lg-8">
             <div>
-                <img src="{{object.imagen.url}}" alt="">
+                <img src="{{propiedad.imagen.url}}" alt="">
             </div>
             <div>
                 video
@@ -29,13 +29,13 @@
             <!-- Informacion de propiedad -->
             <div class="row property-card">
                 <div class="col-lg-6 col-sm-12">
-                    <p>Tipo de propiedad: {{object.tipo_inmueble | title}}</p>
-                    <p>Colonia: {{object.colonia | title}}</p>
-                    <p>Tamaño de propiedad: {{object.terreno | title}} m2</p>
+                    <p>Tipo de propiedad: {{propiedad.tipo_inmueble | title}}</p>
+                    <p>Colonia: {{propiedad.colonia | title}}</p>
+                    <p>Tamaño de propiedad: {{propiedad.terreno | title}} m2</p>
                 </div>
                 <div class="col-lg-6 col-sm-12">
-                    <p>Dirección: {{object.direccion | title}}</p>
-                    <p>Código Postal: {{object.cp}}</p>                    
+                    <p>Dirección: {{propiedad.direccion | title}}</p>
+                    <p>Código Postal: {{propiedad.cp}}</p>                    
                 </div>
             </div>
 
@@ -79,7 +79,14 @@
 
         </div>
         <div class="col-lg-4">
-            info
+            <div class="property-card">
+                <img src="{{propiedad.agente.foto.url}}" alt="">
+                <h1>{{propiedad.agente.user}}</h1>
+                <br>
+                <p><i class="fas fa-phone-volume"></i> {{propiedad.agente.user.phone}}</p>
+                <p><i class="far fa-envelope"></i> {{propiedad.agente.user.email}}</p>
+
+            </div>
         </div>
     </div>
 </div>

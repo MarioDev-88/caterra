@@ -33,13 +33,13 @@
 </div>
 
 <ul class="users-tabs">
-<li class="users-tabs__item {% if request.path|slice:":33" == "/administracion/usuarios/editores" %} users-tabs__item--active {% endif %}"><a class="users-tabs__item" href="{% url 'backoffice:users_editors' %}"
+<li class="users-tabs__item {% if request.path|slice:':33' == '/administracion/usuarios/editores' %} users-tabs__item--active {% endif %}"><a class="users-tabs__item" href="{% url 'backoffice:users_editors' %}"
     class="">Editores</a>
     </li>
-    <li class="users-tabs__item {% if request.path|slice:":35" == "/administracion/usuarios/vendedores" %} users-tabs__item--active {% endif %} "><a  href="{% url 'backoffice:users_sellers' %}"
-            class="">Agentes</a>
+    <li class="users-tabs__item {% if request.path|slice:':35' == '/administracion/usuarios/vendedores' %} users-tabs__item--active {% endif %} "><a  href=""
+            class="">Vendedores</a>
     </li>
-    <li class="users-tabs__item {% if request.path|slice:":40" == "/administracion/usuarios/administradores" %} users-tabs__item--active {% endif %}"><a href="{% url 'backoffice:users_admins' %}"
+    <li class="users-tabs__item {% if request.path|slice:':40' == '/administracion/usuarios/administradores' %} users-tabs__item--active {% endif %}"><a href="{% url 'backoffice:users_admins' %}"
             class="">Administradores</a></li>
 </ul>
 <!-- TABLA -->

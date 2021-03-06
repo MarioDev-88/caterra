@@ -1,9 +1,11 @@
 import uuid
 
+from django.conf import settings
 from django.db import models
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
 from tinymce.models import HTMLField
+from apps.users.models import Agente
 
 
 class Slider(models.Model):
@@ -91,6 +93,7 @@ class Propiedad(models.Model):
         ('MALO', 'Malo'),
     ]
 
+    agente = models.ForeignKey(Agente, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=120)
     imagen = models.ImageField(upload_to="propiedades", null=True, blank=True)
     tipo_inmueble = models.CharField(max_length=20, choices=TIPO_INMUEBLE, null=True, blank=True)
@@ -141,26 +144,12 @@ class Propiedad(models.Model):
     instalaciones_especiales = models.CharField(max_length=500, null=True, blank=True)
 
     #informacion propietario
-    prop_nombre = models.CharField(max_length=120, null=True, blank=True)
-    prop_direccion = models.CharField(max_length=120, null=True, blank=True)
-    prop_colonia = models.CharField(max_length=120, null=True, blank=True)
-    prop_cp = models.CharField(max_length=120, null=True, blank=True)
-    prop_ciudad = models.CharField(max_length=120, null=True, blank=True)
-    prop_telefono = models.CharField(max_length=120, null=True, blank=True)
-    prop_cita = models.CharField(max_length=120, null=True, blank=True)
-    prop_llaves = models.CharField(max_length=120, null=True, blank=True)
-    prop_horario = models.CharField(max_length=120, null=True, blank=True)
-
-
-#Agente
-class Agente(models.Model):
-    nombre = models.CharField(max_length=120)
-    aPaterno = models.CharField(max_length=120, null=False, blank=False)
-    aMaterno = models.CharField(max_length=120, null=False, blank=False)
-    foto = models.ImageField("Imagen", upload_to="agentes", null=True, blank=True)
-    texto = models.CharField(max_length=120, null=False, blank=False)
-    telefono = models.CharField(max_length=120, null=False, blank=False)
-    correo = models.EmailField(max_length=120, null=False, blank=False)
-
-    def __str__(self):
-        return '{} {} {}'.format(self.nombre, self.aPaterno, self.aMaterno)
+    # prop_nombre = models.CharField(max_length=120, null=True, blank=True)
+    # prop_direccion = models.CharField(max_length=120, null=True, blank=True)
+    # prop_colonia = models.CharField(max_length=120, null=True, blank=True)
+    # prop_cp = models.CharField(max_length=120, null=True, blank=True)
+    # prop_ciudad = models.CharField(max_length=120, null=True, blank=True)
+    # prop_telefono = models.CharField(max_length=120, null=True, blank=True)
+    # prop_cita = models.CharField(max_length=120, null=True, blank=True)
+    # prop_llaves = models.CharField(max_length=120, null=True, blank=True)
+    # prop_horario = models.CharField(max_length=120, null=True, blank=True)

@@ -1,30 +1,82 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, ReadOnlyPasswordHashField
 
-from .models import User
+from .models import User, Agente
+
+
 
 
 class CustomUserCreationForm(UserCreationForm):
 
-    password = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
-    password2 = forms.CharField(label="Confirmación de contraseña", widget=forms.PasswordInput)
+    password1 = forms.CharField(
+        label="Contraseña", 
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder' : 'Contraseña'
+            }
+        )
+    )
 
-    class Meta:
+    password2 = forms.CharField(
+        label="Confirmación de contraseña", 
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder' : 'Confirmación de contraseña'
+            }
+        )
+    )
+
+    class Meta(UserCreationForm.Meta):
         model = User
-        fields = ("first_name", "first_surname", "last_surname", "email", "password")
+        fields = ("first_name", "first_surname", "last_surname", "email", "phone", "type")
+
+        widgets = {
+            'first_name': forms.TextInput(
+                attrs={                
+                    'placeholder' : 'Nombre',                
+                }
+            ),
+            'first_surname': forms.TextInput(
+                attrs={                
+                    'placeholder' : 'Primer apellido',                
+                }
+            ),
+            'last_surname': forms.TextInput(
+                attrs={               
+                    'placeholder' : 'Segundo apellido',                
+                }
+            ),
+            'email': forms.TextInput(
+                attrs={               
+                    'placeholder' : 'Correo',                
+                }
+            ),
+            'phone': forms.TextInput(
+                attrs={   
+                    'id' : 'phone-mask',   
+                    'class' : 'phone-inputmask',
+                    'placeholder' : 'Teléfono',                
+                }
+            ),
+            'type': forms.Select(
+                attrs={ 
+                    'class' : 'select2 form-control custom-select',
+                }
+            ),
+        }
 
     def clean_password(self):
-        password = self.cleaned_data.get("password")
+        password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
 
-        if password and password2 and password != password2:
-            raise forms.ValidationError("Passwords doen't match.")
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError("Las contraseñas no coinciden")
 
-        return password
+        return password1
 
     def save(self, commit=True):
         user = super(CustomUserCreationForm, self).save(commit=False)
-        user.set_password(self.cleaned_data["password"])
+        user.set_password(self.cleaned_data["password1"])
 
         if commit:
             user.save()
@@ -51,6 +103,41 @@ class CustomUserChangeForm(UserChangeForm):
             "password",
         )
 
+        widgets = {
+            'first_name': forms.TextInput(
+                attrs={                
+                    'placeholder' : 'Nombre',                
+                }
+            ),
+            'first_surname': forms.TextInput(
+                attrs={                
+                    'placeholder' : 'Primer apellido',                
+                }
+            ),
+            'last_surname': forms.TextInput(
+                attrs={               
+                    'placeholder' : 'Segundo apellido',                
+                }
+            ),
+            'email': forms.TextInput(
+                attrs={               
+                    'placeholder' : 'Correo',                
+                }
+            ),
+            'phone': forms.TextInput(
+                attrs={   
+                    'id' : 'phone-mask',   
+                    'class' : 'phone-inputmask',
+                    'placeholder' : 'Teléfono',                
+                }
+            ),
+            'type': forms.Select(
+                attrs={ 
+                    'class' : 'select2 form-control custom-select',
+                }
+            ),
+        }
+
     def clean_password(self):
         return self.initial["password"]
 
@@ -61,6 +148,7 @@ class LoginForm(forms.Form):
 
 
 class UserForm(forms.ModelForm):
+    
     class Meta:
         model = User
         fields = (
@@ -69,7 +157,6 @@ class UserForm(forms.ModelForm):
             "last_surname",
             "phone",
             "email",
-            "password",
             "type",
         )
 
@@ -82,5 +169,47 @@ class CustomerForm(forms.ModelForm):
             "first_surname",
             "phone",
             "email",
-            "password",
         )
+
+
+class AgenteForm(forms.ModelForm):
+    class Meta:
+        model = Agente
+        fields = ('foto', 'texto')
+
+        widgets = {
+            'texto': forms.Textarea(
+                attrs={                
+                    'placeholder' : 'Escribe tu mensaje aquí...',                
+                }
+            ),
+        }
+
+        # def __init__(self, *args, **kwargs):
+        #     super(AgenteForm, self).__init__(*args, **kwargs)
+        #     self.fields['foto'].required = False
+        #     self.fields['texto'].required = False
+
+class AgenteUpdateForm(forms.ModelForm):
+        class Meta:
+            model = Agente
+            fields = ('foto', 'texto')
+
+            widgets = {
+                'texto': forms.Textarea(
+                    attrs={                
+                        'placeholder' : 'Escribe tu mensaje aquí...',                
+                    }
+                ),
+            }
+
+            def save(self, user, commit=True):
+                instance = super(AgenteUpdateForm, self).save(commit=False)
+                print('***************************')
+                print(instance)
+                print(instance.user)
+                if not self.instance.pk:
+                    if commit:
+                        instance.user = user
+                        instance.save()
+                return instance

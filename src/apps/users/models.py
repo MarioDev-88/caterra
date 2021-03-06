@@ -34,9 +34,9 @@ class CustomUserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     USER_TYPES = [
         ("ADMIN", "Admin"),
-        ("SELLER", "Seller"),
+        ("AGENTE", "Agente"),
         ("EDITOR", "Editor"),
-        ("CUSTOMER", "Customer"),
+        ("CLIENTE", "Cliente"),
     ]
 
     first_name = models.CharField("Nombre", max_length=255)
@@ -64,30 +64,18 @@ class AdminManager(models.Manager):
         return super().get_queryset().filter(type="ADMIN")
 
 
-class SellerManager(models.Manager):
-    def get_queryset(self, *args, **kwargs):
-        return super().get_queryset().filter(type="SELLER")
-
-
 class EditorManager(models.Manager):
     def get_queryset(self, *args, **kwargs):
         return super().get_queryset().filter(type="EDITOR")
 
 
-class CustomerManager(models.Manager):
+class ClienteManager(models.Manager):
     def get_queryset(self, *args, **kwargs):
-        return super().get_queryset().filter(type="CUSTOMER")
+        return super().get_queryset().filter(type="CLIENTE")
 
 
 class Admin(User):
     objects = AdminManager()
-
-    class Meta:
-        proxy = True
-
-
-class Seller(User):
-    objects = SellerManager()
 
     class Meta:
         proxy = True
@@ -100,8 +88,17 @@ class Editor(User):
         proxy = True
 
 
-class Customer(User):
-    objects = CustomerManager()
+class Cliente(User):
+    objects = ClienteManager()
 
     class Meta:
         proxy = True
+
+
+class Agente(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    foto = models.ImageField(upload_to="agentes", null=False, blank=False)
+    texto = models.TextField(max_length=1000, null=False, blank=False)
+
+    def __str__(self):
+        return "{} {}".format(self.user.first_name, self.user.first_surname)
