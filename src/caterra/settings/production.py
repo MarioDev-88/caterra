@@ -3,7 +3,7 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["165.232.133.76", "127.0.0.1"]
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -20,7 +20,7 @@ DATABASES = {
 }
 
 # Email settings
-EMAIL_HOST =
-EMAIL_HOST_USER =
-EMAIL_HOST_PASSWORD =
-EMAIL_PORT =
+EMAIL_HOST = "smtp.mailtrap.io"
+EMAIL_HOST_USER = "63b98ec87849b2"
+EMAIL_HOST_PASSWORD = "39274699e31ab0"
+EMAIL_PORT = "2525"
