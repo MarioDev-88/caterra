@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 
 import requests
 
-from apps.backoffice.models import Slider, Video, Post, Comment, Propiedad
+from apps.backoffice.models import Slider, Video, Post, Comment, Propiedad, Image
 from apps.users.models  import Agente
 from .models import Order, OrderItem
 from apps.users.decorators import allowed_users
@@ -21,6 +21,7 @@ class HomeView(View):
     def dispatch(self, request, *args, **kwargs):
         self.title = "Caterra"
         self.propiedades = Propiedad.objects.all()
+        # self.images = Image.objects.all()
         self.agentes = Agente.objects.all()
         self.sliders = Slider.objects.all()
         self.video = Video.objects.first()

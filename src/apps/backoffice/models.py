@@ -58,7 +58,11 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.email
-    
+
+#Modelo imagen
+class Image(models.Model):
+    # propiedad = models.ForeignKey(Propiedad, default=None, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='propiedades')
 
 # Propieadad
 class Propiedad(models.Model):
@@ -93,10 +97,11 @@ class Propiedad(models.Model):
         ('MALO', 'Malo'),
     ]
 
-    agente = models.ForeignKey(Agente, on_delete=models.CASCADE)
+    agente = models.ForeignKey(Agente, on_delete=models.CASCADE, default=None)
     nombre = models.CharField(max_length=120)
     # album = models.OneToOneField(ImageAlbum, related_name='model', on_delete=models.CASCADE)
     # imagen = models.ImageField(upload_to="propiedades", null=True, blank=True)
+    imagen = models.ForeignKey(Image, on_delete=models.CASCADE)
     tipo_inmueble = models.CharField(max_length=20, choices=TIPO_INMUEBLE, null=True, blank=False)
     tipo_operacion = models.CharField(max_length=20, choices=TIPO_OPERACION, null=True, blank=False)
     
@@ -154,8 +159,3 @@ class Propiedad(models.Model):
     prop_cita = models.CharField(max_length=120, null=True, blank=True)
     prop_llaves = models.CharField(max_length=120, null=True, blank=True)
     prop_horario = models.CharField(max_length=120, null=True, blank=True)
-
-#Modelo imagen
-class Image(models.Model):
-    propiedad = models.ForeignKey(Propiedad, default=None, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='propiedades')

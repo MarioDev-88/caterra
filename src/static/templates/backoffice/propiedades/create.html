@@ -24,7 +24,7 @@
                         {% if form.errors %}
                         {% for key,value in form.errors.items %}
                         <div class="login-form__alert" role="alert">
-                            <p>{{ value }}</p>
+                            <p>{{key}}: {{ value }}</p>
                         </div>
                     
                         {% endfor %}

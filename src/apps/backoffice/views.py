@@ -337,6 +337,7 @@ class PropiedadCreateView(CreateView):
         propiedad = form.save()
         imagen = context['image_form'].save(commit=False)
         imagen.propiedad = propiedad
+        imagen.image = self.request.FILES.get('image')
         imagen.save()
 
         super(PropiedadCreateView, self).form_valid(form)
@@ -387,7 +388,6 @@ def register_agente(request):
             agente = agente_form.save(commit=False)
             agente.user = user
             agente.save()
-
 
             return redirect("backoffice:agentes")
     
