@@ -333,12 +333,18 @@ class PropiedadCreateView(CreateView):
         return context
     
     def form_valid(self, form):
+        current_user = self.request.user
         context = self.get_context_data(form=form)
-        propiedad = form.save()
         imagen = context['image_form'].save(commit=False)
-        imagen.propiedad = propiedad
         imagen.image = self.request.FILES.get('image')
         imagen.save()
+        propiedad = form.save(commit=False)
+        propiedad.imagen = imagen
+
+        if current_user.type == 'AGENTE':
+            propiedad.agente = current_user.agente
+        
+        propiedad.save()
 
         super(PropiedadCreateView, self).form_valid(form)
 
@@ -442,7 +448,6 @@ class AgenteUpdateView(UpdateView):
     def form_valid(self, form):
         context = self.get_context_data(form=form)
         user_to_edit = User.objects.get(pk=self.kwargs['pk'])
-        # agente_form = context['agente_form'].save(commit=False)
         agente = user_to_edit.agente
 
         foto_nueva = self.request.FILES.get('foto')

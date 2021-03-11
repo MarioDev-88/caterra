@@ -10,7 +10,8 @@ INSTALLED_APPS += (
 
 ALLOWED_HOSTS = [
     "165.232.133.76",
-    "localhost"
+    "localhost",
+    "127.0.0.1"
 ]
 
 INTERNAL_IPS = [

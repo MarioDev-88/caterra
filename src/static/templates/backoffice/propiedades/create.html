@@ -41,9 +41,14 @@
                         <div>
                             <h3>Propiedad</h3>
                             <section>
+                                
                                 <div class="form-group">
+                                    <label>{{form.agente.label}}</label>
                                     {{form.agente}}
                                 </div>
+                                {% if user.type != 'AGENTE' %}
+                                {% endif %}
+                                    
                                 <div class="form-group">
                                     {{form.nombre}}
                                 </div>
@@ -155,7 +160,7 @@
                                         {{image_form.image}}
                                     </div>
                                 </div>
-                                <label for="" id='agregar_imagen'>Agregar otra imagen</label>
+                                <!-- <label for="" id='agregar_imagen'>Agregar otra imagen</label> -->
                                 <p>(*) Obligatorio</p>
                             </section>
                             <h3>Detalles</h3>

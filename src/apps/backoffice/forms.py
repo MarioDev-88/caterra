@@ -41,6 +41,11 @@ class PropiedadForm(forms.ModelForm):
                     'placeholder' : 'Nombre de la propiedad *',                
                 }
             ),
+            'agente': forms.Select(
+                attrs={ 
+                    'class' : 'select2 form-control custom-select',
+                }
+            ),
             'tipo_inmueble': forms.Select(
                 attrs={ 
                     'class' : 'select2 form-control custom-select',
@@ -215,6 +220,15 @@ class PropiedadForm(forms.ModelForm):
                 }
             ),
         }
+
+    def clean_remove(self):
+        cleaned_data = super(PropiedadForm, self).clean()
+        user = self.request.user
+        print('userrrrrrrrrrrrrrrrrrrrrrrr********************')
+        print(user)
+        
+        if user.type == 'AGENTE':
+            self.fields['agente'].required = False
 
 class ImageForm(forms.ModelForm):
 
