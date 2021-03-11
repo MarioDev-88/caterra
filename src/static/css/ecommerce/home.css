@@ -1,5 +1,49 @@
+/* Agente */
+.agente-nombre{
+    font-size: 20px;
+    color: #66932f;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.btn-agente{
+    font-size: 16px;
+    background-color: #66932f;
+    border-radius: 65px;
+    padding: 1% 5% 1% 5%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+.col-agnt, .col-prop{
+    margin-bottom: 1em;
+}
+.bigspan{
+    font-size: 28px;
+}
+.btn-agente:hover{
+    text-decoration: none;
+    color: black;
+}
 .label{
     font-size: 13pt;
+}
+
+.prop-style > p{
+    padding: 0.2em 0.2em;
+}
+
+.prop-button{
+    color: #66932f;
+    border: 1.5px solid #66932f;
+    border-radius: 2em;
+    font-size:12px;
+    display:block;
+    width:100%;
+    padding: 5% 6% 5% 6%;
+    letter-spacing: 1px;
+}
+.prop-button:hover{
+    background-color: #486600;
+    color:white;
 }
 
 .big-button{
@@ -22,4 +66,58 @@
     color: #486600;
 }
 
+/* medias queries */
+/* movil */
+@media only screen and (min-width : 320px) and (max-width : 480px) {
+    .btn-agente{
+        font-size: 10px !important;
+    }
+    .bigspan{
+        font-size: 16px !important;
+    }
+    .prop-button{
+        font-size: 10px;
+        padding: 2% 5% 2% 5%;
+        /* margin-top: 0.5em; */
+    }
+    .prop-bottom > .col {
+        margin: 0px;
+        padding: 0px;
+    }
+    .prop-bottom {
+        margin: 0 1% 0 1%;
+    }
+    .agnt-button{
+        font-size: 12px;
+        width: 50%;
+        letter-spacing: 1px;
+    }
+    .prop-cont{
+        padding-top: 1em !important;
+    }
+}
 
+/* ipad */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .prop-button{
+        font-size: 8px;
+        padding: 2% 5% 2% 5%;
+    }
+    .agnt-button{
+        font-size: 10px;
+        width: 100% !important;
+        letter-spacing: 1px;
+        margin: 0.5em 1em;
+    }
+    .prop-bottom > .col > p {
+        font-size: 8px !important;
+    }
+    .prop-bottom > .col, .agnt-col {
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+    }
+    .prop-bottom{
+        padding-left: 0.5em !important;
+        padding-right: 0.5em !important;
+    }
+}

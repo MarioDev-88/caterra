@@ -10,31 +10,23 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicon.png' %}">
-    <title>{{ title|default:"Caterra" }}</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/logo-blanco-l.png' %}">
+    <title>{{ title }}</title>
     <!-- Custom CSS -->
     <link href="{% static 'assets/libs/flot/css/float-chart.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css' %}" rel="stylesheet">
-
-    <!-- Custom CSS prop -->
-    <link href="{% static 'assets/libs/jquery-steps/jquery.steps.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/libs/jquery-steps/steps.css' %}" rel="stylesheet">
-    
+    <!-- Custom CSS -->
     <link href="{% static 'dist/css/style.min.css' %}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'assets/extra-libs/multicheck/multicheck.css' %}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-    <!-- Styles -->
+
+    <!-- Styles Caterra-->
     <link href="{% static 'css/bundle.dist.css' %}" rel="stylesheet">
-    
     {% block estilos-adicionales %}
-        
     {% endblock estilos-adicionales %}
-        
 </head>
 
 <body>
@@ -59,20 +51,31 @@
                 <div class="navbar-header" data-logobg="skin5">
                     <!-- This is for the sidebar toggle which is visible on mobile only -->
                     <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-                    <div class="main-header__logo">
-                        <a href=""><img src="{% static 'img/ic-11.png' %}" alt="Caterra Logo"></a>
-                    </div>
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <!-- <a class="navbar-brand" href=""> -->
-                        <!-- <b class="logo-icon p-l-10"> -->
+                    <a class="navbar-brand" href="">
+                        <!-- Logo icon -->
+                        <b class="logo-icon p-l-10">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <!-- <img src="{% static 'img/ic-11.png' %}" alt="homepage" class="light-logo" /> -->
+                            <img src="{% static 'img/logo-blanco-l.png' %}" alt="homepage" class="light-logo" />
+                        </b>
+                        <!--End Logo icon -->
+                         <!-- Logo text -->
+                        <span class="logo-text">
+                             <!-- dark Logo text -->
+                             <img src="{% static 'img/logo-blanco-txt.png' %}" alt="homepage" class="light-logo" />
+                        </span>
+                        <!-- Logo icon -->
+                        <!-- <b class="logo-icon"> -->
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <!-- <img src="../../assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
+                            
                         <!-- </b> -->
                         <!--End Logo icon -->
-                    <!-- </a> -->
+                    </a>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
                     <!-- ============================================================== -->
@@ -105,40 +108,6 @@
                                 <a class="dropdown-item" href="#">Something else here</a>
                             </div>
                         </li> -->
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-                        <!-- <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
-                            <form class="app-search position-absolute">
-                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="ti-close"></i></a>
-                            </form>
-                        </li> -->
-                    </ul>
-                    <!-- ============================================================== -->
-                    <!-- Right side toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav float-right">
-
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                        <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
-                            <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i> Inbox</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
-                                <div class="dropdown-divider"></div>
-                                <div class="p-l-30 p-10"><a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded">View Profile</a></div>
-                            </div>
-                        </li> -->
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
                     </ul>
                 </div>
             </nav>
@@ -150,11 +119,12 @@
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
         <aside class="left-sidebar" data-sidebarbg="skin5">
-        <!-- Sidebar scroll-->
+            <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
+                        <!-- section de user logueado -->
                         <section class="side-menu__user-info">
                             <div class="side-menu__logo">
                                 <img src="{% static 'img/ic-13.png' %}" alt="User avatar">
@@ -172,6 +142,7 @@
                                 </h5>
                             </div>
                         </section>
+                        <!-- los tabs de; sidebar -->
                         <li class="sidebar-item {% if request.path|slice:':22' == '/administracion/slider' %} bo__main-nav__item--active {% endif %}">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'backoffice:sliders' %}" aria-expanded="false">
                                 <img src="{% static 'img/backoffice/ic-slider.png' %}" alt="">
@@ -208,19 +179,17 @@
                         </li>
                         <li class="sidebar-item {% if request.path|slice:':24' == '/administracion/usuarios' %}
                         bo__main-nav__item--active {% endif %}">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'backoffice:users_editors' %}" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'backoffice:users' %}" aria-expanded="false">
                                 <img src="{% static 'img/backoffice/ic-users.png' %}" alt="">
                                 <span class="hide-menu">Usuarios</span>
                             </a>
                         </li>
-                        
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
-        <!-- End Sidebar scroll-->
+            <!-- End Sidebar scroll-->
         </aside>
-
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -231,7 +200,7 @@
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            <div class="page-breadcrumb">
+             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
                         <h4 class="page_title">{{ title|default:"Caterra" }}</h4>
@@ -246,20 +215,22 @@
                     </div>
                 </div>
             </div>
-
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
             <main id="content">
-                <div class="content-container">
+                <div class="container-fluid">
                     {% block content %}
                     {% endblock content %}
-                </div>
-                <div>
-                    {% block contentU %}
-                    {% endblock contentU %}
                 </div>
             {% block footer_actions %}
             {% endblock footer_actions %}
             </main>
-
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- footer -->
@@ -294,17 +265,18 @@
     <!--Custom JavaScript -->
     <script src="{% static 'dist/js/custom.min.js' %}"></script>
     <!--This page JavaScript -->
-    <script src="{% static 'dist/js/pages/dashboards/dashboard1.js' %}"></script>
+    <!-- <script src="../../dist/js/pages/dashboards/dashboard1.js"></script> -->
     <!-- Charts js Files -->
     <script src="{% static 'assets/libs/flot/excanvas.js' %}"></script>
     <script src="{% static 'assets/libs/flot/jquery.flot.js' %}"></script>
     <script src="{% static 'assets/libs/flot/jquery.flot.pie.js' %}"></script>
     <script src="{% static 'assets/libs/flot/jquery.flot.time.js' %}"></script>
     <script src="{% static 'assets/libs/flot/jquery.flot.stack.js' %}"></script>
-    <script src="{% static 'assets/libs/flot/jquery.flot.pie.js' %}"></script>
+    <script src="{% static 'assets/libs/flot/jquery.flot.crosshair.js' %}"></script>
     <script src="{% static 'assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js' %}"></script>
     <script src="{% static 'dist/js/pages/chart/chart-page-init.js' %}"></script>
     <script src="{% static 'js/bundle.dist.js' %}"></script>
+
     {% block scripts %}
     {% endblock scripts %}
 

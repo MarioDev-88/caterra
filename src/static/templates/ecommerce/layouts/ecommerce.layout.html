@@ -29,6 +29,7 @@
     <link href="{% static 'css/bundle.dist.css' %}" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'css/ecommerce/base.css' %}">
+
     {% block estilos-adicionales %}
         
     {% endblock estilos-adicionales %}
@@ -37,86 +38,89 @@
 </head>
 
 <body>
-    <div class>
     <!-- top header section -->
     <div id="top_header_back">
         <section id="top_header">
 
             <div class="container">
-                <div class="row" style="display: flex; align-items: center;">
-                    <div class="col-md-2">
+                <div class="row topbar" style="display: flex; align-items: center;">
+                    <div class="col-md caterra_info">
                         <p><i class="fas fa-phone-volume"></i> (662) 187 5495</p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4 caterra_info">
                         <p><i class="fas fa-map-marker-alt"></i> Blvd. Jesus García Morales km. 6.5 #335</p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 caterra_info">
                         <p><i class="far fa-envelope"></i> administracion@caterra.mx</p>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md socials">
                         <p>
                             <a href=""><i class="fab fa-facebook-f"></i></a>&nbsp;&nbsp;
                             <a href=""><i class="fab fa-twitter"></i></a>&nbsp;&nbsp;
                             <a href=""><i class="fab fa-instagram"></i></a>
                         </p>
                     </div>
-                    <div class="col-md-2">
-                        <div align="right">
-                            <button type="submit" class="btn"
-                                    style="
-                                        color: #ffffff;
-                                        border-color: #ffffff;
-                                        border-radius: 36px;
-                                        padding-left: 8%;
-                                        padding-right: 8%;
-                                        ">INICIAR SESIÓN</button>
-                        </div>
+                    <div align="right" class="col-md btn-login">
+                        <button class="btnlogin">INICIAR SESIÓN</button>
                     </div>
                 </div>
             </div>
         </section>
     </div>
+
     <!-- end of top header section -->
 
-    {% block content %}{% endblock content %}
+    <div class="content">
+        {% block content %}{% endblock content %}
+    </div>
 
     <!-- footer section -->
     <div id="footer_back">
         <footer class="main-footer">
-            <img class="footer-image" src="{% static 'img/logo-blanco.png' %}" alt="">
-            <ul class="footer-link-list">
-                <h6 class="footer-link-list__title">Volver a</h6>
-                <li class="footer-link-list__item"><a href="">Inicio</a></li>
-                <li class="footer-link-list__item"><a href="">Nosotros</a></li>
-                <li class="footer-link-list__item"><a href="">Productos</a></li>
-                <li class="footer-link-list__item"><a href="">Blog</a></li>
-                <li class="footer-link-list__item"><a href="">Contacto</a></li>
-            </ul>
-            <!-- <ul class="footer-link-list">
-                <h6 class="footer-link-list__title">Ver</h6>
-                <li class="footer-link-list__item"><a href="">Mi usuario</a></li>
-                <li class="footer-link-list__item"><a href="">Mi carrito</a></li>
-            </ul> -->
-            <ul class="footer-link-list">
-                <h6 class="footer-link-list__title">Legal</h6>
-                <li class="footer-link-list__item"><a href="">Terminos y condiciones</a></li>
-                <li class="footer-link-list__item"><a href="">Aviso de privacidad</a></li>
-            </ul>
+            <div class="footerimg">
+                <img class="footer-image" src="{% static 'img/logo-blanco.png' %}" alt="">
+            </div>
             <div class="footer-contact-info">
                 <ul>
-                    <li class="footer-contact-info__item"><a href=""><img src="{% static 'backoffice/img/ic-ph.png' %}"
-                                alt="">(662) 187 5495</a></li>
-                    <li class="footer-contact-info__item"><a href=""><img src="{% static 'backoffice/img/ic-ms.png' %}"
-                                alt="">administracion@caterra.mx</a></li>
+                    <h6 class="footer-link-list__title">CONTÁCTANOS</h6>
+                    <div class="footer-contact-info__item"><span><img src="{% static 'img/ic-44.png' %}"
+                                alt="">Lorem Ipsum #12 Col. Ipsum</span></div>
+                    <div class="footer-contact-info__item"><span><img src="{% static 'img/ic-43.png' %}"
+                                alt="">(662) 187 5495</span></div>
+                    <div class="footer-contact-info__item"><span><img src="{% static 'img/ic-45.png' %}"
+                                alt="">contacto@caterra.com.mx</span></div>
                 </ul>
             </div>
+            <div class="footer-menu">
+                <ul class="footer-link-list">
+                    <li class="footer-link-list__item"><a href="">Inicio</a></li>
+                    <li class="footer-link-list__item"><a href="">Nosotros</a></li>
+                    <li class="footer-link-list__item"><a href="">Propiedades</a></li>
+                    <li class="footer-link-list__item"><a href="">Agentes</a></li>
+                    <li class="footer-link-list__item"><a href="">Blog</a></li>
+                    <li class="footer-link-list__item"><a href="">Contacto</a></li>
+                </ul>
+            </div>
+            <ul class="footer-link-list">
+                <li class="footer-link-list__item"><a href="">Iniciar Sesión</a></li>
+                <li class="footer-link-list__item"><a href="">Terminos y condiciones</a></li>
+                <li class="footer-link-list__item"><a href="">Aviso de privacidad</a></li>
+
+                <div class="socials" style="margin-top: 2em;">
+                    <a href="#"><img src="{% static 'img/ic-49.png' %}"></a><a href="#"><img src="{% static 'img/ic-50.png' %}"></a>
+                    <a href="#"><img src="{% static 'img/ic-51.png' %}"></a>
+                </div>
+                
+
+            </ul>
+            
         </footer>
     </div>
     <!-- end of footer section -->
     <!-- bottom footer -->
     <div id="footer_bottom_back">
-        <section class="footer-bottom">
-            <p>© Todos los derechos reservados 2021. <a href="piticmkt.com">Pitic Software Development</a></p>
+        <section class="footer-bottom" style="padding-right: 2%;">
+            <p>© TODOS LOS DERECHOS RESERVADOS 2021. <a href="piticmkt.com">PITIC SOFTWARE DEVELOPMENT</a></p>
         </section>
     </div>
     <!-- end bottom footer -->
@@ -256,6 +260,7 @@
 
     <script src="{% static 'js/bundle.dist.js' %}"></script>
 
+    <!--sticky header -->
 </body>
 
 </html>

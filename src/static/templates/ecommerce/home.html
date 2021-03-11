@@ -1,50 +1,44 @@
 {% extends 'ecommerce/layouts/ecommerce.layout.html' %}
 {% load static %}
-{% load mathfilters %}
 
 
 {% block estilos-adicionales %}
 <link rel="stylesheet" href="{% static 'css/ecommerce/home.css' %}">
 <style>
-
-    .img-container{
+    .img-container {
         height: 400px;
         width: 380px;
     }
 
-    .img-containter img{
+    .img-containter img {
         height: 100%;
         width: auto;
     }
 
-    .texto{
+    .texto {
         height: 80px;
     }
 </style>
 {% endblock estilos-adicionales %}
 
-
 {% block content %}
-
+{% include './includes/nav.html' %}
 <!-- slider section -->
 <div id="slider_back">
     <section class="slider">
-                <ul class="sliders">
+        <ul class="sliders">
 
-                    {% for slider in sliders %}
-                    <li class="glide__slide main-slider__item">
-                        <img src="{{ slider.image.url }}" alt="">
-                        <div class="main-slider__content">
-                            <h2 class="main-slider__content__title">{{ slider.title}}</h2>
-                            <a href="{{ slider.url }}" class="main-slider__content__action btn btn-success text-xs">Ver más</a>
-                        </div>
-                    </li>
-                    {% endfor %}
+            {% for slider in sliders %}
+            <li class="glide__slide main-slider__item">
+                <img src="{{ slider.image.url }}" alt="">
+                <div class="main-slider__content">
+                    <h2 class="main-slider__content__title">{{ slider.title}}</h2>
+                    <a href="{{ slider.url }}" class="main-slider__content__action btn btn-success text-xs">Ver más</a>
+                </div>
+            </li>
+            {% endfor %}
 
-                </ul>
-
-            {% include './includes/nav.html' %}
-
+        </ul>
     </section>
 </div>
 <!-- end of slider section -->
@@ -121,8 +115,8 @@
 <!-- end of video section -->
 
 <!-- map -->
-<div class="container-fluid" align="center" style="margin-bottom: -3%;">
-    <img src="{% static 'ecommerce/img/mapa.png' %}">
+<div class="container-fluid" style="margin-bottom: -3%; align:center; background-color:#ececec;">
+    <img src="{% static 'ecommerce/img/mapa.png' %}" class="mapimg">
 </div>
 <!-- end map -->
 
@@ -236,10 +230,12 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="number" placeholder="Desde" class="form-control" name="precio-desde" id="precio-desde">
+                                <input type="number" placeholder="Desde" class="form-control" name="precio-desde"
+                                    id="precio-desde">
                             </div>
                             <div class="col-md-6">
-                                <input type="number" placeholder="Hasta" class="form-control" name="precio-hasta" id="precio-hasta">
+                                <input type="number" placeholder="Hasta" class="form-control" name="precio-hasta"
+                                    id="precio-hasta">
                             </div>
                         </div>
                     </div>
@@ -254,12 +250,11 @@
                     </div>
                     <br>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 prop_form">
                             <button type="reset" class="btn btn-block clear-button">LIMPIAR</button>
                         </div>
-                        <div class="col-md-6">
-                            <button type="submit" class="btn btn-block"
-                        style="
+                        <div class="col-md-6 prop_form">
+                            <button type="submit" class="btn btn-block" style="
                             background-color: #486600;
                             border-radius: 36px;
                             padding-left: 2%;
@@ -275,103 +270,119 @@
 <!-- end formulario index -->
 
 <!-- logo-texto -->
-<div align="center">
-    <div class="container row">
-        <div class="col-md-4">
-            <img src="{% static 'img/logo-negro.png' %}">
+<div class="container" align="center" style="padding: 0 5% 0 5%;">
+    <div class="row">
+        <div class="col-md-4" style="float:left;">
+            <img src="{% static 'img/logo-negro.png' %}" width="80%" style="margin-bottom: 1.5em;">
         </div>
-        <div class="col-md-8" style="padding-left: 5%;">
+        <div class="col-md-8" style="padding-left: 5%; float:left;">
             <p style="text-align: justify;">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet risus nec elit lacinia accumsan ultricies id dolor. Nam pulvinar ante massa, a efficitur risus elementum at. Proin egestas facilisis efficitur. Suspendisse nisl nibh, convallis id facilisis vel, placerat ac urna. Nulla eu leo lectus. Praesent consequat augue purus, ac congue justo fringilla ut. Sed sed velit diam. Donec nisi metus, placerat nec dolor accumsan, rutrum fermentum lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet risus nec elit lacinia accumsan ultricies id dolor. Nam pulvinar ante massa, a efficitur risus elementum at. Proin egestas facilisis efficitur. Suspendisse nisl nibh, convallis id facilisis vel, placerat ac urna. Nulla eu leo lectus. Praesent consequat augue purus, ac congue justo fringilla ut. Sed sed velit diam. Donec nisi metus, placerat nec dolor accumsan, rutrum fermentum lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet risus nec elit lacinia accumsan ultricies id dolor. 
+                Nam pulvinar ante massa, a efficitur risus elementum at. Proin egestas facilisis efficitur. Suspendisse nisl nibh, convallis id facilisis vel, placerat ac urna. 
+                Nulla eu leo lectus. Praesent consequat augue purus, ac congue justo fringilla ut. Sed sed velit diam. Donec nisi metus, placerat nec dolor accumsan, rutrum fermentum lacus. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.Proin egestas facilisis efficitur. Suspendisse nisl nibh, convallis id facilisis vel, placerat ac urna. 
             </p>
+            <div align="left" style="margin-top: 1%; margin-top: 6%;">
+                <button type="submit" class="btn"
+                style="
+                    text-align:left;
+                    background-color: #486600;
+                    border-radius: 36px;
+                    padding-left: 5%;
+                    padding-right: 5%;
+                    ">CONOCE MÁS</button>
+            </div>
         </div>
-    </div>
-    <div align="center" style="margin-top: 1%;">
-        <button type="submit" class="btn"
-            style="
-                background-color: #486600;
-                border-radius: 36px;
-                padding-left: 2%;
-                padding-right: 2%;
-                ">VER MÁS</button>
     </div>
 </div>
 <!-- end logo-texto -->
 
 <!-- Propiedades -->
-
-<div class="container agentes" style="margin-top: 5%; margin-bottom: 5%;">
-    <h1>PROPIEDADES</h1>
-    <div class="row">
-        
-        {% for propiedad in propiedades %}
-        <div class="col-md-4 property-card">
-            <img class="img-responsive" src="{{propiedad.imagen.url}}">
-            <div style="background-color: #f1f1f1; padding: 3%;">
-                <h1 style="font-size: 20pt;">{{propiedad.nombre}}</h1>
-                <p style="text-align: justify;">{{propiedad.direccion}}</p>
-                <p style="color: #486600">${{propiedad.precio}}</p>
-                <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i class="fas fa-bath"></i>&nbsp;{{propiedad.banos}}&nbsp;&nbsp;&nbsp;<i class="fas fa-th-large"></i> {{propiedad.construccion}} m2</p>
-                <div class="row">
-                    <div class="col-md-4">
-                        <p>Hace 3 Meses</p>
-                    </div>
-                    <div class="col-md-4">
-                        <p><i class="far fa-clone"></i> Comparar</p>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="{% url  'ecommerce:property_detail' propiedad.id %}" class="btn clear-button">DETALLES</a>
+<div class="container prop-cont" style="padding: 0% 3% 0% 3%;">
+    <div class="container">
+        <h1 class="h1_title">PROPIEDADES</h1>
+        <div class="row">
+            {% for propiedad in propiedades %}
+            <div class="col-md-4 col-prop" style="padding:0px !important;">
+                <div class="col-md-12" style="padding-right:1%; padding-left:1%;">
+                    <img class="img-responsive" src="{{propiedad.imagen.url}}">
+                    <div class="col-md-12 prop-style" style="background-color: #f1f1f1; padding: 1em 1em;">
+                        <h1 style="font-size: 20pt;">{{propiedad.nombre}}</h1>
+                        <p style="text-align: justify;">{{propiedad.direccion}}</p>
+                        <p style="color: #486600">${{propiedad.precio}}</p>
+                        <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i
+                            class="fas fa-bath"></i>&nbsp;{{propiedad.banos}}&nbsp;&nbsp;&nbsp;<i
+                            class="fas fa-th-large"></i> {{propiedad.construccion}} m2
+                        </p>
+                        <div class="row prop-bottom" style="padding-top:1em;">
+                            <div class="col" style="font-size: 10px; padding-top: 2%;">
+                                <!-- <p>Hace 3 Meses</p> -->
+                                <!-- <p>{{propiedad.created_at|timesince}}</p> -->
+                                <p>Hace 3 meses</p>
+                            </div>
+                            <div class="col" style="padding-top: 2%;">
+                                <p style="font-size: 10px;"><i class="far fa-clone"></i> COMPARAR</p>
+                            </div>
+                            <div class="col">
+                                <button onClick="location.href='{% url  'ecommerce:property_detail' propiedad.id %}'"
+                                    class="prop-button">DETALLES &#129122;</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-            
+    </div>    
+    <div class="row" style="display: flex; justify-content: center; margin-top: 2em;">
+        <button class="btn" style="
+                font-weight: normal;
+                text-align:left;
+                background-color: #486600;
+                border-radius: 36px;
+                padding-left: 5%;
+                padding-right: 5%;
+                ">VER MÁS</button>
     </div>
-
 </div>
 
 <!-- end Propiedades -->
 
 <!-- Agentes -->
-<div class="agentes" style="background: url('static/ecommerce/img/patron-agentes.png'); background-size: cover;">
-    <h1>CONOCE A NUESTROS AGENTES</h1>
+<div class="container" style="background: url('static/ecommerce/img/patron-agentes.png'); background-size: cover; padding: 1% 3% 1% 3%; margin:0px;">
     <div class="container">
-    </div>
-
-    <div class="container" style="margin-top: 5%; margin-bottom: 5%;">
-        <div class="row" style="margin-top: 3%; margin-bottom: 3%;">
-            
+        <h1 class="h1_title">CONOCE A NUESTROS AGENTES</h1>
+        <div class="row">
             {% for agente in agentes %}
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="col-lg-12 d-flex justify-content-center">
-                        <div class="img-container d-flex justify-content-center">
-                            <img src="{{agente.foto.url}}">
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
+            <div class="col-md-4 col-agnt" style="padding:0px !important;">
+                <div class="col-md-12" style="padding-right:1%; padding-left:1%;">
+                    <img src="{{agente.foto.url}}">
+                    <div class="col-md-12" style="background-color: white;">
                         <br>
-                        <h1 style="font-size: 20pt;">{{agente.user|title}}</h1>
+                        <h1 class="agente-nombre">{{agente.user|title}}</h1>
                         <br>
-                        <div class="texto">
-                            <p style="text-align: justify;">{{agente.texto|truncatechars:210}}</p>
-                        </div>
+                        <p style="text-align: justify;">{{agente.texto|truncatechars:210}}</p>
                         <br>
-                        <p><span style="color: #486600"><i class="far fa-envelope"></i></span>    {{agente.user.email}}</p>
-                        <div align="right" style="margin: 3% 0;">
-                            <a href="{% url 'ecommerce:agent_profile' agente.id %}" class="btn clear-button"> VER PERIL</a>
+                        <p><span style="color: #486600"><i class="far fa-envelope"></i></span> {{agente.user.email}}</p>
+                        <div class="col-md-5 agnt-col" style="margin-left: auto; margin-right: 0; padding: 5%;">
+                            <button onClick="location.href='{% url 'ecommerce:agent_profile' agente.id %}'"
+                                class="prop-button agnt-button">VER PERFIL</button>
                         </div>
                     </div>
                 </div>
-            </div>               
+            </div>
             {% endfor %}
-                
+
         </div>
 
         <div align="center" style="margin-top: 1%;">
-            <a href="{% url 'ecommerce:agents' %}" class="big-button">CONOCE A NUESTROS AGENTES <strong>AQUí</strong></a>
+            <button onClick="location.href='{% url 'ecommerce:agents' %}'" class="btn-agente">
+                CONOCE A NUESTROS AGENTES <br><strong><span class="bigspan">¡AQUÍ!</span></strong>
+            </button>
+            <!-- <a href="{% url 'ecommerce:agents' %}" class="big-button">
+                <span style="font-size: 18px;">A NUESTROS AGENTES</span>
+                <br>
+                <span><strong>¡AQUÍ!</strong></span></a> -->
         </div>
 
     </div>
@@ -381,9 +392,9 @@
 {% endblock content %}
 
 {% block scripts %}
-    <script>
-        $(document).ready(function() {
-            $('.sliders').slick();
-        })
-    </script>
+<script>
+    $(document).ready(function () {
+        $('.sliders').slick();
+    })
+</script>
 {% endblock scripts %}
