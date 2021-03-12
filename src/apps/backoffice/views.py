@@ -157,48 +157,52 @@ class UserListView(ListView):
         context["title"] = "Usuarios"
         context["subtitle"] = "Usuarios"
 
-        return context
-
-
-@method_decorator(allowed_users(allowed_roles=["ADMIN", "AGENTE", "EDITOR"]), name="dispatch")
-class EditorUserListView(ListView):
-    model = Editor
-    template_name = "backoffice/users/list.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(EditorUserListView, self).get_context_data(**kwargs)
-        context["title"] = "Usuarios editores"
-        context["subtitle"] = "Usuarios editores"
+        context["editores"] = Editor.objects.all()
+        context["agentes"] = Agente.objects.all()
+        context["administradores"] = Admin.objects.all()
 
         return context
 
 
-@method_decorator(allowed_users(allowed_roles=["ADMIN", "AGENTE", "EDITOR"]), name="dispatch")
-class AgenteUserListView(ListView):
-    model = Agente
-    template_name = "backoffice/users/list.html"
+# @method_decorator(allowed_users(allowed_roles=["ADMIN", "AGENTE", "EDITOR"]), name="dispatch")
+# class EditorUserListView(ListView):
+#     model = Editor
+#     template_name = "backoffice/users/list.html"
 
-    def get_context_data(self, **kwargs):
-        context = super(AgenteUserListView, self).get_context_data(**kwargs)
-        context["title"] = "Usuarios agentes"
-        context["subtitle"] = "Usuarios agemtes"
+#     def get_context_data(self, **kwargs):
+#         context = super(EditorUserListView, self).get_context_data(**kwargs)
+#         context["title"] = "Usuarios editores"
+#         context["subtitle"] = "Usuarios editores"
 
-        return context
+#         return context
 
-@method_decorator(allowed_users(allowed_roles=["ADMIN", "AGENTE", "EDITOR"]), name="dispatch")
-class AdminListView(ListView):
-    template_name = "backoffice/users/list.html"
-    model = Admin
-    login_url = reverse_lazy("users:login")
 
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
+# @method_decorator(allowed_users(allowed_roles=["ADMIN", "AGENTE", "EDITOR"]), name="dispatch")
+# class AgenteUserListView(ListView):
+#     model = Agente
+#     template_name = "backoffice/users/list.html"
 
-    def get_context_data(self, **kwargs):
-        context = super(AdminListView, self).get_context_data(**kwargs)
-        context["title"] = "Usuarios administradores"
+#     def get_context_data(self, **kwargs):
+#         context = super(AgenteUserListView, self).get_context_data(**kwargs)
+#         context["title"] = "Usuarios agentes"
+#         context["subtitle"] = "Usuarios agemtes"
 
-        return context
+#         return context
+
+# @method_decorator(allowed_users(allowed_roles=["ADMIN", "AGENTE", "EDITOR"]), name="dispatch")
+# class AdminListView(ListView):
+#     template_name = "backoffice/users/list.html"
+#     model = Admin
+#     login_url = reverse_lazy("users:login")
+
+#     def dispatch(self, request, *args, **kwargs):
+#         return super().dispatch(request, *args, **kwargs)
+
+#     def get_context_data(self, **kwargs):
+#         context = super(AdminListView, self).get_context_data(**kwargs)
+#         context["title"] = "Usuarios administradores"
+
+#         return context
 
 
 @method_decorator(allowed_users(allowed_roles=["ADMIN", "AGENTE", "EDITOR"]), name="dispatch")
@@ -230,7 +234,7 @@ def register_user(request):
             agente.save()
 
 
-            return redirect("backoffice:users_editors")
+            return redirect("backoffice:users")
     
     else:
         form = CustomUserCreationForm()
@@ -245,7 +249,7 @@ class UserCreateView(CreateView):
     model = User
     form_class = CustomUserCreationForm
     agente_form = AgenteForm
-    success_url = reverse_lazy("backoffice:users_editors")
+    success_url = reverse_lazy("backoffice:users")
 
     def get_context_data(self, **kwargs):
         context = super(UserCreateView, self).get_context_data(**kwargs)
@@ -261,7 +265,7 @@ class UserUpdateView(UpdateView):
     template_name = "backoffice/users/update.html"
     model = User
     form_class = CustomUserChangeForm
-    success_url = reverse_lazy("backoffice:users_editors")
+    success_url = reverse_lazy("backoffice:users")
 
     def get_context_data(self, **kwargs):
         context = super(UserUpdateView, self).get_context_data(**kwargs)
@@ -274,7 +278,7 @@ class UserUpdateView(UpdateView):
 class UserDeleteView(DeleteView):
     template_name = "backoffice/users/user-confirm-delete.html"
     model = User
-    success_url = reverse_lazy("backoffice:users_editors")
+    success_url = reverse_lazy("backoffice:users")
 
 
 

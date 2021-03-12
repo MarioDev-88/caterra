@@ -1,24 +1,92 @@
 {% load static %}
-<nav class="main-nav">
-    <div class="main-nav__logo">
-        <a href="{% url 'ecommerce:home' %}">
-            <img src="{% static 'img/logo-negro.png' %}" class="img-responsive" style="width: 30%;" alt="CaterraLogo">
-        </a>
-    </div>
-    <ul class="main-nav__menu">
-        <li class="main-nav__item "><a class="{% if request.path == '/' %}active {% endif %}"
-                href="{% url 'ecommerce:home' %}">Inicio</a></li>
-        <li class="main-nav__item"><a class="{% if request.path|slice:'10' == '/acerca-de' %}active {% endif %}"
-                href="{% url 'ecommerce:about' %}">Nosotros</a></li>
-        <li class="main-nav__item"><a class="{% if request.path|slice:'12' == '/propiedades' %}active {% endif %}"
-                href="{% url 'ecommerce:properties' %}">Propiedades</a></li>
-        <!-- <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/productos" %}active {% endif %}"
+
+<div class="cat_main_nav" id="cat_main_nav">
+        <div class="main-nav" style="display: flex; align-items: center; justify-content: center;">
+                <div class="cat_main_nav-logo" align="left">
+                        <a href="{% url 'ecommerce:home' %}">
+                                <img src="{% static 'img/logo-blanco.png' %}" class="" alt="CaterraLogo">
+                        </a>
+                </div>
+                <ul class="main-nav__menu">
+                        <li class="main-nav__item "><a class="{% if request.path == '/' %}active{% endif %}"
+                                        href="{% url 'ecommerce:home' %}">Inicio</a></li>
+                        <li class="main-nav__item"><a
+                                        class="{% if request.path|slice:'10' == '/acerca-de' %}active {% endif %}"
+                                        href="{% url 'ecommerce:about' %}">Nosotros</a></li>
+                        <li class="main-nav__item"><a
+                                        class="{% if request.path|slice:'12' == '/propiedades' %}active {% endif %}"
+                                        href="{% url 'ecommerce:properties' %}">Propiedades</a></li>
+                        <!-- <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/productos" %}active {% endif %}"
+                                                href="{% url "ecommerce:products" %}">Productos</a></li> -->
+                        <li class="main-nav__item"><a
+                                        class="{% if request.path|slice:'8' == '/agentes' %}active {% endif %}"
+                                        href="{% url 'ecommerce:agents' %}">Agentes</a></li>
+                        <li class="main-nav__item"><a
+                                        class="{% if request.path|slice:'5' == '/blog' %}active {% endif %}"
+                                        href="{% url 'ecommerce:posts_list' %}">Blog</a></li>
+                        <li class="main-nav__item"><a
+                                        class="{% if request.path|slice:'9' == '/contacto' %}active {% endif %}"
+                                        href="{% url 'ecommerce:contact' %}">Contacto</a></li>
+                        <!-- <a href="#home" class="active">Home</a>
+                                                <a href="#news">News</a>
+                                                <a href="#contact">Contact</a>
+                                                <a href="javascript:void(0);" style="font-size:15px;" class="icon"
+                                                        onclick="navmobile()">&#9776;</a> -->
+                </ul>
+        </div>
+
+</div>
+
+{% block scripts %}
+<script>
+        window.onscroll = function () { myFunction() };
+
+        var header = document.getElementById("cat_main_nav");
+        var sticky = header.offsetTop;
+
+        function myFunction() {
+                if (window.pageYOffset > sticky) {
+                        header.classList.add("sticky_nav");
+                } else {
+                        header.classList.remove("sticky_nav");
+                }
+        }
+</script>
+<script>
+        function navmobile() {
+                var x = document.getElementById("cat_main_nav");
+                if (x.className === "cat_main_nav") {
+                        x.className += " responsive";
+                } else {
+                        x.className = "cat_main_nav";
+                }
+        }
+</script>
+{% endblock scripts %}
+
+<!-- <nav class="main-nav">
+        <div class="main-nav__logo">
+                <a href="{% url 'ecommerce:home' %}">
+                        <img src="{% static 'img/logo-negro.png' %}" class="img-responsive" style="width: 30%;"
+                                alt="CaterraLogo">
+                </a>
+        </div>
+
+        <ul class="main-nav__menu">
+                <li class="main-nav__item "><a class="{% if request.path == '/' %}active {% endif %}"
+                                href="{% url 'ecommerce:home' %}">Inicio</a></li>
+                <li class="main-nav__item"><a class="{% if request.path|slice:'10' == '/acerca-de' %}active {% endif %}"
+                                href="{% url 'ecommerce:about' %}">Nosotros</a></li>
+                <li class="main-nav__item"><a
+                                class="{% if request.path|slice:'12' == '/propiedades' %}active {% endif %}"
+                                href="{% url 'ecommerce:properties' %}">Propiedades</a></li> -->
+<!-- <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/productos" %}active {% endif %}"
                 href="{% url "ecommerce:products" %}">Productos</a></li> -->
-        <li class="main-nav__item"><a class="{% if request.path|slice:'8' == '/agentes' %}active {% endif %}"
-                href="{% url 'ecommerce:agents' %}">Agentes</a></li>
-        <li class="main-nav__item"><a class="{% if request.path|slice:'5' == '/blog' %}active {% endif %}"
-                href="{% url 'ecommerce:posts_list' %}">Blog</a></li>
-        <li class="main-nav__item"><a class="{% if request.path|slice:'9' == '/contacto' %}active {% endif %}"
-                href="{% url 'ecommerce:contact' %}">Contacto</a></li>
-    </ul>
-</nav>
+<!-- <li class="main-nav__item"><a class="{% if request.path|slice:'8' == '/agentes' %}active {% endif %}"
+                                href="{% url 'ecommerce:agents' %}">Agentes</a></li>
+                <li class="main-nav__item"><a class="{% if request.path|slice:'5' == '/blog' %}active {% endif %}"
+                                href="{% url 'ecommerce:posts_list' %}">Blog</a></li>
+                <li class="main-nav__item"><a class="{% if request.path|slice:'9' == '/contacto' %}active {% endif %}"
+                                href="{% url 'ecommerce:contact' %}">Contacto</a></li>
+        </ul>
+</nav>  -->

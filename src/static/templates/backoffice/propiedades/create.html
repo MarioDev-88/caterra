@@ -20,7 +20,6 @@
                     <h6 class="card-subtitle"></h6>
                     <form id="example-form" method="POST" class="m-t-40" enctype="multipart/form-data">
                         {% csrf_token %}
-
                         {% if form.errors %}
                         {% for key,value in form.errors.items %}
                         <div class="login-form__alert" role="alert">
@@ -300,7 +299,6 @@
         <!-- ============================================================== -->
     </div>
 {% endblock content %}
-
 
 {% block scripts %}
 <!-- this page js -->

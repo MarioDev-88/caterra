@@ -1,11 +1,11 @@
 import uuid
-
 from django.conf import settings
 from django.db import models
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
 from tinymce.models import HTMLField
 from apps.users.models import Agente
+
 
 
 class Slider(models.Model):
@@ -148,6 +148,8 @@ class Propiedad(models.Model):
     estado_conservacion = models.CharField('Estado de conservación',max_length=20, choices=ESTADO_CONSERVACION, null=True, blank=True)
     observaciones = models.CharField(max_length=500, null=True, blank=True)
     instalaciones_especiales = models.CharField(max_length=500, null=True, blank=True)
+
+    created_at = models.DateField("Fecha de creación", auto_now_add=True)
 
     #informacion propietario
     prop_nombre = models.CharField(max_length=120, null=True, blank=True)
