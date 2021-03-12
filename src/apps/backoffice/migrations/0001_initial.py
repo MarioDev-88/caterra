@@ -111,10 +111,7 @@ class Migration(migrations.Migration):
                 ('prop_cita', models.CharField(blank=True, max_length=120, null=True)),
                 ('prop_llaves', models.CharField(blank=True, max_length=120, null=True)),
                 ('prop_horario', models.CharField(blank=True, max_length=120, null=True)),
-<<<<<<< HEAD
-=======
                 ('agente', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='users.Agente')),
->>>>>>> bb3c7fee9cc3aa2a1c03cd7f8564e2b49249c7fd
                 ('imagen', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='backoffice.Image')),
             ],
         ),
