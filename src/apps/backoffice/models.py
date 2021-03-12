@@ -138,7 +138,7 @@ class Propiedad(models.Model):
     pisos = models.IntegerField(null=True, blank=True)
     canceleria = models.IntegerField(null=True, blank=True)
     garage_descubierto = models.IntegerField(null=True, blank=True)
-    garege_cubierto = models.IntegerField(null=True, blank=True)
+    garage_cubierto = models.IntegerField(null=True, blank=True)
     estilo = models.CharField(max_length=100, null=True, blank=True)
     niveles = models.IntegerField(null=True, blank=True)
     edad = models.IntegerField(null=True, blank=True)

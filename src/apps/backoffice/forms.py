@@ -8,6 +8,12 @@ from apps.users.models import Agente
 class AgenteChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):
         return "%s %s" % (obj.user.first_surname, obj.user.first_name)
+    
+    widget = forms.Select(
+        attrs={
+            'class': 'select2 form-control custom-select',
+        }
+    )
 
 
 class SliderForm(forms.ModelForm):
@@ -29,21 +35,33 @@ class PostForm(forms.ModelForm):
 
 class PropiedadForm(forms.ModelForm):
 
-    agente = AgenteChoiceField(queryset = Agente.objects.all())        
+    agente = AgenteChoiceField(queryset = Agente.objects.all(), empty_label="Selecciona un agente* ")
 
+    def __init__(self, *args, **kwargs):
+        super(PropiedadForm, self).__init__(*args, **kwargs)
+        self.fields['agente'].required = False
+       
     class Meta:
         model = Propiedad
         fields = ('__all__')
 
         widgets = {
-            'nombre': forms.TextInput(
-                attrs={                
-                    'placeholder' : 'Nombre de la propiedad *',                
+            'imagen': forms.Select(
+                attrs={ 
+                    'class' : 'select2 form-control custom-select',
+                    'id' : 'agente',
                 }
             ),
             'agente': forms.Select(
                 attrs={ 
                     'class' : 'select2 form-control custom-select',
+                    'id' : 'agente',
+                }
+            ),
+            'nombre': forms.TextInput(
+                attrs={                
+                    'placeholder' : 'Nombre de la propiedad *', 
+                    'id': 'nombre',               
                 }
             ),
             'tipo_inmueble': forms.Select(

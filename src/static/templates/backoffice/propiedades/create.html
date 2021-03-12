@@ -42,11 +42,10 @@
                             <h3>Propiedad</h3>
                             <section>
                                 
-                                <div class="form-group">
-                                    <label>{{form.agente.label}}</label>
-                                    {{form.agente}}
-                                </div>
                                 {% if user.type != 'AGENTE' %}
+                                    <div class="form-group">
+                                        {{form.agente}}
+                                    </div>
                                 {% endif %}
                                     
                                 <div class="form-group">
@@ -219,8 +218,8 @@
                                         {{form.garage_descubierto}}
                                     </div>
                                     <div class="col-sm-4 form-group">
-                                        {{form.garege_cubierto.label}}:
-                                        {{form.garege_cubierto}}
+                                        {{form.garage_cubierto.label}}:
+                                        {{form.garage_cubierto}}
                                     </div>
                                     <div class="col-sm-4 form-group">
                                         {{form.estilo.label}}:
@@ -330,6 +329,7 @@ form.validate({
     }
 });
 
+$('#id_agente').prop('required', true);
 
 
 $('#agregar_imagen').on('click', function(){

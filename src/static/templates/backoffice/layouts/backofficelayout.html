@@ -172,42 +172,39 @@
                                 </h5>
                             </div>
                         </section>
-                        <li class="sidebar-item {% if request.path|slice:':22' == '/administracion/slider' %} bo__main-nav__item--active {% endif %}">
+                        <li class="sidebar-item {% if request.path|slice:':22' == '/administracion/slider' %}selected{% endif %}">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'backoffice:sliders' %}" aria-expanded="false">
                                 <img src="{% static 'img/backoffice/ic-slider.png' %}" alt="">
                                 <span class="hide-menu"> Slider</span>
                             </a>
                         </li>
-                        <li class="sidebar-item {% if request.path|slice:':21' == '/administracion/video' %}
-                        bo__main-nav__item--active {% endif %}">
+                        <li class="sidebar-item {% if request.path|slice:':21' == '/administracion/video' %}selected{% endif %}">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'backoffice:video' %}" aria-expanded="false">
                                 <img src="{% static 'img/backoffice/ic-video.png' %}" alt="">
                                 <span class="hide-menu"> Video</span>
                             </a>
                         </li>
-                        <li class="sidebar-item {% if request.path|slice:':23' == '/administracion/agentes' %}
-                        bo__main-nav__item--active {% endif %}">
+                        <li class="sidebar-item {% if request.path|slice:':29' == '/administracion/agentes/crear' or request.path|slice:':23' == '/administracion/agentes' %}
+                        selected{% endif %}">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'backoffice:agentes' %}" aria-expanded="false">
                                 <img src="{% static 'img/backoffice/ic-agente.png' %}" alt="">
                                 <span class="hide-menu"> Agentes</span>
                             </a>
                         </li>
-                        <li class="sidebar-item {% if request.path|slice:':27' == '/administracion/propiedades' %}
-                        bo__main-nav__item--active {% endif %}">
+                        <li class="sidebar-item {% if request.path|slice:':27' == '/administracion/propiedades' or request.path|slice:':33' == '/administracion/propiedades/crear'%}
+                        selected {% endif %}">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'backoffice:propiedades' %}" aria-expanded="false">
                                 <img src="{% static 'img/backoffice/ic-propiedades.png' %}" alt="">
                                 <span class="hide-menu"> Propiedades</span>
                             </a>
                         </li>
-                        <li class="sidebar-item {% if request.path|slice:':21' == '/administracion/posts' %}
-                        bo__main-nav__item--active {% endif %}">
+                        <li class="sidebar-item {% if request.path|slice:':21' == '/administracion/posts' %}selected{% endif %}">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'backoffice:posts' %}" aria-expanded="false">
                                 <img src="{% static 'img/backoffice/ic-blog.png' %}" alt="">
                                 <span class="hide-menu"> Blog</span>
                             </a>
                         </li>
-                        <li class="sidebar-item {% if request.path|slice:':24' == '/administracion/usuarios' %}
-                        bo__main-nav__item--active {% endif %}">
+                        <li class="sidebar-item {% if request.path|slice:':24' == '/administracion/usuarios' %}selected{% endif %}">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'backoffice:users_editors' %}" aria-expanded="false">
                                 <img src="{% static 'img/backoffice/ic-users.png' %}" alt="">
                                 <span class="hide-menu"> Usuarios</span>
