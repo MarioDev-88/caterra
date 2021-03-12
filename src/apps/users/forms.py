@@ -203,13 +203,13 @@ class AgenteUpdateForm(forms.ModelForm):
                 ),
             }
 
-            def save(self, user, commit=True):
-                instance = super(AgenteUpdateForm, self).save(commit=False)
-                print('***************************')
-                print(instance)
-                print(instance.user)
-                if not self.instance.pk:
-                    if commit:
-                        instance.user = user
-                        instance.save()
-                return instance
+            # def save(self, user, commit=True):
+            #     instance = super(AgenteUpdateForm, self).save(commit=False)
+            #     print('***************************')
+            #     print(instance)
+            #     print(instance.user)
+            #     if not self.instance.pk:
+            #         if commit:
+            #             instance.user = user
+            #             instance.save()
+            #     return instance

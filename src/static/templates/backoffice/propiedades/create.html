@@ -2,253 +2,345 @@
 {% load static %}
 
 {% block estilos-adicionales %}
-<link href="{% static 'assets/libs/jquery-steps/jquery.steps.css' %}" rel="stylesheet">
-<link href="{% static 'assets/libs/jquery-steps/steps.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'assets/libs/jquery-steps/jquery.steps.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/libs/jquery-steps/steps.css' %}" rel="stylesheet">
+    <style>
+        input::placeholder{
+            color: grey;
+        }
+    </style>
 {% endblock estilos-adicionales %}
 
 {% block content %}
+    <div id="main-wrapper">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body wizard-content">
+                    <h6 class="card-subtitle"></h6>
+                    <form id="example-form" method="POST" class="m-t-40" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% if form.errors %}
+                        {% for key,value in form.errors.items %}
+                        <div class="login-form__alert" role="alert">
+                            <p>{{key}}: {{ value }}</p>
+                        </div>
+                    
+                        {% endfor %}
+                        {% endif %}
+                    
+                        {% if messages %}
+                        <ul class="login-form__alert" role="alert">
+                            {% for message in messages %}
+                            <li>{{message}}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
 
-<!-- <form class="slider-form" action="{% url 'backoffice:propiedades_create' %}" method="POST" enctype="multipart/form-data"> -->
-
-    <div class="card">
-        <div class="card-body wizard-content">
-            <!-- <h4 class="card-title"></h4> -->
-            <!-- <h6 class="card-subtitle"></h6> -->
-            <form id="example-form" action="{% url 'backoffice:propiedades_create' %}" method="POST" enctype="multipart/form-data" class="m-t-40">
-                {% csrf_token %}
-
-                {% if form.errors %}
-                {% for key,value in form.errors.items %}
-                <div class="login-form__alert" role="alert">
-                    <p>{{key}}: {{ value }}</p>
+                        <div>
+                            <h3>Propiedad</h3>
+                            <section>
+                                
+                                <div class="form-group">
+                                    <label>{{form.agente.label}}</label>
+                                    {{form.agente}}
+                                </div>
+                                {% if user.type != 'AGENTE' %}
+                                {% endif %}
+                                    
+                                <div class="form-group">
+                                    {{form.nombre}}
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        <label>{{form.tipo_inmueble.label}} *</label>
+                                        {{form.tipo_inmueble}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label>{{form.tipo_operacion.label}} *</label>
+                                        {{form.tipo_operacion}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{form.direccion}}
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        {{form.colonia}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        {{form.ciudad}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        {{form.estado}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        {{form.cp}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        {{form.entre_calle_1}}
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        {{form.entre_calle_2}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        {{form.clave}}
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        {{form.captada_por}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <div class="input-group">
+                                            {{form.construccion}}
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon">m2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <div class="input-group">
+                                            {{form.terreno}}
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon">m2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <div class="input-group">
+                                            {{form.frente}}
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon">m2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <div class="input-group">
+                                            {{form.fondo}}
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon">m2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-4">
+                                        <div class="input-group">
+                                            {{form.precio}}
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon2">$</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-2">
+                                        {{form.moneda}}
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <div class="input-group">
+                                            {{form.mantenimiento_mensual}}
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon">$</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div id="imagenes">
+                                    <div class="form-group" class="image_propiedad">
+                                        {{image_form.image}}
+                                    </div>
+                                </div>
+                                <!-- <label for="" id='agregar_imagen'>Agregar otra imagen</label> -->
+                                <p>(*) Obligatorio</p>
+                            </section>
+                            <h3>Detalles</h3>
+                            <section>
+                                <div class="row">
+                                    <div class="col-sm-4 form-group">
+                                        {{form.cubiculos.label}}:
+                                        {{form.cubiculos}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.areas_trabajo.label}}:
+                                        {{form.areas_trabajo}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.banos.label}}:
+                                        {{form.banos}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.sala_juntas.label}}:
+                                        {{form.sala_juntas}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.sala_espera.label}}:
+                                        {{form.sala_espera}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.comedor.label}}:
+                                        {{form.comedor}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.lineas_telefonicas.label}}:
+                                        {{form.lineas_telefonicas}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.elevador.label}}:
+                                        {{form.elevador}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.aire_acondicionado.label}}:
+                                        {{form.aire_acondicionado}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.bodega.label}}:
+                                        {{form.bodega}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.pisos.label}}:
+                                        {{form.pisos}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.canceleria.label}}:
+                                        {{form.canceleria}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.garage_descubierto.label}}:
+                                        {{form.garage_descubierto}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.garege_cubierto.label}}:
+                                        {{form.garege_cubierto}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.estilo.label}}:
+                                        {{form.estilo}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.niveles.label}}:
+                                        {{form.niveles}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.edad.label}}:
+                                        {{form.edad}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.topografia.label}}:
+                                        {{form.topografia}}
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        {{form.forma.label}}:
+                                        {{form.forma}}
+                                    </div>
+                                
+                            </section>
+                            <h3>Observaciones</h3>
+                            <section>
+                                <div class="form-group">
+                                    <label for="">
+                                        {{form.estado_conservacion.label}}
+                                    </label>
+                                    {{form.estado_conservacion}}
+                                </div>
+                                <div class="form-group">
+                                    {{form.observaciones}}
+                                </div>
+                                <div class="form-group">
+                                    {{form.instalaciones_especiales}}
+                                </div>
+                            </section>
+                            <h3>Información del propietario</h3>
+                            <section>
+                                <div class="form-group">
+                                    {{form.prop_nombre}}
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        {{form.prop_direccion}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        {{form.prop_colonia}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        {{form.prop_cp}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        {{form.prop_ciudad}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        {{form.prop_telefono}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        {{form.prop_cita}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        {{form.prop_llaves}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        {{form.prop_horario}}
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </form>
                 </div>
-            
-                {% endfor %}
-                {% endif %}
-            
-                {% if messages %}
-                <ul class="login-form__alert" role="alert">
-                    {% for message in messages %}
-                    <li>{{message}}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-                <div>
-                    <h3>Nueva Propiedad</h3>
-                    <section>
-                        <p class="fieldp">
-                            <label>Nombre:</label>
-                            {{form.nombre}}
-                        </p>
-                        <p class="fieldp">
-                            <label>Imagen:</label>
-                            {{form.imagen}}
-                        </p>
-                        <p class="fieldp">
-                            <label>Agente:</label>
-                            {{form.agente}}
-                        </p>
-                        <p class="fieldp">
-                            <label>Inmueble:</label>
-                            {{form.boolean}}
-                            {{form.tipo_inmueble}}
-                        </p>
-                        <p class="fieldp">
-                            <label>Operacion:</label>
-                            {{form.tipo_operacion}}
-                        </p>                            
-                        <p class="fieldp">
-                            <label>Estado de Conservacion:</label>
-                            {{form.estado_conservacion}}
-                        </p>
-                        <p class="fieldp">
-                            <label>Instalaciones Especiales:</label>
-                            {{form.instalaciones_especiales}}
-                        </p>
-
-                    </section>
-                    <h3>Información de Propiedad</h3>
-                    <section>
-                        <p class="fieldp">
-                            <label>Dirección:</label>
-                            {{form.direccion}}
-                        </p>
-                        <div class="row fieldp">
-                            <div class="col-sm">
-                                <label>Colonia:</label>
-                                {{form.colonia}}
-                            </div>
-                            <div class="col-sm"> 
-                                <label>Ciudad/Municipio:</label>
-                                {{form.ciudad}}
-                            </div>
-                        </div>
-                        <div class="row fieldp">
-                            <div class="col-sm">
-                                <label>Estado:</label>
-                                {{form.estado}}
-                            </div>
-                            <div class="col-sm"> 
-                                <label>C.P.:</label>
-                                {{form.cp}}
-                            </div>
-                        </div>
-                        <div class="row fieldp">
-                            <div class="col-sm">
-                                <label>Calle 1:</label>
-                                {{form.entre_calle_1}}
-                            </div>
-                            <div class="col-sm"> 
-                                <label>Calle 2:</label>
-                                {{form.entre_calle_2}}
-                            </div>
-                        </div>
-                        <div class="row fieldp">
-                            <div class="col-sm">
-                                <label>Clave:</label>
-                                {{form.clave}}
-                            </div>
-                            <div class="col-sm"> 
-                                <label>Capatada por:</label>
-                                {{form.captada_por}}
-                            </div>
-                        </div>
-                        <!-- Construccion, terreno, frente y fondo -->
-                        <div class="row fieldp">
-                            <div class="col-sm">
-                                <label>Construcción (m2):</label>
-                                {{form.construccion}}
-                            </div>
-                            <div class="col-sm"> 
-                                <label>Terreno (m2):</label>
-                                {{form.terreno}}
-                            </div>
-                            <div class="col-sm"> 
-                                <label>Frente:</label>
-                                {{form.frente}}
-                            </div>
-                            <div class="col-sm"> 
-                                <label>Fondo:</label>
-                                {{form.fondo}}
-                            </div>
-                        </div>
-                        <!-- Precio, moneda, mantenimiento mensual -->
-                        <div class="row fieldp">
-                            <div class="col-sm">
-                                <label>Precio:</label>
-                                {{form.precio}}
-                            </div>
-                            <div class="col-sm"> 
-                                <label>Moneda:</label>
-                                {{form.moneda}}
-                            </div>
-                            <div class="col-sm"> 
-                                <label>Mantenimiento Mensual:</label>
-                                {{form.mantenimiento_mensual}}
-                            </div>
-                        </div>
-                    </section>
-                    <h3>Características de Propiedad</h3>
-                    <section>
-                        <label>Cubículos:</label>
-                        {{form.cubiculos}}
-                        <label>Áreas de Trabajo:</label>
-                        {{form.areas_trabajo}}
-                        <label>Baños:</label>
-                        {{form.banos}}
-                        <label>Sala de Juntas:</label>
-                        {{form.sala_juntas}}
-                        <label>Sala de Espera:</label>
-                        {{form.sala_espera}}
-                        <label>Comedor:</label>
-                        {{form.comedor}}
-                        <label>Cocineta:</label>
-                        {{form.cocineta}}
-                        <label>Líneas Telefónicas:</label>
-                        {{form.lineas_telefonicas}}
-                        <label>Elevador:</label>
-                        {{form.elevador}}
-                    </section>
-                    <h3>Informacion de propietario</h3>
-                    <section>
-                        <label>Nombre:</label>
-                        {{form.prop_nombre}}
-                        <label>Dirección:</label>
-                        {{form.prop_direccion}}
-                        <!-- colonia cp -->
-                        <div class="row fieldp">
-                            <div class="col-sm">
-                                <label>Colonia:</label>
-                                {{form.prop_colonia}}
-                            </div>
-                            <div class="col-sm"> 
-                                <label>C.P.:</label>
-                                {{form.prop_cp}}
-                            </div>
-                        </div>
-                        <label>Ciudad/Municipio:</label>
-                        {{form.prop_ciudad}}
-
-                        <label>Teléfono:</label>
-                        {{form.prop_telefono}}
-                        <!-- cita y llaves -->
-                        <div class="row fieldp">
-                            <div class="col-sm">
-                                <label>Cita:</label>
-                                {{form.prop_cita}}
-                            </div>
-                            <div class="col-sm"> 
-                                <label>Llaves:</label>
-                                {{form.prop_llaves}}
-                            </div>
-                        </div>
-                        <!-- cita con y horario telefono -->
-                        <label>Horario:</label>
-                        {{form.prop_horario}}
-                        <!-- <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> -->
-                    </section>
-                    <div class="form-group__actions">
-                        <button class="btn btn-success" type="submit">Guardar</button>
-                        <a class="btn btn-danger" href="{% url 'backoffice:propiedades' %}">Cancelar</a>
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
     </div>
-
- <!-- </form> -->
 {% endblock content %}
+
 {% block scripts %}
-    <script src="{% static 'assets/libs/jquery-steps/build/jquery.steps.min.js' %}"></script>
-    <script src="{% static 'assets/libs/jquery-validation/dist/jquery.validate.min.js' %}"></script>
-    <script>
-        // Basic Example with form
-    var form = $("#example-form");
-    form.validate({
-        errorPlacement: function errorPlacement(error, element) { element.before(error); },
-        rules: {
-            confirm: {
-                equalTo: "#password"
-            }
-        }
-    });
-    form.children("div").steps({
-        headerTag: "h3",
-        bodyTag: "section",
-        transitionEffect: "slideLeft",
-        onStepChanging: function(event, currentIndex, newIndex) {
-            form.validate().settings.ignore = ":disabled,:hidden";
-            return form.valid();
-        },
-        onFinishing: function(event, currentIndex) {
-            form.validate().settings.ignore = ":disabled";
-            return form.valid();
-        },
-        
-        onFinished: function(event, currentIndex) {
-            alert("Submitted!");
-            // window.location = "{% url 'backoffice:propiedades' %}";
-        }
-    });
-    </script>
+<!-- this page js -->
+<script src="{% static 'assets/libs/jquery-steps/jquery.steps.min.js' %}"></script>
+<script src="{% static 'assets/libs/jquery-validation/dist/jquery.validate.min.js' %}"></script>
+<script>
+    // Basic Example with form
+var form = $("#example-form");
+form.validate({
+    errorPlacement: function errorPlacement(error, element) { element.before(error); },
+});
+ form.children("div").steps({
+    headerTag: "h3",
+    bodyTag: "section",
+    transitionEffect: "slideLeft",
+    onStepChanging: function(event, currentIndex, newIndex) {
+        form.validate().settings.ignore = ":disabled,:hidden";
+        return form.valid();
+    },
+    onFinishing: function(event, currentIndex) {
+        form.validate().settings.ignore = ":disabled";
+        return form.valid();
+    },
+    onFinished: function(event, currentIndex) {
+        form.submit();
+    }
+});
+
+
+
+$('#agregar_imagen').on('click', function(){
+    $('#imagenes').append($(
+    '<div class="form-group image_propiedad">' +
+        '{{image_form.image}}' +
+    '</div>'
+    ));
+})
+
+
+
+
+</script>
 {% endblock scripts %}
+    

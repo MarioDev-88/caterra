@@ -277,14 +277,17 @@
         </div>
         <div class="col-md-8" style="padding-left: 5%; float:left;">
             <p style="text-align: justify;">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet risus nec elit lacinia accumsan ultricies id dolor. 
-                Nam pulvinar ante massa, a efficitur risus elementum at. Proin egestas facilisis efficitur. Suspendisse nisl nibh, convallis id facilisis vel, placerat ac urna. 
-                Nulla eu leo lectus. Praesent consequat augue purus, ac congue justo fringilla ut. Sed sed velit diam. Donec nisi metus, placerat nec dolor accumsan, rutrum fermentum lacus. 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.Proin egestas facilisis efficitur. Suspendisse nisl nibh, convallis id facilisis vel, placerat ac urna. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet risus nec elit lacinia accumsan
+                ultricies id dolor.
+                Nam pulvinar ante massa, a efficitur risus elementum at. Proin egestas facilisis efficitur. Suspendisse
+                nisl nibh, convallis id facilisis vel, placerat ac urna.
+                Nulla eu leo lectus. Praesent consequat augue purus, ac congue justo fringilla ut. Sed sed velit diam.
+                Donec nisi metus, placerat nec dolor accumsan, rutrum fermentum lacus.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.Proin egestas facilisis efficitur. Suspendisse
+                nisl nibh, convallis id facilisis vel, placerat ac urna.
             </p>
             <div align="left" style="margin-top: 1%; margin-top: 6%;">
-                <button type="submit" class="btn"
-                style="
+                <button type="submit" class="btn" style="
                     text-align:left;
                     background-color: #486600;
                     border-radius: 36px;
@@ -298,6 +301,7 @@
 <!-- end logo-texto -->
 
 <!-- Propiedades -->
+<!-- <<<<<<< HEAD  -->
 <div class="container prop-cont" style="padding: 0% 3% 0% 3%;">
     <div class="container">
         <h1 class="h1_title">PROPIEDADES</h1>
@@ -305,14 +309,14 @@
             {% for propiedad in propiedades %}
             <div class="col-md-4 col-prop" style="padding:0px !important;">
                 <div class="col-md-12" style="padding-right:1%; padding-left:1%;">
-                    <img class="img-responsive" src="{{propiedad.imagen.url}}">
+                    <img class="img-responsive" src="{{propiedad.imagen.image.url}}">
                     <div class="col-md-12 prop-style" style="background-color: #f1f1f1; padding: 1em 1em;">
                         <h1 style="font-size: 20pt;">{{propiedad.nombre}}</h1>
                         <p style="text-align: justify;">{{propiedad.direccion}}</p>
                         <p style="color: #486600">${{propiedad.precio}}</p>
                         <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i
-                            class="fas fa-bath"></i>&nbsp;{{propiedad.banos}}&nbsp;&nbsp;&nbsp;<i
-                            class="fas fa-th-large"></i> {{propiedad.construccion}} m2
+                                class="fas fa-bath"></i>&nbsp;{{propiedad.banos}}&nbsp;&nbsp;&nbsp;<i
+                                class="fas fa-th-large"></i> {{propiedad.construccion}} m2
                         </p>
                         <div class="row prop-bottom" style="padding-top:1em;">
                             <div class="col" style="font-size: 10px; padding-top: 2%;">
@@ -333,23 +337,13 @@
             </div>
             {% endfor %}
         </div>
-    </div>    
-    <div class="row" style="display: flex; justify-content: center; margin-top: 2em;">
-        <button class="btn" style="
-                font-weight: normal;
-                text-align:left;
-                background-color: #486600;
-                border-radius: 36px;
-                padding-left: 5%;
-                padding-right: 5%;
-                ">VER MÁS</button>
     </div>
 </div>
-
 <!-- end Propiedades -->
 
 <!-- Agentes -->
-<div class="container" style="background: url('static/ecommerce/img/patron-agentes.png'); background-size: cover; padding: 1% 3% 1% 3%; margin:0px;">
+<div class="container"
+    style="background: url('static/ecommerce/img/patron-agentes.png'); background-size: cover; padding: 1% 3% 1% 3%; margin:0px;">
     <div class="container">
         <h1 class="h1_title">CONOCE A NUESTROS AGENTES</h1>
         <div class="row">
@@ -363,7 +357,8 @@
                         <br>
                         <p style="text-align: justify;">{{agente.texto|truncatechars:210}}</p>
                         <br>
-                        <p><span style="color: #486600"><i class="far fa-envelope"></i></span> {{agente.user.email}}</p>
+                        <p><span style="color: #486600"><i class="far fa-envelope"></i></span>
+                            {{agente.user.email}}</p>
                         <div class="col-md-5 agnt-col" style="margin-left: auto; margin-right: 0; padding: 5%;">
                             <button onClick="location.href='{% url 'ecommerce:agent_profile' agente.id %}'"
                                 class="prop-button agnt-button">VER PERFIL</button>

@@ -1,3 +1,4 @@
+
 from .base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -7,7 +8,11 @@ INSTALLED_APPS += (
     "debug_toolbar",
 )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "165.232.133.76",
+    "localhost",
+    "127.0.0.1"
+]
 
 INTERNAL_IPS = [
     "127.0.0.1",
