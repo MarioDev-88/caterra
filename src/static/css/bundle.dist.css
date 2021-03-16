@@ -20,8 +20,11 @@ html {
  * Remove the margin in all browsers.
  */
 
-body {
-  margin: 0;
+html, body {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden; 
   background-color:white;
 }
 
@@ -22257,6 +22260,7 @@ div#footer_back {
   background-color: #1d1d1b;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .main-footer {
@@ -22274,7 +22278,7 @@ div#footer_back {
 }
 
 .footer-image {
-  width: 200px;
+  width: 250px;
 }
 
 .footer-link-list {
@@ -22306,17 +22310,15 @@ div#footer_back {
 .footer-contact-info {
   color: white;
   margin-top: 30px;
+  /* padding-top: 0.5em; */
 }
 
-.footer-contact-info__item > span {
+.footer-contact-info__item {
   display: flex;
-  /* align-items: center; */
+  align-items: center; 
 }
-
-.footer-contact-info__item > span > img {
-  /* padding-right: 5px; */
-  padding: 0px !important;
-  width: 40px;
+.footer-contact-info__item > img{
+  width: 50px;
 }
 
 #footer_bottom_back {
@@ -22496,13 +22498,7 @@ div.main-slider__content {
   padding: 3% 3%;
   padding-left:10%;
 }
-.sticky_nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: rgba(255,255,255, 0.5);
-  color: black !important;
-}
+
 
 /* .main-nav {
   background-color: #ffffff;
@@ -22898,11 +22894,6 @@ div#ssl_section_back {
   }
   .prop_form{
     padding-bottom:2%;
-  }
-  /* disable sticky */
-  .sticky_nav{
-    position: absolute !important;
-    top: 0px;
   }
   /*Top header top_header_back */
   #top_header_back > section > .container > .row > .caterra_info{

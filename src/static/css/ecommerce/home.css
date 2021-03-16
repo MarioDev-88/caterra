@@ -1,3 +1,4 @@
+/* container */
 /* Agente */
 .agente-nombre{
     font-size: 20px;
@@ -27,9 +28,13 @@
     font-size: 13pt;
 }
 
+/* propiedades */
+/* .prop-cont{
+    padding: 1em;
+}
 .prop-style > p{
     padding: 0.2em 0.2em;
-}
+} */
 
 .prop-button{
     color: #66932f;
@@ -91,9 +96,6 @@
         font-size: 12px;
         width: 50%;
         letter-spacing: 1px;
-    }
-    .prop-cont{
-        padding-top: 1em !important;
     }
 }
 
