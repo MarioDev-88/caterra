@@ -22208,21 +22208,25 @@ input:focus,
 
 #top_header_back {
   background-color: #223300;
-  display: flex;
-  justify-content: center;
+  /* padding:0px !important; */
+  margin:0px !important;
+  /* display: flex; */
 }
 
 #top_header {
-  align-items: center;
   box-sizing: border-box;
   color: white;
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;
   height: 50px;
-  padding: 10px;
-  max-width: 1440px;
+  padding: 10px 10px;
+  /* max-width: 1440px; */
   width: 100%;
   font-weight: 100;
+}
+
+#top_header .col{
+  padding: 0 2em 0 2em;
 }
 
 .user-actions__link {
@@ -22895,15 +22899,22 @@ div#ssl_section_back {
   .prop_form{
     padding-bottom:2%;
   }
+  
+  #top_header_back{
+    display: none;
+  }
+
+  /* borrar */
   /*Top header top_header_back */
-  #top_header_back > section > .container > .row > .caterra_info{
+  /* #top_header_back > section > .container > .row > .caterra_info{
     display:none !important;
   }
   #top_header_back > section > .container > .row > .socials{
     margin-right:1%;
-  }
+  } */
   /* Menu cat_nav_main */
 
+  /* borrar */
   .cat_main_nav {
   overflow: hidden;
   /* background-color: #333; */
@@ -22954,6 +22965,7 @@ div#ssl_section_back {
   }
 }
 
+/* big screen */
 @media screen and (min-width: 1000px) {
   nav.main-nav {
     display: flex;
@@ -23120,6 +23132,16 @@ div#ssl_section_back {
 
   .footer-link-list {
     align-self: baseline;
+  }
+}
+
+/* ipad */
+@media only screen  and (min-device-width : 768px)  and (max-device-width : 1024px)  {
+  #top_header{
+    font-size: 65%;
+  }
+  #top_header .col{
+    padding:0 1.5em 0 1.5em;
   }
 }
 

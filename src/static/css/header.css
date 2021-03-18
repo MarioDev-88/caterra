@@ -1,14 +1,15 @@
 /* header */
 
 .header {
-    background-color: rgba(0, 0, 0, 0.2);
-    /* box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1); */
-    position: absolute;
-    /* position: fixed; */
-    /* top: 0px; */
-    z-index: 9999;
-    width: 100%;
-    /* z-index: 3; */
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  /* box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1); */
+  position: absolute;
+  /* position: fixed; */
+  /* top: 0px; */
+  z-index: 9999;
+  width: 100%;
+  /* z-index: 3; */
 }
 
 .header ul {
@@ -32,15 +33,16 @@
 
 .header li a:hover,
 .header .menu-btn:hover {
-  /* background-color: #f4f4f4; */
-  color:black;
+  width: 100%;
+  background-color: #3f3f3f;
+  color:white;
 }
 
-.header .logo {
+.header .logodiv a img {
   display: block;
   float: left;
-  width: 150px;
-  padding: 10px 20px;
+  width: 100%;
+  padding: 8px 8px;
   text-decoration: none;
 }
 /* menu */
@@ -122,35 +124,73 @@
     top: 0;
     width: 100%;
     background-color: white;
-    color: black !important;
-    padding-top: 1em;
+}
+.sticky_nav ul li a{
+  color: black;
+}
+.sticky_nav ul li a:hover{
+  background-color: #66932f;
 }
 
 /* 48em = 768px */
 
 @media (min-width: 48em) {
-    .header{
-        display: flex; align-items: center; justify-content: center;
-    }
-    .header .logo{
-        width: 250px;
-    }
-    .header .logodiv{
-        padding-left: 10em;
-    }
-    .header li {
-        float: left;
-    }
-    .header li a {
-        padding: 20px 30px;
-    }
-    .header .menu {
-        clear: none;
-        float: right;
-        max-height: none;
-    }
-    .header .menu-icon {
-        display: none;
-    }
-  
+  .header{
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+  }
+  .header .logodiv{
+      padding-left: 10em;
+  }
+  .header .logodiv a img{
+    width: 50%;    
+  }
+  .header li {
+      float: left;
+  }
+  .header li a {
+    line-height: 140px;
+    padding: 20px 30px;
+  }
+  .header .menu {
+      clear: none;
+      float: right;
+      max-height: none;
+  }
+  .header .menu-icon {
+      display: none;
+  }
+  .sticky_nav {
+    height: 100px;
+  }
+  .sticky_nav li a {
+    line-height: 60px;
+  }
+  .sticky_nav .logodiv a img{
+    width: 30%;    
+  }
+}
+
+/* ipad */
+@media only screen  and (min-device-width : 768px)  and (max-device-width : 1024px)  {
+  .header{
+    height: 140px;
+  }
+  .header ul{
+    width:70% !important;
+  }
+  .header li a {
+    line-height: 120px;
+    padding: 10px 10px;
+  } 
+  .header .menu {
+    font-size: 12px;
+  }
+  .header .logodiv{
+    width:30% !important;
+    padding: 3em;
+  }
+  .header .logodiv a img{
+    width: 100%;   
+  }
 }
