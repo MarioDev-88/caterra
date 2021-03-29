@@ -1,0 +1,32 @@
+.prop-style h1, .prop-style p{
+    margin-bottom: 0.4em;
+}
+
+/* .property-card {
+    display: flex;
+} */
+
+.flex-child {
+    flex: 1;
+}  
+
+
+#property-view ul { list-style-type: none; }
+
+#property-view .gridp li{width: 100%; padding:0.5em;}
+/* #property-view .gridp li .property-card .image_p, #property-view .gridp li .property-card .prop-style {
+    float: left;
+} */
+#property-view .listp li {float: left; width: 50%; padding:0.5em;}
+
+@media screen and (min-width: 1000px) {
+    .property-row{
+        margin: 2em;
+    }
+}
+@media only screen and (max-width: 640px) {
+    #property-view .listp li {width: 100%; padding:0.5em;}
+    .buttons{
+        display: none !important;
+    }
+}

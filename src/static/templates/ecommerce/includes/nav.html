@@ -1,12 +1,12 @@
 {% load static %}
 
 {% block estilos-adicionales %}
-<link href="{% static 'css/header.css' %}" rel="stylesheet">
+<link href="{% static 'css/nav.css' %}" rel="stylesheet">
 {% endblock estilos-adicionales %}
 
 <header class="header" id="header_c">
         <div class="col logodiv" style="width:40%;">
-                <a href="/"><img src="{% static 'img/logo-blanco.png' %}" class="" alt="CaterraLogo"></a>
+                <a href="/"><img id="CaterraLogo" src="{% static 'img/logo-negro.png' %}" class="" alt="CaterraLogo"></a>
         </div>
         <input class="menu-btn" type="checkbox" id="menu-btn" />
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
@@ -17,8 +17,6 @@
                                 href="{% url 'ecommerce:about' %}">Nosotros</a></li>
                 <li><a class="{% if request.path|slice:'12' == '/propiedades' %}active {% endif %}"
                                 href="{% url 'ecommerce:properties' %}">Propiedades</a></li>
-                <!-- <li><a class="{% if request.path|slice:"10" == "/productos" %}active {% endif %}"
-                                href="{% url "ecommerce:products" %}">Productos</a></li> -->
                 <li><a class="{% if request.path|slice:'8' == '/agentes' %}active {% endif %}"
                                 href="{% url 'ecommerce:agents' %}">Agentes</a></li>
                 <li><a class="{% if request.path|slice:'5' == '/blog' %}active {% endif %}"
@@ -92,17 +90,16 @@
 <script>
         window.onscroll = function () { myFunction() };
 
-        var header = document.getElementById("header_c");
+        var header = document.getElementById("header_c")
         var sticky = header.offsetTop;
 
         function myFunction() {
                 if (window.pageYOffset > sticky) {
                         header.classList.add("sticky_nav");
-                        header.classList.attr
-                        $('.header .logodiv a img').attr('src','{% static 'img/logo-negro.png' %}');
+                        $('.header .logodiv a img').attr('src', '{% static 'img/logo-negro.png' %}');
                 } else {
                         header.classList.remove("sticky_nav");
-                        $('.header .logodiv a img').attr('src','{% static 'img/logo-blanco.png' %}');
+                        $('.home .header .logodiv a img').attr('src', '{% static 'img/logo-blanco.png' %}');
                 }
         }
 </script>

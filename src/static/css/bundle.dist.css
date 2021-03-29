@@ -8,7 +8,7 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
-html {
+ html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -21672,7 +21672,6 @@ body {
   border-radius: 0.25rem;
 }
 
-}
 .btn:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -21889,6 +21888,22 @@ input:focus,
   display: block;
   margin-bottom: 20px;
   max-width: 100%;
+}
+
+/* propiedad button */
+.prop-button{
+    color: #66932f;
+    border: 1.5px solid #66932f;
+    border-radius: 2em;
+    font-size:12px;
+    display:block;
+    width:100%;
+    padding: 5% 6% 5% 6%;
+    letter-spacing: 1px;
+}
+.prop-button:hover{
+    background-color: #486600;
+    color:white;
 }
 
 .login-form__button {
@@ -22227,6 +22242,10 @@ input:focus,
 
 #top_header .col{
   padding: 0 2em 0 2em;
+}
+#top_header .row{
+  align-items: center;
+  float: right;
 }
 
 .user-actions__link {
@@ -22888,8 +22907,12 @@ div#ssl_section_back {
   display: none;
 }
 
+
 /* medias queries small device */
 @media only screen and (max-width: 640px) {
+  .about-row .col-md-4{
+    margin-bottom:1em;
+  }
   .slider-item__footer {
     padding:10%;
   }
@@ -22900,8 +22923,23 @@ div#ssl_section_back {
     padding-bottom:2%;
   }
   
+  .prop-button{
+    font-size: 10px;
+    padding: 3% 5% 3% 5%;
+    /* margin-top: 0.5em; */
+  }
+  .prop-bottom > .col {
+      margin: 0px;
+      padding: 0px;
+  }
+  .prop-bottom {
+      margin: 0 1% 0 1%;
+  }
   #top_header_back{
     display: none;
+  }
+  #header_section_back{
+    width:100%;
   }
 
   /* borrar */
@@ -23143,6 +23181,17 @@ div#ssl_section_back {
   #top_header .col{
     padding:0 1.5em 0 1.5em;
   }
+  .prop-bottom > .col > p {
+    font-size: 8px !important;
+  }
+  .prop-bottom > .col, .agnt-col {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+  .prop-bottom{
+    padding-left: 0.5em !important;
+    padding-right: 0.5em !important;
+  }
 }
 
 .products-slider-container > div.glide__track > ul {
@@ -23190,6 +23239,9 @@ div#ssl_section_back {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.about-row img{
+  min-height:100%;
 }
 
 .about-us-content {

@@ -27,21 +27,18 @@
 
     <!-- Styles -->
     <link href="{% static 'css/bundle.dist.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/ecommerce/home.css' %}"> 
     <link rel="stylesheet" href="{% static 'css/ecommerce/base.css' %}">
 
     {% block estilos-adicionales %}
         
     {% endblock estilos-adicionales %}
-        
-
 </head>
 
 <body>
     <!-- top header section -->
-    <div id="top_header_back" >
+    <div id="top_header_back">
         <section id="top_header">
-                <div class="row" style="align-items: center;">
+                <div class="row">
                     <div class="col col-md-auto caterra_info">
                         <p><i class="fas fa-phone-volume"></i> (662) 187 5495</p>
                     </div>
@@ -64,9 +61,7 @@
                 </div>
         </section>
     </div>
-
     <!-- end of top header section -->
-
     <div class="content">
         {% block content %}{% endblock content %}
     </div>

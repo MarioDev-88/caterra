@@ -1,4 +1,13 @@
-/* container */
+.header{
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    position: fixed !important;
+}
+.header ul{
+    color: white !important;
+}
+.sticky_nav{
+    top: 0 !important;
+}
 /* Agente */
 .agente-nombre{
     font-size: 20px;
@@ -36,21 +45,6 @@
     padding: 0.2em 0.2em;
 } */
 
-.prop-button{
-    color: #66932f;
-    border: 1.5px solid #66932f;
-    border-radius: 2em;
-    font-size:12px;
-    display:block;
-    width:100%;
-    padding: 5% 6% 5% 6%;
-    letter-spacing: 1px;
-}
-.prop-button:hover{
-    background-color: #486600;
-    color:white;
-}
-
 .big-button{
     background-color: #486600;
     border-radius: 65px;
@@ -80,18 +74,6 @@
     .bigspan{
         font-size: 16px !important;
     }
-    .prop-button{
-        font-size: 10px;
-        padding: 2% 5% 2% 5%;
-        /* margin-top: 0.5em; */
-    }
-    .prop-bottom > .col {
-        margin: 0px;
-        padding: 0px;
-    }
-    .prop-bottom {
-        margin: 0 1% 0 1%;
-    }
     .agnt-button{
         font-size: 12px;
         width: 50%;
@@ -110,16 +92,5 @@
         width: 100% !important;
         letter-spacing: 1px;
         margin: 0.5em 1em;
-    }
-    .prop-bottom > .col > p {
-        font-size: 8px !important;
-    }
-    .prop-bottom > .col, .agnt-col {
-        padding-right: 0px !important;
-        padding-left: 0px !important;
-    }
-    .prop-bottom{
-        padding-left: 0.5em !important;
-        padding-right: 0.5em !important;
     }
 }

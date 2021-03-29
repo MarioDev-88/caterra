@@ -32,7 +32,6 @@ class HomeView(View):
         ctx = {"propiedades": self.propiedades, "agentes": self.agentes, "sliders": self.sliders, "video": self.video}
         return render(request, self.template_name, ctx)
 
-
 class AboutView(TemplateView):
     template_name = "ecommerce/about-us.html"
 
