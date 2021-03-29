@@ -4,9 +4,6 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-INSTALLED_APPS += (
-    
-)
 
 ALLOWED_HOSTS = [
     "165.232.133.76",
@@ -19,9 +16,6 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-MIDDLEWARE += [
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
-]
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
