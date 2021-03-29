@@ -5,13 +5,14 @@ from .base import *
 DEBUG = True
 
 INSTALLED_APPS += (
-    "debug_toolbar",
+    
 )
 
 ALLOWED_HOSTS = [
     "165.232.133.76",
     "localhost",
-    "127.0.0.1"
+    "127.0.0.1",
+    "caterra.mx",
 ]
 
 INTERNAL_IPS = [
