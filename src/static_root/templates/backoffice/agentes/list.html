@@ -1,0 +1,89 @@
+{% extends 'backoffice/layouts/backofficelayout.html' %}
+
+{% load static %}
+{% load humanize %}
+{% block content %}
+<div class="card" style="width: 100%;">
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+        <div class="table-responsive">
+            <table id="zero_config" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>E-mail</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for agente in object_list %}
+                    <tr>
+                        <td >{{ agente|title }}</td>
+                        <td >{{ agente.user.phone }}</td>
+                        <td >{{ agente.user.email }}</td>
+                        <td >
+                            <a
+                                href="{% url 'backoffice:agentes_details' agente.user.id %}"
+                                class="btn btn-sm btn-success text-xs"
+                                ><img
+                                    class="inline table__action-icon"
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAO5JREFUSEtjZKAxYKSx+QyjFhAMYaxB9P//fwGgzn4gDoCasAFIFzIyMn4gaCKaAlwWXACq00dTewFogSHFFgBdD3L1ehwGBQItAfmGAajuPz7LgOrAjsfwAVBfA1C8HofmRqA+kDxFFhDlA2KDipQ4uAh0vQGxBsPU4UtFE9BSUQF6KsIXDzjjgBQXkmUBNBXlAy1yQLPsAJAPimQQTTRACSKg4QuAOuMJ6IanJGJsgVtAIP2jm+UI8wmuYMKIA6BCkNftiXEVUM1BoAHgICTFArw5E91imAsJOQg5iGhrASGXkCs/WqMRDDmaBxEASiJaGVnV+DwAAAAASUVORK5CYII="
+                            /></a>
+                            <a
+                                href="{% url 'backoffice:agentes_update' agente.user.id %}"
+                                class="btn btn-sm btn-warning text-xs"
+                                ><img
+                                    class="inline table__action-icon"
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAQZJREFUSEvVlGsRgkAURtkEGsEG2kBsQAMzmEAjWMEERhAbYAKNYAP8vpldB653gX3ww51xGK5wzn2wa4qZl5mZXyQL2rZdIsm9TfRijHl3k04SWPgNwI2FNrjuupJUQQ3gVrS5J0kVMHNKFkJyQBVnxoIFti1XvEtIg3tNEicQPecw2W8peSBeujlMrkAZKDsgJWxLFTxkD9y1/SvR9tRoBSNwx7wj6zJYMBHe67mUeCvIAfd+prngqiAn3CfgVl8PnLKDPR+cAbJf4YFnLvhPBRBUCPIY0FZQ5g7Q+4ogOOGPo0KPgmsV1AjK4zcargleCPJHEYfdYIfyPnqNHhXRZPvi/ws+xMCAGU/0VT8AAAAASUVORK5CYII="
+                            /></a>
+                            <a
+                                href="{% url 'backoffice:agentes_delete' agente.user.id %}"
+                                class="btn btn-sm btn-danger text-xs"
+                                ><img
+                                    class="inline table__action-icon"
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAASZJREFUSEu1lY0RgjAMhekk4gTqBK6gE+gGwiTiBOoE4iawAUyCL3cplv4AhZa73nHXNF+SJq8iifyJyP6TSUDXdVcEccTa86KYKl6lEOI7FqQTAMcnHLxjpRNZNtjPASptdlYAnBcwvnmWrwAk188YgIXOpd8HIJkKGQC4LB/PyHXzs1ouHUD13KwENABspY8ewN3yXOlcHu+zUAEv7F4CAd7Igtr7PwfIgHp7FwhQAXDQAZ3RYrCaA0RwzrNqiaIDQpaoRvIkLYM7iH7JpD1rh8zdprSDuwoxaC3KkxqDxoAQWbilgiFLlFQGPC520mqhohrOB12kDxQrK2UzJX4tbDKvB0eFMYjuhvpaSkmNf5obejKtL5n1kufIgq/NLK3xdara/wD6iXAZt0W6kAAAAABJRU5ErkJggg=="
+                            /></a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                        <p colspan="4">No hay registros</p>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>E-mail</th>
+                        <th>Acciones</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}
+
+{% block footer_actions %}
+<div id="footer_actions">
+    <ul class="footer-actions">
+        <li class="footer-actions__item"><a href="{% url 'backoffice:agentes_create' %}"><img
+                    class="footer-actions__icon" src="{% static 'img/backoffice/ic-add.png' %}" alt="">Nuevo Agente</a>
+        </li>
+    </ul>
+</div>
+{% endblock footer_actions %}
+{% block scripts %}
+
+
+<script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'assets/extra-libs/DataTables/datatables.min.js' %}"></script>
+<script>
+    /****************************************
+     *       Basic Table                   *
+     ****************************************/
+    $('#zero_config').DataTable();
+</script>
+<script src="{% static 'dist/js/custom.min.js' %}"></script>
+{% endblock scripts %}

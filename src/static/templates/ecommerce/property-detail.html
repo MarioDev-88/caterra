@@ -19,11 +19,12 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
-            <div>
+            <div align="center">
                 <img src="{{propiedad.imagen.image.url}}" alt="">
             </div>
+
+            <!-- Video -->
             <div>
-                video
             </div>
 
             <!-- Informacion de propiedad -->
@@ -45,22 +46,67 @@
                 <br>
                 <div class="row">
                     <div class="col-lg-4 col-sm-12">
-                        <i class="fas fa-check"></i> Aire Acondicionado <br>
-                        <i class="fas fa-check"></i> Aire Acondicionado <br>
-                        <i class="fas fa-check"></i> Aire Acondicionado <br>
-                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        {% if propiedad.cubiculos != None and propiedad.cubiculos > 0 %}
+                        <i class="fas fa-check"></i> Cubículos ({{propiedad.cubiculos}}) <br>
+                        {% endif %}
+                        
+                        {% if propiedad.areas_trabajo != None and propiedad.areas_trabajo > 0 %}
+                        <i class="fas fa-check"></i> Áreas de trabajo ({{propiedad.areas_trabajo}}) <br>
+                        {% endif %}
+
+                        {% if propiedad.banos != None and propiedad.banos > 0%}
+                        <i class="fas fa-check"></i> Baños ({{propiedad.banos}}) <br>
+                        {% endif %}
+
+                        {% if propiedad.sala_juntas != None and propiedad.sala_juntas > 0 %}
+                        <i class="fas fa-check"></i> Sala de Juntas ({{propiedad.sala_juntas}}) <br>
+                        {% endif %}
+
+                        {% if propiedad.sala_espera != None and propiedad.sala_espera > 0 %}
+                        <i class="fas fa-check"></i> Sala de Espera ({{propiedad.sala_espera}}) <br>
+                        {% endif %}
                     </div>
                     <div class="col-lg-4 col-sm-12">
-                        <i class="fas fa-check"></i> Aire Acondicionado <br>
-                        <i class="fas fa-check"></i> Aire Acondicionado <br>
-                        <i class="fas fa-check"></i> Aire Acondicionado <br>
-                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        {% if propiedad.comedor != None and propiedad.comedor > 0 %}
+                        <i class="fas fa-check"></i> Comedor ({{propiedad.comedor}}) <br>
+                        {% endif %}
+
+                        {% if propiedad.cocineta != None and propiedad.cocineta > 0 %}
+                        <i class="fas fa-check"></i> Cocineta ({{propiedad.cocineta}}) <br>
+                        {% endif %}
+
+                        {% if propiedad.lineas_telefonicas != None and propiedad.lineas_telefonicas > 0 %}
+                        <i class="fas fa-check"></i> Lineas Telefónicas ({{propiedad.lineas_telefonicas}}) <br>
+                        {% endif %}
+
+                        {% if propiedad.elevador != None and propiedad.elevador > 0 %}
+                        <i class="fas fa-check"></i> Elevador ({{propiedad.elevador}}) <br>
+                        {% endif %}
+
+                        {% if propiedad.aire_acondicionado != None and propiedad.aire_acondicionado > 0 %}
+                        <i class="fas fa-check"></i> Aire Acondicionado ({{propiedad.aire_acondicionado}}) <br>
+                        {% endif %}
                     </div>
                     <div class="col-lg-4 col-sm-12">
-                        <i class="fas fa-check"></i> Aire Acondicionado <br>
-                        <i class="fas fa-check"></i> Aire Acondicionado <br>
-                        <i class="fas fa-check"></i> Aire Acondicionado <br>
-                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        {% if propiedad.bodega != None and propiedad.bodega > 0 %}
+                        <i class="fas fa-check"></i> Bodega ({{propiedad.bodega}}) <br>
+                        {% endif %}
+
+                        {% if propiedad.pisos != None and propiedad.pisos > 0 %}
+                        <i class="fas fa-check"></i> Pisos ({{propiedad.pisos}}) <br>
+                        {% endif %}
+
+                        {% if propiedad.canceleria != None and propiedad.canceleria > 0 %}
+                        <i class="fas fa-check"></i> Cancelería ({{propiedad.canceleria}}) <br>
+                        {% endif %}
+
+                        {% if propiedad.garage_descubierto != None and propiedad.garage_descubierto > 0 %}
+                        <i class="fas fa-check"></i> Garage Descubierto ({{propiedad.garage_descubierto}}) <br>
+                        {% endif %}
+
+                        {% if propiedad.garage_cubierto != None  and propiedad.garage_cubierto > 0 %}
+                        <i class="fas fa-check"></i> Garage Cubierto ({{propiedad.garage_cubierto}}) <br>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -69,9 +115,8 @@
             <div class="property-card">
                 <h1 class="text-center">DETALLES</h1>
                 <br>
-                <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ea, velit consectetur! Dignissimos doloremque quaerat quae aperiam omnis accusantium
-                    ipsam eveniet, eos impedit necessitatibus quo nostrum architecto ipsum dicta ducimus in.
+                <p class="text-justify">
+                    {{propiedad.observaciones}}
                 </p>
 
             </div>
@@ -111,12 +156,7 @@
                     <!-- </div>
                         </div> -->
                     <div align="">
-                        <button type="submit" class="btn" style="
-                                background-color: #66932f;
-                                border-radius: 36px;
-                                padding-left: 5%;
-                                padding-right: 5%;
-                                ">Enviar</button>
+                        <button type="submit" class="btn btn-verde">Enviar</button>
                     </div>
                 </form>
                 <!-- </div> -->

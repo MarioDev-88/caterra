@@ -11,7 +11,7 @@ body{
 .clear-button{
     color: #486600;
     border-color: #486600;
-    border-radius: 36px;
+    border-radius: 0px;
     padding-left: 8%;
     padding-right: 8%;
 }
@@ -20,6 +20,20 @@ body{
     color: white;
     background-color: #486600;
 
+}
+
+.btn-verde{
+    text-align:left;
+    background-color: #486600;
+    border-radius: 0px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.btn-verde:hover{
+    background-color: inherit;
+    color: #486600;
+    border-color: #486600;
 }
 
 .property-card{

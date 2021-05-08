@@ -1,0 +1,61 @@
+{% extends 'ecommerce/layouts/ecommerce.layout.html' %}
+
+{% load static %}
+{% load humanize %}
+
+{% block estilos-adicionales %}
+<style>
+
+    .img-container{
+        height: 400px;
+        width: 380px;
+    }
+
+    img{
+        height: 100%;
+        width: auto;
+    }
+
+    .texto{
+        height: 80px;
+    }
+</style>
+{% endblock estilos-adicionales %}
+
+{% block content %}
+
+{% include './includes/header.html' with seccion="AGENTES" %}
+
+<div class="container" style="margin-top: 5%; margin-bottom: 5%;">
+    <div class="row" style="margin-top: 3%; margin-bottom: 3%;">
+        
+        {% for agente in object_list %}
+            
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <div class="img-container d-flex justify-content-center">
+                        <img src="{{agente.foto.url}}">
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <br>
+                    <h1 style="font-size: 20pt;">{{agente.user|title}}</h1>
+                    <br>
+                    <div class="texto">
+                        <p style="text-align: justify;">{{agente.texto|truncatechars:210}}</p>
+                    </div>
+                    <br>
+                    <p><span style="color: #486600"><i class="far fa-envelope"></i></span>    {{agente.user.email}}</p>
+                    <div align="right" style="margin: 3% 0;">
+                        <a href="{%url 'ecommerce:agent_profile' agente.id %}" class="btn clear-button"> VER PERIL</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+            
+    </div>
+</div>
+
+{% endblock content %}

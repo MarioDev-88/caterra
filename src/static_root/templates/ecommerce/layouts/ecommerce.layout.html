@@ -1,0 +1,261 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'ic-13.png' %}">
+
+    <title>{{ title|default:"Caterra" }}</title>
+    <link rel="stylesheet" href="{% static 'vendor/slick/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/slick/slick-theme.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;400;800&display=swap" rel="stylesheet">
+    <!-- Scripts -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- Bootstrap -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/> -->
+
+    <!-- {% comment %} <link rel="stylesheet" href="{% static 'vendor/glide/css/glide.core.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/glide/css/glide.theme.min.css' %}"> {% endcomment %} -->
+
+    <!-- Styles -->
+    <link href="{% static 'css/bundle.dist.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/ecommerce/base.css' %}">
+
+    {% block estilos-adicionales %}
+        
+    {% endblock estilos-adicionales %}
+</head>
+
+<body>
+    <!-- top header section -->
+    <div id="top_header_back">
+        <section id="top_header">
+                <div class="row">
+                    <div class="col col-md-auto caterra_info">
+                        <p><i class="fas fa-phone-volume"></i> (662) 187 5495</p>
+                    </div>
+                    <div class="col col-md-auto caterra_info">
+                        <p><i class="fas fa-map-marker-alt"></i> Blvd. Jesus García Morales km. 6.5 #335</p>
+                    </div>
+                    <div class="col col-md-auto caterra_info">
+                        <p><i class="far fa-envelope"></i> administracion@caterra.mx</p>
+                    </div>
+                    <div class="col col-md-auto socials">
+                        <p>
+                            <a href=""><i class="fab fa-facebook-f"></i></a>&nbsp;&nbsp;
+                            <a href=""><i class="fab fa-twitter"></i></a>&nbsp;&nbsp;
+                            <a href=""><i class="fab fa-instagram"></i></a>
+                        </p>
+                    </div>
+                    <div class="col col-md-auto btn-login">
+                        <button class="btnlogin">INICIAR SESIÓN</button>
+                    </div>
+                </div>
+        </section>
+    </div>
+    <!-- end of top header section -->
+    <div class="content">
+        {% block content %}{% endblock content %}
+    </div>
+
+    <!-- footer section -->
+    <div id="footer_back">
+        <footer class="main-footer">
+            <div class="footerimg">
+                <img class="footer-image" src="{% static 'img/logo-blanco.png' %}" alt="">
+            </div>
+            <div class="footer-contact-info">
+                <ul>
+                    <h6 class="footer-link-list__title">CONTÁCTANOS</h6>
+                    <div class="footer-contact-info__item">
+                        <img src="{% static 'img/ic-44.png' %}" alt="">
+                        <span>Lorem Ipsum #12 Col. Ipsum</span></div>
+                    <div class="footer-contact-info__item">
+                        <img src="{% static 'img/ic-43.png' %}" alt="">
+                        <span>(662) 187 5495</span></div>
+                    <div class="footer-contact-info__item">
+                        <img src="{% static 'img/ic-45.png' %}" alt="">
+                        <span>contacto@caterra.com.mx</span></div>
+                </ul>
+            </div>
+            <div class="footer-menu">
+                <ul class="footer-link-list">
+                    <li class="footer-link-list__item"><a href="">Inicio</a></li>
+                    <li class="footer-link-list__item"><a href="">Nosotros</a></li>
+                    <li class="footer-link-list__item"><a href="">Propiedades</a></li>
+                    <li class="footer-link-list__item"><a href="">Agentes</a></li>
+                    <li class="footer-link-list__item"><a href="">Blog</a></li>
+                    <li class="footer-link-list__item"><a href="">Contacto</a></li>
+                </ul>
+            </div>
+            <ul class="footer-link-list">
+                <li class="footer-link-list__item"><a href="">Iniciar Sesión</a></li>
+                <li class="footer-link-list__item"><a href="">Terminos y condiciones</a></li>
+                <li class="footer-link-list__item"><a href="">Aviso de privacidad</a></li>
+
+                <div class="socials" style="margin-top: 2em;">
+                    <a href="#"><img src="{% static 'img/ic-49.png' %}"></a><a href="#"><img src="{% static 'img/ic-50.png' %}"></a>
+                    <a href="#"><img src="{% static 'img/ic-51.png' %}"></a>
+                </div>
+                
+
+            </ul>
+            
+        </footer>
+    </div>
+    <!-- end of footer section -->
+    <!-- bottom footer -->
+    <div id="footer_bottom_back">
+        <section class="footer-bottom" style="padding-right: 2%;">
+            <p>© TODOS LOS DERECHOS RESERVADOS 2021. <a href="piticmkt.com">PITIC SOFTWARE DEVELOPMENT</a></p>
+        </section>
+    </div>
+    <!-- end bottom footer -->
+
+    <!-- auth modal -->
+    <div class="auth-modal">
+        <div class="modal-window">
+            <form class="auth-modal__login-form" method="POST" action="{% url 'users:login_view' %}">
+            {% csrf_token %}
+                <h3 class="auth-modal__form-title">iniciar sesión</h3>
+                <div class="form-control">
+                    <label for="login-email">Email:</label>
+                    <input type="email" name="email" id="login-email" required>
+                </div>
+                <div class="form-control">
+                    <label for="login-password">Contraseña:</label>
+                    <input type="password" name="password" id="login-password" required>
+                </div>
+                <div class="form-control auth-modal__submit-button-wrapper">
+                    <button class="btn btn-success text-sm auth-modal__submit-button">Iniciar sesión</button>
+                </div>
+            </form>
+            <form class="auth-modal__login-form" method="POST" action="{% url "users:signup_view" %}">
+            {% csrf_token %}
+                <h3 class="auth-modal__form-title">Registrarse</h3>
+                <div class="form-control">
+                    <label for="name">Nombre:</label>
+                    <input type="text" name="first_name" id="name">
+                </div>
+                <div class="form-control">
+                    <label for="first_lastname">Primer apellido:</label>
+                    <input type="text" name="first_surname" id="first_lastname">
+                </div>
+                <div class="form-control">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="form-control">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <div class="form-control">
+                    <label for="password_confirm">Confirmación de contraseña:</label>
+                    <input type="password" name="password_confirm" id="password_confirm">
+                </div>
+                <div class="form-control">
+                    <label for="phone">Teléfono:</label>
+                    <input type="phone" name="phone" id="phone" required>
+                </div>
+                <div class="form-control auth-modal__submit-button-wrapper">
+                    <button class="btn btn-success text-sm ">Registrarse</button>
+                </div>
+            </form>
+        <button class="btn auth-modal__close-button" id="auth-modal_close_button">x</button>
+        </div>
+    </div>
+    <!-- end of auth modal -->
+
+      <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+      <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <script src="{% static 'vendor/slick/slick.min.js' %}"></script>
+    {% block scripts %}
+    {% endblock scripts %}
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    {% comment %} <script src="dist/js/ecommerce.js"></script> {% endcomment %}
+    <script>
+
+        // cart icon
+        const cartIcon = document.querySelector('.cart-icon')
+
+        cartIcon.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const cartMenu = document.querySelector('.cart-menu')
+            if (cartMenu.style.display === 'flex') {
+
+                cartMenu.style.display = 'none';
+            } else {
+                cartMenu.style.display = 'flex';
+            }
+        })
+
+        // Auth modal
+        const modal = document.querySelector(".auth-modal");
+
+        const userActionLink = document.querySelector(".login-link");
+
+        if (userActionLink) {
+
+            userActionLink.addEventListener("click", function(event) {
+                event.preventDefault();
+
+                modal.style.display = "flex";
+            });
+
+            const closeButton = document.getElementById("auth-modal_close_button");
+            console.log(closeButton)
+
+            closeButton.addEventListener("click", function (event) {
+                modal.style.display = "none";
+            })
+        }
+
+        if (window.location.pathname === "/") {
+
+            //const mainSlider = document.querySelector('.main-slider');
+            //const sliderGlide = new Glide(mainSlider);
+            //sliderGlide.mount();
+
+            const glideProducts = document.querySelector('.glide-products');
+            const glide = new Glide(glideProducts);
+            glide.mount({
+                breakpoints: {
+                    1000: {
+                        perView: 3
+                    }
+                }
+
+            });
+
+            const glideFeaturedProducts = document.querySelector('.glide-featured-products');
+            const featuredGlide = new Glide(glideFeaturedProducts);
+            featuredGlide.mount({
+                breakpoints: {
+                    1000: {
+                        perView: 3
+                    }
+                }
+
+            });
+        }
+
+    </script>
+
+    <script src="{% static 'js/bundle.dist.js' %}"></script>
+
+    <!--sticky header -->
+</body>
+
+</html>

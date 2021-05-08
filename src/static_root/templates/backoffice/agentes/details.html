@@ -1,0 +1,55 @@
+{% extends 'backoffice/layouts/backofficelayout.html' %}
+{% load humanize %}
+{% block content %}
+<table class="table">
+    <thead class="table__head">
+        <tr>
+            <th colspan="2">Información</th>
+        </tr>
+    </thead>
+    <tbody class="table__body">
+        <tr>
+            <td>Nombre:</td>
+            <td>
+                {{ user|title}} {{user.last_surname|title}}
+            </td>
+        </tr>
+        <tr>
+            <td>Correo electrónico:</td>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <td>Telefono:</td>
+            <td>{{ user.phone|default:"Sin registrar" }}</td>
+        </tr>
+        <tr>
+            <td>Tipo de usuario:</td>
+            <td>{{ user.type }}</td>
+        </tr>
+        <tr>
+            <td>Imagen:</td>
+            <td>
+                <img width="100px" src="{{user.agente.foto.url}}" alt="">
+            </td>
+        </tr>
+        <tr>
+            <td>Texto:</td>
+            <td>{{ user.agente.texto }}</td>
+        </tr>
+        <tr>
+            <td>Fecha de creación:</td>
+            <td>{{ user.created_at }}</td>
+        </tr>
+        <tr>
+            <td>Última actualización:</td>
+            <td>{{ user.updated_at }}</td>
+        </tr>
+    </tbody>
+</table>
+<div class="form-group__actions">
+    <button class="btn btn-success" type="submit">Regresar</button>
+    <a class="btn btn-info" href="{% url 'backoffice:agentes_update' user.id %}"
+        >Editar</a
+    >
+</div>
+{% endblock %}

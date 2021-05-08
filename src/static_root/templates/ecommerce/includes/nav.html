@@ -1,0 +1,106 @@
+{% load static %}
+
+{% block estilos-adicionales %}
+<link href="{% static 'css/nav.css' %}" rel="stylesheet">
+{% endblock estilos-adicionales %}
+
+<header class="header" id="header_c">
+        <div class="col logodiv" style="width:40%;">
+                <a href="/"><img id="CaterraLogo" src="{% static 'img/logo-negro.png' %}" class="" alt="CaterraLogo"></a>
+        </div>
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul class="menu" style="width:60%;">
+                <li><a class="{% if request.path == '/' %}active{% endif %}"
+                                href="{% url 'ecommerce:home' %}">Inicio</a></li>
+                <li><a class="{% if request.path|slice:'10' == '/acerca-de' %}active {% endif %}"
+                                href="{% url 'ecommerce:about' %}">Nosotros</a></li>
+                <li><a class="{% if request.path|slice:'12' == '/propiedades' %}active {% endif %}"
+                                href="{% url 'ecommerce:properties' %}">Propiedades</a></li>
+                <li><a class="{% if request.path|slice:'8' == '/agentes' %}active {% endif %}"
+                                href="{% url 'ecommerce:agents' %}">Agentes</a></li>
+                <li><a class="{% if request.path|slice:'5' == '/blog' %}active {% endif %}"
+                                href="{% url 'ecommerce:posts_list' %}">Blog</a></li>
+                <li><a class="{% if request.path|slice:'9' == '/contacto' %}active {% endif %}"
+                                href="{% url 'ecommerce:contact' %}">Contacto</a></li>
+        </ul>
+
+</header>
+<!-- <div class="cat_main_nav" id="cat_main_nav">
+        <div class="main-nav" style="display: flex; align-items: center; justify-content: center;">
+                <div class="cat_main_nav-logo" align="left">
+                        <a href="{% url 'ecommerce:home' %}">
+                                <img src="{% static 'img/logo-blanco.png' %}" class="" alt="CaterraLogo">
+                        </a>
+                </div>
+                <ul class="main-nav__menu">
+                        <li class="main-nav__item "><a class="{% if request.path == '/' %}active{% endif %}"
+                                        href="{% url 'ecommerce:home' %}">Inicio</a></li>
+                        <li class="main-nav__item"><a
+                                        class="{% if request.path|slice:'10' == '/acerca-de' %}active {% endif %}"
+                                        href="{% url 'ecommerce:about' %}">Nosotros</a></li>
+                        <li class="main-nav__item"><a
+                                        class="{% if request.path|slice:'12' == '/propiedades' %}active {% endif %}"
+                                        href="{% url 'ecommerce:properties' %}">Propiedades</a></li> -->
+<!-- <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/productos" %}active {% endif %}"
+                                                href="{% url "ecommerce:products" %}">Productos</a></li> -->
+<!-- <li class="main-nav__item"><a
+                                        class="{% if request.path|slice:'8' == '/agentes' %}active {% endif %}"
+                                        href="{% url 'ecommerce:agents' %}">Agentes</a></li>
+                        <li class="main-nav__item"><a
+                                        class="{% if request.path|slice:'5' == '/blog' %}active {% endif %}"
+                                        href="{% url 'ecommerce:posts_list' %}">Blog</a></li>
+                        <li class="main-nav__item"><a
+                                        class="{% if request.path|slice:'9' == '/contacto' %}active {% endif %}"
+                                        href="{% url 'ecommerce:contact' %}">Contacto</a></li>
+                </ul>
+        </div>
+
+</div> -->
+
+<!-- <nav class="main-nav">
+        <div class="main-nav__logo">
+                <a href="{% url 'ecommerce:home' %}">
+                        <img src="{% static 'img/logo-negro.png' %}" class="img-responsive" style="width: 30%;"
+                                alt="CaterraLogo">
+                </a>
+        </div>
+
+        <ul class="main-nav__menu">
+                <li class="main-nav__item "><a class="{% if request.path == '/' %}active {% endif %}"
+                                href="{% url 'ecommerce:home' %}">Inicio</a></li>
+                <li class="main-nav__item"><a class="{% if request.path|slice:'10' == '/acerca-de' %}active {% endif %}"
+                                href="{% url 'ecommerce:about' %}">Nosotros</a></li>
+                <li class="main-nav__item"><a
+                                class="{% if request.path|slice:'12' == '/propiedades' %}active {% endif %}"
+                                href="{% url 'ecommerce:properties' %}">Propiedades</a></li> -->
+<!-- <li class="main-nav__item"><a class="{% if request.path|slice:"10" == "/productos" %}active {% endif %}"
+                href="{% url "ecommerce:products" %}">Productos</a></li> -->
+<!-- <li class="main-nav__item"><a class="{% if request.path|slice:'8' == '/agentes' %}active {% endif %}"
+                                href="{% url 'ecommerce:agents' %}">Agentes</a></li>
+                <li class="main-nav__item"><a class="{% if request.path|slice:'5' == '/blog' %}active {% endif %}"
+                                href="{% url 'ecommerce:posts_list' %}">Blog</a></li>
+                <li class="main-nav__item"><a class="{% if request.path|slice:'9' == '/contacto' %}active {% endif %}"
+                                href="{% url 'ecommerce:contact' %}">Contacto</a></li>
+        </ul>
+</nav>  -->
+
+
+{% block scripts %}
+<script>
+        window.onscroll = function () { myFunction() };
+
+        var header = document.getElementById("header_c")
+        var sticky = header.offsetTop;
+
+        function myFunction() {
+                if (window.pageYOffset > sticky) {
+                        header.classList.add("sticky_nav");
+                        $('.header .logodiv a img').attr('src', '{% static "img/logo-negro.png" %}');
+                } else {
+                        header.classList.remove("sticky_nav");
+                        $('.home .header .logodiv a img').attr('src', '{% static "img/logo-blanco.png" %}');
+                }
+        }
+</script>
+{% endblock scripts %}

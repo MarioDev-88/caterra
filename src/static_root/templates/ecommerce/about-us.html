@@ -1,0 +1,134 @@
+{% extends 'ecommerce/layouts/ecommerce.layout.html' %}
+
+{% load static %}
+{% block content %}
+{% include './includes/header.html' with seccion="NOSOTROS" %}
+
+<div id="about_use_section_back" style="margin-top: 4%;">
+    <div>
+
+        <!-- <section class="business-features">
+            <article class="business-features__item business-features__item__green">
+                <div class="business-features__icon">
+                    <img src="{% static 'backoffice/img/ic-10.png' %}" alt="">
+                </div>
+                <div class="business-features__content">
+                    <h4>Envío gratis</h4>
+                    <span>En compras mayores de $599.00</span>
+                </div>
+            </article>
+            <article class="business-features__item business-features__item__dark">
+                <div class="business-features__icon">
+                    <img src="{% static 'backoffice/img/ic-11.png' %}" alt="">
+                </div>
+                <div class="business-features__content">
+                    <h4>Devolución</h4>
+                    <span>¡Gratis!</span>
+                </div>
+            </article>
+            <article class="business-features__item business-features__item__black">
+                <div class="business-features__icon">
+                    <img src="{% static 'backoffice/img/ic-12.png' %}" alt="">
+                </div>
+                <div class="business-features__content">
+                    <h4>Atención personalizada</h4>
+
+                </div>
+            </article>
+        </section> -->
+
+        <div align="center">
+            <div class="row container about-row" style="margin: 0em 0 1em 0;">
+                <div class="col-md-4">
+                    <img src="{% static 'ecommerce/img/ic-20.png' %}">
+                </div>
+                <div class="col-md-4">
+                    <img src="{% static 'ecommerce/img/ic-21.png' %}">
+                </div>
+                <div class="col-md-4">
+                    <img src="{% static 'ecommerce/img/ic-20.png' %}">
+                </div>
+            </div>
+            <div class="container" style="margin-bottom: 0.5em;">
+                <p style="text-align: center; color: #707070; line-height: 25px; padding: 2em;;">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt odio nisi, vitae sagittis leo
+                    hendrerit eget. Cras pharetra volutpat vehicula. Nunc volutpat tincidunt nisi eget pretium. Sed id
+                    diam blandit, convallis orci feugiat, convallis orci. Quisque faucibus imperdiet enim id rutrum.
+                    Curabitur id neque et massa euismod tincidunt. Donec quis tellus neque. Vestibulum felis ligula, ornare iaculis
+                    dapibus ac, rutrum vitae sem. Maecenas maximus auctor sem, in finibus ligula tincidunt et.
+                    Nunc volutpat tincidunt nisi eget pretium. Sed id diam blandit, convallis orci feugiat, convallis orci.
+                </p>
+            </div>
+            <div class="row container" align="center" style="margin-bottom: 5em;">
+                <div class="col-md-4 mision-vision">
+                    <img src="{% static 'ecommerce/img/ic-mision.png' %}" width="100px">
+                    <h1>MISIÓN</h1>
+                    <p style="text-align: center; color: #707070; line-height: 170%;">Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Cras tincidunt odio nisi, vitae sagittis leo hendrerit eget. Cras
+                        pharetra volutpat vehicula. Nunc volutpat tincidunt nisi eget pretium.</p>
+                </div>
+                <div class="col-md-4 mision-vision">
+                    <img src="{% static 'ecommerce/img/ic-mision.png' %}" width="100px">
+                    <h1>VISIÓN</h1>
+                    <p style="text-align: center; color: #707070; line-height: 170%;">Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Cras tincidunt odio nisi, vitae sagittis leo hendrerit eget. Cras
+                        pharetra volutpat vehicula. Nunc volutpat tincidunt nisi eget pretium.</p>
+                </div>
+                <div class="col-md-4 mision-vision">
+                    <img src="{% static 'ecommerce/img/ic-mision.png' %}" width="100px">
+                    <h1>VALORES</h1>
+                    <p style="text-align: center; color: #707070; line-height: 170%;">Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Cras tincidunt odio nisi, vitae sagittis leo hendrerit eget. Cras
+                        pharetra volutpat vehicula. Nunc volutpat tincidunt nisi eget pretium.</p>
+                </div>
+            </div>
+
+            <!-- <div class="container" style="width: 100%;">
+            <img src="{% static 'ecommerce/img/banner-titulo.png' %}">
+        </div> -->
+
+            <!-- <section class="about-us-content">
+            <h2>Nosotros</h2>
+            <div class="about-us-content-container">
+                <div>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere consequatur, nihil excepturi
+                        enim, quidem placeat non ipsum natus dolores, autem commodi nesciunt fugit magni perspiciatis
+                        laborum aliquid cum voluptatem qui?
+
+                    </p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt cum magnam perferendis vero,
+                        cupiditate porro accusantium fugit quae vel corporis eligendi nesciunt nulla non, sit aliquam
+                        dolore natus esse sint.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt cum magnam perferendis vero,
+                        cupiditate porro accusantium fugit quae vel corporis eligendi nesciunt nulla non, sit aliquam
+                        dolore natus esse sint.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt cum magnam perferendis vero,
+                        cupiditate porro accusantium fugit quae vel corporis eligendi nesciunt nulla non, sit aliquam
+                        dolore natus esse sint.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt cum magnam perferendis vero,
+                        cupiditate porro accusantium fugit quae vel corporis eligendi nesciunt nulla non, sit aliquam
+                        dolore natus esse sint.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt cum magnam perferendis vero,
+                        cupiditate porro accusantium fugit quae vel corporis eligendi nesciunt nulla non, sit aliquam
+                        dolore natus esse sint.</p>
+                </div>
+
+                <img src="{% static 'backoffice/img/img-1.png' %}" alt="">
+            </div>
+        </section> -->
+            <div style="margin-bottom: 6%; margin-top: 6%;">
+                
+                <form action="{% url 'ecommerce:desarrollos' %}">
+                    <button type="submit" class="btn btn-verde">CONOCE NUESTROS DESARROLLOS</button>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+
+    <div>
+        <img src="{% static 'ecommerce/img/banner-redes.png' %}">
+    </div>
+
+    {% endblock content %}

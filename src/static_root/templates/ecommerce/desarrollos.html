@@ -1,0 +1,21 @@
+{% extends 'ecommerce/layouts/ecommerce.layout.html' %}
+
+{% load static %}
+{% block content %}
+{% include './includes/header.html' with seccion="DESARROLLOS" %}
+
+<div id="desarrollos" style="margin-top: 4%;">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{% static 'ecommerce/img/desarrollos-12.png' %}">
+
+        </div>
+
+    </div>
+</div>
+
+<div>
+    <img src="{% static 'ecommerce/img/banner-redes.png' %}">
+</div>
+
+    {% endblock content %}

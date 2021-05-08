@@ -17,6 +17,7 @@ from .views import (
     AgentProfileView,
     PropertiesView,
     PropertyDetailView,
+    DesarrollosView,
 )
 
 app_name = "ecommerce"
@@ -31,11 +32,12 @@ urlpatterns = [
     path("agentes/<pk>", AgentProfileView.as_view(), name="agent_profile"),
     path("propiedades/", PropertiesView.as_view(), name="properties"),
     path("propiedades/<pk>", PropertyDetailView.as_view(), name="property_detail"),
+    path("desarollos/", DesarrollosView.as_view(), name="desarrollos"),
     path("productos/<str:id>", ProductView.as_view(), name="product"),
     path("carrito/", CartView.as_view(), name="cart"),
     path("pago/", OrderCreate.as_view(), name="payment_preview"),
     path("payment/<str:pk>", payment_preview, name="order_preview"),
     path("pedidos/", orders_view, name="orders"),
     path("blog/<str:slug>", single_post_view, name="post_single"),
-    path("comment/<int:post_id>", create_comment_view, name="comment")
+    path("comment/<int:post_id>", create_comment_view, name="comment"),
 ]

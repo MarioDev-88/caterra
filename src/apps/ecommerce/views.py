@@ -98,6 +98,9 @@ class ContactView(View):
 
         return HttpResponseRedirect(reverse("ecommerce:contact"))
 
+class DesarrollosView(TemplateView):
+    template_name = "ecommerce/desarrollos.html"
+
 
 class ProductsView(View):
 

@@ -1,0 +1,90 @@
+{% extends 'backoffice/layouts/backofficelayout.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<form class="slider-form" action="{% url 'backoffice:agentes_create' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% if form.errors %}
+    {% for key,value in form.errors.items %}
+    <div class="login-form__alert" role="alert">
+        <p>{{ value }}</p>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+
+    {% if messages %}
+    <ul class="login-form__alert" role="alert">
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div class="form-group row">
+        <div class="col-sm-12">
+            {{form.first_name}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-12">
+            {{form.first_surname}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-12">
+            {{form.last_surname}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-12">
+            {{form.email}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-12">
+            {{form.phone}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-12">
+            {{form.password1}}
+        </div>
+    </div>
+    {{form.type}}
+    <div class="form-group row">
+        <div class="col-sm-12">
+            {{form.password2}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-12">
+            {{agente_form.foto}}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-12">
+            {{agente_form.texto}}
+        </div>
+    </div>
+    <div class="form-group__actions">
+        <button class="btn btn-success" type="submit">Guardar</button>
+        <a class="btn btn-danger" href="{% url 'backoffice:agentes' %}">Cancelar</a>
+    </div>
+</form>
+
+{%endblock%}
+
+
+{% block scripts %}
+<script src="{% static 'assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js' %}"></script>
+<script src="{% static 'dist/js/pages/mask/mask.init.js' %}"></script>
+<script>
+    $('#id_type').hide()
+    $('#id_type option[value="AGENTE"]').prop('selected', true);
+</script>
+{% endblock scripts %}
+    

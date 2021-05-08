@@ -96,10 +96,10 @@
         function myFunction() {
                 if (window.pageYOffset > sticky) {
                         header.classList.add("sticky_nav");
-                        $('.header .logodiv a img').attr('src', '{% static 'img/logo-negro.png' %}');
+                        $('.header .logodiv a img').attr('src', '{% static "img/logo-negro.png" %}');
                 } else {
                         header.classList.remove("sticky_nav");
-                        $('.home .header .logodiv a img').attr('src', '{% static 'img/logo-blanco.png' %}');
+                        $('.home .header .logodiv a img').attr('src', '{% static "img/logo-blanco.png" %}');
                 }
         }
 </script>

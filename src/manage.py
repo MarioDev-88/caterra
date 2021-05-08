@@ -2,13 +2,16 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from os.path import join, dirname
 
 from dotenv import load_dotenv
 
-env = os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(__file__))), ".env")
 
-load_dotenv(dotenv_path=env)
+# env = os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(__file__))), ".env")
+# load_dotenv(dotenv_path=env)
 
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
 def main():
     if os.environ.get("ENV") == "production":

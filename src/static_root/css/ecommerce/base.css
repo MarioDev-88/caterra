@@ -1,0 +1,47 @@
+@font-face{
+    font-family: Avenir;
+    src: url(../../fonts/AvenirNextLTPro-Regular.otf);
+}
+
+body{
+    font-family: Avenir;
+    letter-spacing: 1px;
+}
+
+.clear-button{
+    color: #486600;
+    border-color: #486600;
+    border-radius: 36px;
+    padding-left: 8%;
+    padding-right: 8%;
+}
+
+.clear-button:hover{
+    color: white;
+    background-color: #486600;
+
+}
+
+.btn-verde{
+    text-align:left;
+    background-color: #486600;
+    border-radius: 0px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.btn-verde:hover{
+    background-color: white;
+    color: #486600;
+    border-color: #486600;
+    border-width: 2px;
+}
+
+.property-card{
+    margin: 1% 0;
+}
+
+.container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}

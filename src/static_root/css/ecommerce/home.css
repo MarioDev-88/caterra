@@ -1,0 +1,96 @@
+.header{
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    position: fixed !important;
+}
+.header ul{
+    color: white !important;
+}
+.sticky_nav{
+    top: 0 !important;
+}
+/* Agente */
+.agente-nombre{
+    font-size: 20px;
+    color: #66932f;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.btn-agente{
+    font-size: 16px;
+    background-color: #66932f;
+    border-radius: 65px;
+    padding: 1% 5% 1% 5%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+.col-agnt, .col-prop{
+    margin-bottom: 1em;
+}
+.bigspan{
+    font-size: 28px;
+}
+.btn-agente:hover{
+    text-decoration: none;
+    color: black;
+}
+.label{
+    font-size: 13pt;
+}
+
+/* propiedades */
+/* .prop-cont{
+    padding: 1em;
+}
+.prop-style > p{
+    padding: 0.2em 0.2em;
+} */
+
+.big-button{
+    background-color: #486600;
+    border-radius: 65px;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-weight: lighter;
+    font-size: 24pt;
+    color: white;
+}
+
+.big-button:hover{
+    text-decoration: none;
+    color: black;
+}
+
+
+.fa-envelope{
+    color: #486600;
+}
+
+/* medias queries */
+/* movil */
+@media only screen and (min-width : 320px) and (max-width : 480px) {
+    .btn-agente{
+        font-size: 10px !important;
+    }
+    .bigspan{
+        font-size: 16px !important;
+    }
+    .agnt-button{
+        font-size: 12px;
+        width: 50%;
+        letter-spacing: 1px;
+    }
+}
+
+/* ipad */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .prop-button{
+        font-size: 8px;
+        padding: 2% 5% 2% 5%;
+    }
+    .agnt-button{
+        font-size: 10px;
+        width: 100% !important;
+        letter-spacing: 1px;
+        margin: 0.5em 1em;
+    }
+}

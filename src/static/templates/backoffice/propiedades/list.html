@@ -31,14 +31,14 @@
                                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAO5JREFUSEtjZKAxYKSx+QyjFhAMYaxB9P//fwGgzn4gDoCasAFIFzIyMn4gaCKaAlwWXACq00dTewFogSHFFgBdD3L1ehwGBQItAfmGAajuPz7LgOrAjsfwAVBfA1C8HofmRqA+kDxFFhDlA2KDipQ4uAh0vQGxBsPU4UtFE9BSUQF6KsIXDzjjgBQXkmUBNBXlAy1yQLPsAJAPimQQTTRACSKg4QuAOuMJ6IanJGJsgVtAIP2jm+UI8wmuYMKIA6BCkNftiXEVUM1BoAHgICTFArw5E91imAsJOQg5iGhrASGXkCs/WqMRDDmaBxEASiJaGVnV+DwAAAAASUVORK5CYII="
                             /></a>
                             <a
-                                href="{% url 'backoffice:propiedades' %}"
+                                href="{% url 'backoffice:propiedades_update' propiedad.id %}"
                                 class="btn btn-sm btn-warning text-xs"
                                 ><img
                                     class="inline table__action-icon"
                                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAQZJREFUSEvVlGsRgkAURtkEGsEG2kBsQAMzmEAjWMEERhAbYAKNYAP8vpldB653gX3ww51xGK5wzn2wa4qZl5mZXyQL2rZdIsm9TfRijHl3k04SWPgNwI2FNrjuupJUQQ3gVrS5J0kVMHNKFkJyQBVnxoIFti1XvEtIg3tNEicQPecw2W8peSBeujlMrkAZKDsgJWxLFTxkD9y1/SvR9tRoBSNwx7wj6zJYMBHe67mUeCvIAfd+prngqiAn3CfgVl8PnLKDPR+cAbJf4YFnLvhPBRBUCPIY0FZQ5g7Q+4ogOOGPo0KPgmsV1AjK4zcargleCPJHEYfdYIfyPnqNHhXRZPvi/ws+xMCAGU/0VT8AAAAASUVORK5CYII="
                             /></a>
                             <a
-                                href="{% url 'backoffice:propiedades'  %}"
+                                href="{% url 'backoffice:propiedades_delete' propiedad.id %}"
                                 class="btn btn-sm btn-danger text-xs"
                                 ><img
                                     class="inline table__action-icon"

@@ -1,0 +1,211 @@
+{% extends 'ecommerce/layouts/ecommerce.layout.html' %}
+
+{% load static %}
+{% load humanize %}
+
+{% block estilos-adicionales %}
+<style>
+    .agente-container{
+        background-color: #d4d4d4;
+        padding: 1% 0;
+    }
+
+    .img-agente{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+    }
+
+    .txt-agente{
+        min-height: 150px;
+        text-align: justify;
+    }
+</style>
+{% endblock estilos-adicionales %}
+
+{% block content %}
+
+
+{% include './includes/header.html' with seccion=object|title %}
+
+<div class="agente-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 d-flex justify-content-center">
+                <img  class="img-agente" src="{{object.foto.url}}" alt="">
+            </div>
+            <div class="col-lg-10 text-lg-left text-center">
+                <div class="txt-agente text-lg-left text-center">
+                    {{object.texto}}
+                </div>
+                <br>
+                <p><span style="color: #486600"><i class="far fa-envelope"></i></span> {{agente.user.email}}</p>
+                <br>
+                <p><span style="color: #486600"><i class="fas fa-phone-volume"></i></span> {{agente.user.phone}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row py-3">
+        <div class="col-3" id="sticky-sidebar">
+            <div class="sticky-top">
+                <form class="contact-section-form" action="{% url 'ecommerce:contact' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="tipo_inmueble">TIPO DE INMUEBLE</label>
+                            <select class="form-control">
+                                <option value="">Tipo de Inmueble</option>
+                                <option value="casa">Casa</option>
+                                <option value="casa_suelo_mixto">Casa con uso de suelo mixto</option>
+                                <option value="oficina">Oficina</option>
+                                <option value="terreno">Terreno</option>
+                                <option value="local_comercial">Local Comercial</option>
+                                <option value="edificio">Edificio</option>
+                                <option value="bodega">Bodega</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipo_operacion">TIPO DE OPERACION</label>
+                            <select class="form-control">
+                                <option value="">Tipo de Operación</option>
+                                <option value="venta">Venta</option>
+                                <option value="renta">Renta</option>
+                                <option value="exclusiva">Exclusiva</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>PRECIO</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="number" placeholder="Desde" class="form-control" name="precio-desde" id="precio-desde">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" placeholder="Hasta" class="form-control" name="precio-hasta" id="precio-hasta">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ciudad">CIUDAD</label>
+                            <input type="text" placeholder="Ciudad" class="form-control" name="ciudad" id="ciudad">
+                        </div>
+                        <div class="form-group">
+                            <label for="colonia">COLONIA</label>
+                            <input type="text" placeholder="Colonia" class="form-control" name="colonia" id="colonia">
+                        </div>
+                        <div class="form-group">
+                            <label for="cp">CÓDIGO POSTAL</label>
+                            <input type="number" placeholder="Código Postal" class="form-control" name="cp" id="cp">
+                        </div>
+                        <div class="form-group">
+                            <label>RECÁMARAS</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="number" placeholder="Desde" class="form-control" name="recamaras-desde" id="recamaras-desde">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" placeholder="Hasta" class="form-control" name="recamaras-hasta" id="recamaras-hasta">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>BAÑOS</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="number" placeholder="Desde" class="form-control" name="banos-desde" id="banos-desde">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" placeholder="Hasta" class="form-control" name="banos-hasta" id="banos-hasta">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>TAMAÑO DE LA PROPIEDAD</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="number" placeholder="Desde" class="form-control" name="tamano-desde" id="tamano-desde">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" placeholder="Hasta" class="form-control" name="tamano-hasta" id="tamano-hasta">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="reset" class="btn btn-block"
+                        style="
+                            color: #486600;
+                            border-color: #486600;
+                            border-radius: 36px;
+                            padding-left: 2%;
+                            padding-right: 2%;
+                            ">LIMPIAR</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-block"
+                        style="
+                            color: #486600;
+                            border-color: #486600;
+                            border-radius: 36px;
+                            padding-left: 2%;
+                            padding-right: 2%;
+                            ">FILTRAR</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col order-2" id="main">
+            <div class="main container" style="margin-top: 5%; margin-bottom: 5%;">
+                <div class="row" style="margin-top: 3%; margin-bottom: 3%;">
+                    
+                    {% for propiedad in propiedades %}
+                    <div class="col-md-6 property-card">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <img class="img-responsive" src="{{propiedad.imagen.url}}">
+                            </div>
+                            <div class="col-lg-12">
+
+                                <div style="background-color: #f1f1f1; padding: 3%;">
+                                    <h1 style="font-size: 20pt;">{{propiedad.nombre}}</h1>
+                                    <p style="text-align: justify;">{{propiedad.direccion}}</p>
+                                    <p style="color: #486600">${{propiedad.precio}}</p>
+                                    <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i class="fas fa-bath"></i>&nbsp;{{propiedad.banos}}&nbsp;&nbsp;&nbsp;<i class="fas fa-th-large"></i> {{propiedad.terreno}} m2</p>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <p>Hace 3 Meses</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p><i class="far fa-clone"></i> Comparar</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="{% url  'ecommerce:property_detail' propiedad.id %}" class="btn clear-button">DETALLES</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+                    
+                    {% empty %}
+                    
+                    <h2>Este agente todavia no tiene propiedades</h2>
+                        
+                    {% endfor %}
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

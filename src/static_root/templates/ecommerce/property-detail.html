@@ -1,0 +1,139 @@
+{% extends 'ecommerce/layouts/ecommerce.layout.html' %}
+
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+
+{% block estilos-adicionales %}
+<link rel="stylesheet" href="{% static 'css/ecommerce/property-detail.css' %}">
+{% endblock estilos-adicionales %}
+
+
+{% include './includes/header.html' with seccion=object.nombre %}
+
+
+<!-- -------------------------------------------------------------------------- -->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <div>
+                <img src="{{propiedad.imagen.image.url}}" alt="">
+            </div>
+            <div>
+                video
+            </div>
+
+            <!-- Informacion de propiedad -->
+            <div class="row property-card">
+                <div class="col-lg-6 col-sm-12">
+                    <p>Tipo de propiedad: {{propiedad.tipo_inmueble | title}}</p>
+                    <p>Colonia: {{propiedad.colonia | title}}</p>
+                    <p>Tamaño de propiedad: {{propiedad.terreno | title}} m2</p>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <p>Dirección: {{propiedad.direccion | title}}</p>
+                    <p>Código Postal: {{propiedad.cp}}</p>
+                </div>
+            </div>
+
+            <!-- Características -->
+            <div class="property-card">
+                <h1 class="text-center">CARACTERÍSTICAS</h1>
+                <br>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-12">
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                        <i class="fas fa-check"></i> Aire Acondicionado <br>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detalles -->
+            <div class="property-card">
+                <h1 class="text-center">DETALLES</h1>
+                <br>
+                <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Ea, velit consectetur! Dignissimos doloremque quaerat quae aperiam omnis accusantium
+                    ipsam eveniet, eos impedit necessitatibus quo nostrum architecto ipsum dicta ducimus in.
+                </p>
+
+            </div>
+
+
+        </div>
+        <div class="col-lg-4">
+
+            <div id="" align="center" style="margin-bottom: 6%;">
+                <!-- <div class="contact-content-section"> -->
+                <form class="contact-section-form" action="" method="POST">
+                    {% csrf_token %}
+                    <div align="left" style="margin-bottom: 2em;">
+                        <h3 style="color: #223300;">CONTACTA AL AGENTE</h3>
+
+                    </div>
+                    <!-- <div class="row">
+                            <div class="col-md-6"> -->
+
+                    <div class="form-group">
+                        <!-- <label for="name">Nombre:</label> -->
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="phone">Telefono:</label> -->
+                        <input type="number" class="form-control" name="phone" id="phone" placeholder="Teléfono"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="email">Email:</label> -->
+                        <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" class="form-control" id="message" rows="8"
+                            placeholder="Mensaje"></textarea>
+                    </div>
+                    <!-- </div>
+                        </div> -->
+                    <div align="">
+                        <button type="submit" class="btn" style="
+                                background-color: #66932f;
+                                border-radius: 36px;
+                                padding-left: 5%;
+                                padding-right: 5%;
+                                ">Enviar</button>
+                    </div>
+                </form>
+                <!-- </div> -->
+                <div class="property-card">
+                    <img src="{{propiedad.agente.foto.url}}" alt="">
+                    <h1>{{propiedad.agente.user}}</h1>
+                    <br>
+                    <p><i class="fas fa-phone-volume"></i> {{propiedad.agente.user.phone}}</p>
+                    <p><i class="far fa-envelope"></i> {{propiedad.agente.user.email}}</p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
