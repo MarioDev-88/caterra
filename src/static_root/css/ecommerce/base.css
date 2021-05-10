@@ -11,7 +11,7 @@ body{
 .clear-button{
     color: #486600;
     border-color: #486600;
-    border-radius: 36px;
+    border-radius: 0px;
     padding-left: 8%;
     padding-right: 8%;
 }
