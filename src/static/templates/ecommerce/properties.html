@@ -3,7 +3,15 @@
 {% load static %}
 {% block estilos-adicionales %}
 <link rel="stylesheet" href="{% static 'css/ecommerce/properties.css' %}">
+<style>
+    #header_section_back{
+        background-image: url("{% static 'img/img-24.png' %}");
+        background-position: bottom;
+    }
+</style>
 {% endblock estilos-adicionales %}
+    
+
 
 {% block content %}
 {% include './includes/header.html' with seccion="PROPIEDADES" %}

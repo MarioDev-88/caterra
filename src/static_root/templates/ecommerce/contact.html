@@ -27,6 +27,12 @@
             margin:0.2em auto;
         }
     }
+
+    #header_section_back{
+        background-image: url("{% static 'img/img-24.png' %}");
+        background-position: bottom;
+    }
+    
 </style>
 
 {% include './includes/header.html' with seccion="CONTACTO" %}
@@ -48,7 +54,7 @@
 <div id="contact_back" style="margin-top: 4%;">
 
     <div class="contact-content-section">
-        
+        <img src="{% static 'ecommerce/img/banner-carro.png' %}" alt="">
         
         <!-- <div class="contact-text">
             <h1>Gracias por contactarte</h1>
@@ -144,13 +150,7 @@
                 </div>
             </div>
             <div align="center">
-                <button type="submit" class="btn" 
-                style="
-                    background-color: #223300;
-                    border-radius: 36px;
-                    padding-left: 2%;
-                    padding-right: 2%;
-                    ">Enviar</button>
+                <button type="submit" class="btn btn-verde">Enviar</button>
             </div>
         </form>
     </div>

@@ -35,33 +35,6 @@
 </head>
 
 <body>
-    <!-- top header section -->
-    <div id="top_header_back">
-        <section id="top_header">
-                <div class="row">
-                    <div class="col col-md-auto caterra_info">
-                        <p><i class="fas fa-phone-volume"></i> (662) 187 5495</p>
-                    </div>
-                    <div class="col col-md-auto caterra_info">
-                        <p><i class="fas fa-map-marker-alt"></i> Blvd. Jesus García Morales km. 6.5 #335</p>
-                    </div>
-                    <div class="col col-md-auto caterra_info">
-                        <p><i class="far fa-envelope"></i> administracion@caterra.mx</p>
-                    </div>
-                    <div class="col col-md-auto socials">
-                        <p>
-                            <a href=""><i class="fab fa-facebook-f"></i></a>&nbsp;&nbsp;
-                            <a href=""><i class="fab fa-twitter"></i></a>&nbsp;&nbsp;
-                            <a href=""><i class="fab fa-instagram"></i></a>
-                        </p>
-                    </div>
-                    <div class="col col-md-auto btn-login">
-                        <button class="btnlogin">INICIAR SESIÓN</button>
-                    </div>
-                </div>
-        </section>
-    </div>
-    <!-- end of top header section -->
     <div class="content">
         {% block content %}{% endblock content %}
     </div>
@@ -77,33 +50,39 @@
                     <h6 class="footer-link-list__title">CONTÁCTANOS</h6>
                     <div class="footer-contact-info__item">
                         <img src="{% static 'img/ic-44.png' %}" alt="">
-                        <span>Lorem Ipsum #12 Col. Ipsum</span></div>
+                        <span>Blvd. Jesus García Morales km. 6.5 #335</span></div>
                     <div class="footer-contact-info__item">
                         <img src="{% static 'img/ic-43.png' %}" alt="">
                         <span>(662) 187 5495</span></div>
                     <div class="footer-contact-info__item">
                         <img src="{% static 'img/ic-45.png' %}" alt="">
-                        <span>contacto@caterra.com.mx</span></div>
+                        <span>administracion@caterra.mx</span></div>
                 </ul>
             </div>
             <div class="footer-menu">
                 <ul class="footer-link-list">
-                    <li class="footer-link-list__item"><a href="">Inicio</a></li>
-                    <li class="footer-link-list__item"><a href="">Nosotros</a></li>
-                    <li class="footer-link-list__item"><a href="">Propiedades</a></li>
-                    <li class="footer-link-list__item"><a href="">Agentes</a></li>
-                    <li class="footer-link-list__item"><a href="">Blog</a></li>
-                    <li class="footer-link-list__item"><a href="">Contacto</a></li>
+                    <li class="footer-link-list__item"><a href="{% url 'ecommerce:home' %}">Inicio</a></li>
+                    <li class="footer-link-list__item"><a href="{% url 'ecommerce:about' %}">Nosotros</a></li>
+                    <li class="footer-link-list__item"><a href="{% url 'ecommerce:properties' %}">Propiedades</a></li>
+                    <li class="footer-link-list__item"><a href="{% url 'ecommerce:agents' %}">Agentes</a></li>
+                    <li class="footer-link-list__item"><a href="{% url 'ecommerce:posts_list' %}">Blog</a></li>
+                    <li class="footer-link-list__item"><a href="{% url 'ecommerce:contact' %}">Contacto</a></li>
                 </ul>
             </div>
             <ul class="footer-link-list">
-                <li class="footer-link-list__item"><a href="">Iniciar Sesión</a></li>
+                <li class="footer-link-list__item"><a href="{% url 'users:login_view' %}">Iniciar Sesión</a></li>
                 <li class="footer-link-list__item"><a href="">Terminos y condiciones</a></li>
                 <li class="footer-link-list__item"><a href="">Aviso de privacidad</a></li>
 
                 <div class="socials" style="margin-top: 2em;">
-                    <a href="#"><img src="{% static 'img/ic-49.png' %}"></a><a href="#"><img src="{% static 'img/ic-50.png' %}"></a>
-                    <a href="#"><img src="{% static 'img/ic-51.png' %}"></a>
+                    
+                    <div class="col col-md-auto socials">
+                        <p>
+                            <a href='https://www.facebook.com/CATERRA.mx/' target='_blank'><i class="fab fa-facebook-f"></i></a>&nbsp;&nbsp;
+                            <a href=""><i class="fab fa-twitter"></i></a>&nbsp;&nbsp;
+                            <a href=""><i class="fab fa-instagram"></i></a>
+                        </p>
+                    </div>
                 </div>
                 
 
@@ -125,7 +104,7 @@
         <div class="modal-window">
             <form class="auth-modal__login-form" method="POST" action="{% url 'users:login_view' %}">
             {% csrf_token %}
-                <h3 class="auth-modal__form-title">iniciar sesión</h3>
+                <h3 class="auth-modal__form-title">Iniciar sesión</h3>
                 <div class="form-control">
                     <label for="login-email">Email:</label>
                     <input type="email" name="email" id="login-email" required>
@@ -138,7 +117,7 @@
                     <button class="btn btn-success text-sm auth-modal__submit-button">Iniciar sesión</button>
                 </div>
             </form>
-            <form class="auth-modal__login-form" method="POST" action="{% url "users:signup_view" %}">
+            <form class="auth-modal__login-form" method="POST" action="{% url 'users:signup_view' %}">
             {% csrf_token %}
                 <h3 class="auth-modal__form-title">Registrarse</h3>
                 <div class="form-control">

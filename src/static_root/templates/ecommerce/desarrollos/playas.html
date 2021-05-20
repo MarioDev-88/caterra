@@ -1,0 +1,53 @@
+{% extends 'ecommerce/layouts/ecommerce.layout.html' %}
+
+{% load static %}
+
+
+{% block estilos-adicionales %}
+
+<style>
+    #header_section_back{
+        background-image: url("{% static 'img/img-25.png' %}");
+        background-position: bottom;
+    }
+
+    .desarrollos-text{
+        text-align: justify;
+        line-height: 1.7rem;
+        font-size: 1.2rem;
+    }
+
+
+</style>
+
+{% endblock estilos-adicionales %}
+    
+
+{% block content %}
+{% include '../includes/header.html' with seccion="PLAYAS" %}
+
+<div id="desarrollos" style="margin: 7%;">
+    <div class="row">
+        <div class="col-md-6 d-flex align-items-center">
+            <p class="desarrollos-text">
+                En este rincón de México se combina en perfecto equilibrio la naturaleza con la modernidad; la tranquilidad con la diversión y el entretenimiento.
+                Mañanas vibrantes de sol y atardeceres que acarician el espíritu.
+
+                Lotes de alta plusvalía con vistas espectaculares.
+                Comprometidos con la conservación del entorno, la protección de la flora y la fauna y el respeto a las normas ecológicas que garantizan su futuro.
+      
+            </p>
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+            <a href="" class="desarrollo-link">
+                <img class="img-desarrollo" style="width: 80%;" src="{% static 'img/img-26.png' %}">
+            </a>
+        </div>
+    </div>
+</div>
+
+<div>
+    <img src="{% static 'ecommerce/img/banner-redes.png' %}">
+</div>
+
+{% endblock content %}

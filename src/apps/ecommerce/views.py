@@ -101,6 +101,30 @@ class ContactView(View):
 class DesarrollosView(TemplateView):
     template_name = "ecommerce/desarrollos.html"
 
+class DesarrollosAmbarView(TemplateView):
+    template_name = "ecommerce/desarrollos/ambar.html"
+
+class DesarrollosBuenAventuraView(TemplateView):
+    template_name = "ecommerce/desarrollos/buenaventura.html"
+
+class DesarrollosHexusView(TemplateView):
+    template_name = "ecommerce/desarrollos/hexus.html"
+
+class DesarrollosKinoBayView(TemplateView):
+    template_name = "ecommerce/desarrollos/kinobay.html"
+
+class DesarrollosPlayasView(TemplateView):
+    template_name = "ecommerce/desarrollos/playas.html"
+
+class DesarrollosPuntaView(TemplateView):
+    template_name = "ecommerce/desarrollos/puntodelmar.html"
+
+class DesarrollosRanchoView(TemplateView):
+    template_name = "ecommerce/desarrollos/ranchosanmiguel.html"
+
+class DesarrollosUpdayView(TemplateView):
+    template_name = "ecommerce/desarrollos/upday.html"
+
 
 class ProductsView(View):
 

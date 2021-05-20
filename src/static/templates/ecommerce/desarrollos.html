@@ -1,34 +1,74 @@
 {% extends 'ecommerce/layouts/ecommerce.layout.html' %}
 
 {% load static %}
+
+
+{% block estilos-adicionales %}
+
+<style>
+    #header_section_back{
+        background-image: url("{% static 'img/banner-carro.png' %}");
+        background-position: bottom;
+    }
+
+    .img-desarrollo{
+        width: 600px !important;
+    }
+
+    .desarrollo-link:hover{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+
+</style>
+
+{% endblock estilos-adicionales %}
+    
+
 {% block content %}
 {% include './includes/header.html' with seccion="DESARROLLOS" %}
 
 <div id="desarrollos" style="margin: 7%;">
     <div class="row">
         <div class="col-md-6 d-flex align-items-center">
-            <img style="width: 80%;" src="{% static 'img/ecommerce/desarrollos-12.png' %}">
+            <a href="{% url  'ecommerce:desarrollos-punta'  %}" class="desarrollo-link">
+                <img  class="img-desarrollo" style="width: 80%;" src="{% static 'img/ecommerce/desarrollos-12.png' %}">
+            </a>
         </div>
         <div class="col-md-6 d-flex align-items-center">
-            <img style="width: 80%;" src="{% static 'img/ecommerce/desarrollos-13.png' %}">
+            <a href="{% url  'ecommerce:desarrollos-ambar'  %}" class="desarrollo-link">
+                <img class="img-desarrollo" style="width: 80%;" src="{% static 'img/ecommerce/desarrollos-13.png' %}">
+            </a>
         </div>
         <div class="col-md-6 d-flex align-items-center">
-            <img style="width: 80%;" src="{% static 'img/ecommerce/desarrollos-14.png' %}">
+            <a href="{% url  'ecommerce:desarrollos-hexus'  %}" class="desarrollo-link">
+                <img class="img-desarrollo" style="width: 80%;" src="{% static 'img/ecommerce/desarrollos-14.png' %}">
+            </a>
         </div>
         <div class="col-md-6 d-flex align-items-center">
-            <img style="width: 80%;" src="{% static 'img/ecommerce/desarrollos-15.png' %}">
+            <a href="{% url  'ecommerce:desarrollos-buenaventura'  %}" class="desarrollo-link">
+                <img class="img-desarrollo" style="width: 80%;" src="{% static 'img/ecommerce/desarrollos-15.png' %}">
+            </a>
         </div>
         <div class="col-md-6 d-flex align-items-center">
-            <img style="width: 80%;" src="{% static 'img/ecommerce/desarrollos-16.png' %}">
+            <a href="{% url  'ecommerce:desarrollos-upday'  %}" class="desarrollo-link">
+                <img class="img-desarrollo" style="width: 80%;" src="{% static 'img/ecommerce/desarrollos-16.png' %}">
+            </a>
         </div>
         <div class="col-md-6 d-flex align-items-center">
-            <img style="width: 80%;" src="{% static 'img/ecommerce/desarrollos-17.png' %}">
+            <a href="{% url  'ecommerce:desarrollos-kinobay'  %}" class="desarrollo-link">
+                <img class="img-desarrollo" style="width: 80%;" src="{% static 'img/ecommerce/desarrollos-17.png' %}">
+            </a>
         </div>
         <div class="col-md-6 d-flex align-items-center">
-            <img style="width: 80%;" src="{% static 'img/ecommerce/desarrollos-18.png' %}">
+            <a href="{% url  'ecommerce:desarrollos-playas'  %}" class="desarrollo-link">
+                <img class="img-desarrollo" style="width: 80%;" src="{% static 'img/ecommerce/desarrollos-18.png' %}">
+            </a>
         </div>
         <div class="col-md-6 d-flex align-items-center">
-            <img style="width: 80%;" src="{% static 'img/ecommerce/desarrollos-19.png' %}">
+            <a href="{% url  'ecommerce:desarrollos-rancho'  %}" class="desarrollo-link">
+                <img class="img-desarrollo" style="width: 80%;" src="{% static 'img/ecommerce/desarrollos-19.png' %}">
+            </a>
         </div>
     </div>
 </div>

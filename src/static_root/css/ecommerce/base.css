@@ -19,7 +19,6 @@ body{
 .clear-button:hover{
     color: white;
     background-color: #486600;
-
 }
 
 .btn-verde{
@@ -31,10 +30,9 @@ body{
 }
 
 .btn-verde:hover{
-    background-color: white;
+    background-color: inherit;
     color: #486600;
     border-color: #486600;
-    border-width: 2px;
 }
 
 .property-card{

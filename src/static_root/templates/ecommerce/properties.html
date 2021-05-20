@@ -3,7 +3,15 @@
 {% load static %}
 {% block estilos-adicionales %}
 <link rel="stylesheet" href="{% static 'css/ecommerce/properties.css' %}">
+<style>
+    #header_section_back{
+        background-image: url("{% static 'img/img-24.png' %}");
+        background-position: bottom;
+    }
+</style>
 {% endblock estilos-adicionales %}
+    
+
 
 {% block content %}
 {% include './includes/header.html' with seccion="PROPIEDADES" %}
@@ -145,22 +153,10 @@
                     <!-- </div> -->
                     <div class="row">
                         <div class="col-md-6">
-                            <button type="reset" class="btn btn-block" style="
-                                color: #486600;
-                                border-color: #486600;
-                                border-radius: 36px;
-                                padding-left: 2%;
-                                padding-right: 2%;
-                                ">LIMPIAR</button>
+                            <button type="reset" class="btn btn-block clear-button">LIMPIAR</button>
                         </div>
                         <div class="col-md-6">
-                            <button type="submit" class="btn btn-block" style="
-                                color: #486600;
-                                border-color: #486600;
-                                border-radius: 36px;
-                                padding-left: 2%;
-                                padding-right: 2%;
-                                ">FILTRAR</button>
+                            <button type="submit" class="btn btn-block btn-verde text-center">FILTRAR</button>
                         </div>
                     </div>
                 </form>
@@ -202,10 +198,8 @@
                                 <div class="col" style="padding-top: 2%;">
                                     <p style="font-size: 10px;"><i class="far fa-clone"></i> COMPARAR</p>
                                 </div>
-                                <div class="col">
-                                    <button
-                                        onClick="location.href='{% url  'ecommerce:property_detail' propiedad.id %}'"
-                                        class="prop-button">DETALLES</button>
+                                <div class="col-md-4">
+                                    <a href="{% url  'ecommerce:property_detail' propiedad.id %}" class="btn clear-button">DETALLES</a>
                                 </div>
                             </div>
                         </div>

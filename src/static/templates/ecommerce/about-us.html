@@ -1,6 +1,20 @@
 {% extends 'ecommerce/layouts/ecommerce.layout.html' %}
 
 {% load static %}
+
+
+{% block estilos-adicionales %}
+
+<style>
+    #header_section_back{
+        background-image: url("{% static 'img/banner-carro.png' %}");
+        background-position: bottom;
+    }
+</style>
+
+{% endblock estilos-adicionales %}
+    
+
 {% block content %}
 {% include './includes/header.html' with seccion="NOSOTROS" %}
 

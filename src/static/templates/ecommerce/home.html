@@ -18,31 +18,58 @@
     .texto {
         height: 80px;
     }
+
+    .texto-logo-caterra{
+        padding: 5%;
+        background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 77%, rgba(255,255,255,1) 100%);
+        color: white;
+        text-shadow: rgb(0, 0, 0) 1px 0px 0px, rgb(0, 0, 0) 0.540302px 0.841471px 0px, rgb(0, 0, 0) -0.416147px 0.909297px 0px, rgb(0, 0, 0) -0.989992px 0.14112px 0px, rgb(0, 0, 0) -0.653644px -0.756802px 0px, rgb(0, 0, 0) 0.283662px -0.958924px 0px, rgb(0, 0, 0) 0.96017px -0.279415px 0px;
+    }
+
+    .btn-negro{
+        text-align:left;
+        background-color: inherit;
+        border-radius: 0px;
+        padding-left: 5%;
+        padding-right: 5%;
+        border-color: #ffffff;
+    }
+
+    .btn-negro:hover{
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    .complete-header{
+    }
+
 </style>
 {% endblock estilos-adicionales %}
 
 {% block content %}
 
 <body class="home">
-    {% include './includes/nav.html' %}
-    <!-- slider section -->
-    <div id="slider_back">
-        <section class="slider">
-            <ul class="sliders">
-
-                {% for slider in sliders %}
-                <li class="glide__slide main-slider__item">
-                    <img src="{{ slider.image.url }}" alt="">
-                    <div class="main-slider__content">
-                        <h2 class="main-slider__content__title">{{ slider.title}}</h2>
-                        <a href="{{ slider.url }}" class="main-slider__content__action btn btn-success text-xs">Ver
-                            más</a>
-                    </div>
-                </li>
-                {% endfor %}
-
-            </ul>
-        </section>
+    <div class="complete-header">
+        {% include './includes/nav.html' %}
+        <!-- slider section -->
+        <div id="slider_back">
+            <section class="slider">
+                <ul class="sliders">
+    
+                    {% for slider in sliders %}
+                    <li class="glide__slide main-slider__item">
+                        <img src="{{ slider.image.url }}" alt="">
+                        <div class="main-slider__content">
+                            <h2 class="main-slider__content__title">{{ slider.title}}</h2>
+                            <a href="{{ slider.url }}" class="main-slider__content__action btn btn-success text-xs">Ver
+                                más</a>
+                        </div>
+                    </li>
+                    {% endfor %}
+    
+                </ul>
+            </section>
+        </div>
     </div>
     <!-- end of slider section -->
     <!-- search section -->
@@ -267,37 +294,39 @@
     <!-- end formulario index -->
 
     <!-- logo-texto -->
-    <div class="row">
-        <div align="center" style="
-        margin-left: 5%;
-        margin-right: 5%;
-        ">
-            <div class="col-md-4" style="float:left;">
-                <img src="{% static 'img/logo-negro.png' %}" width="80%" style="margin-bottom: 1.5em;">
-            </div>
-            <div class="col-md-8" style="padding-left: 5%; float:left;">
-                <p style="text-align: justify;">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet risus nec elit lacinia
-                    accumsan
-                    ultricies id dolor.
-                    Nam pulvinar ante massa, a efficitur risus elementum at. Proin egestas facilisis efficitur.
-                    Suspendisse
-                    nisl nibh, convallis id facilisis vel, placerat ac urna.
-                    Nulla eu leo lectus. Praesent consequat augue purus, ac congue justo fringilla ut. Sed sed velit
-                    diam.
-                    Donec nisi metus, placerat nec dolor accumsan, rutrum fermentum lacus.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.Proin egestas facilisis efficitur.
-                    Suspendisse
-                    nisl nibh, convallis id facilisis vel, placerat ac urna.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.Proin egestas facilisis efficitur.
-                    Suspendisse
-                    nisl nibh, convallis id facilisis vel, placerat ac urna.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.Proin egestas facilisis efficitur.
-                    Suspendisse
-                    nisl nibh, convallis id facilisis vel, placerat ac urna.
-                </p>
-                <div align="left" style="margin-top: 1%; margin-top: 6%;">
-                    <button type="submit" class="btn btn-verde">CONOCE MÁS</button>
+    <div class="texto-logo-caterra">
+        <div class="row">
+            <div align="center" style="
+            margin-left: 5%;
+            margin-right: 5%;
+            ">
+                <div class="col-md-4" style="float:left;">
+                    <img src="{% static 'img/logo-negro-plateado.png' %}" width="80%" style="margin-bottom: 1.5em;">
+                </div>
+                <div class="col-md-8" style="padding-left: 5%; float:left;">
+                    <p style="text-align: justify;">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet risus nec elit lacinia
+                        accumsan
+                        ultricies id dolor.
+                        Nam pulvinar ante massa, a efficitur risus elementum at. Proin egestas facilisis efficitur.
+                        Suspendisse
+                        nisl nibh, convallis id facilisis vel, placerat ac urna.
+                        Nulla eu leo lectus. Praesent consequat augue purus, ac congue justo fringilla ut. Sed sed velit
+                        diam.
+                        Donec nisi metus, placerat nec dolor accumsan, rutrum fermentum lacus.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.Proin egestas facilisis efficitur.
+                        Suspendisse
+                        nisl nibh, convallis id facilisis vel, placerat ac urna.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.Proin egestas facilisis efficitur.
+                        Suspendisse
+                        nisl nibh, convallis id facilisis vel, placerat ac urna.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.Proin egestas facilisis efficitur.
+                        Suspendisse
+                        nisl nibh, convallis id facilisis vel, placerat ac urna.
+                    </p>
+                    <div align="left" style="margin-top: 1%; margin-top: 6%;">
+                        <button type="submit" class="btn btn-negro">CONOCE MÁS</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,0 +1,52 @@
+{% extends 'ecommerce/layouts/ecommerce.layout.html' %}
+
+{% load static %}
+
+
+{% block estilos-adicionales %}
+
+<style>
+    #header_section_back{
+        background-image: url("{% static 'img/img-25.png' %}");
+        background-position: bottom;
+    }
+
+    .desarrollos-text{
+        text-align: justify;
+        line-height: 1.7rem;
+        font-size: 1.2rem;
+    }
+
+
+</style>
+
+{% endblock estilos-adicionales %}
+    
+
+{% block content %}
+{% include '../includes/header.html' with seccion="BUENAVENTURA" %}
+
+<div id="desarrollos" style="margin: 7%;">
+    <div class="row">
+        <div class="col-md-6 d-flex align-items-center">
+            <p class="desarrollos-text">
+                Ubicada en una de las zonas con más plusvalía en el nuevo norte de Hermosillo, 
+                una de las zonas de mayor crecimiento de la cuidad, Buenaventura Residential Club ofrece 
+                amplios espacios constructivos, en conjunto con un exclusivo club deportivo para el óptimo 
+                esparcimiento de toda tu familia y con las mejores actividades lúdicas.
+
+            </p>
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+            <a href="" class="desarrollo-link">
+                <img class="img-desarrollo" style="width: 80%;" src="{% static 'img/img-26.png' %}">
+            </a>
+        </div>
+    </div>
+</div>
+
+<div>
+    <img src="{% static 'ecommerce/img/banner-redes.png' %}">
+</div>
+
+{% endblock content %}
