@@ -11,7 +11,7 @@ from apps.users.models import Agente
 class Slider(models.Model):
     title = models.CharField(max_length=255)
     url = models.CharField(max_length=255)
-    image = models.ImageField(upload_to="static/img/media/sliders", max_length=255)
+    image = models.ImageField(upload_to="sliders", max_length=255)
     order = models.PositiveSmallIntegerField()
 
     class Meta:
