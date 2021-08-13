@@ -35,8 +35,8 @@
 .header li a:hover,
 .header .menu-btn:hover {
   width: 100%;
-  background-color: #3f3f3f;
-  color:white;
+  /* background-color: #3f3f3f; */
+  color:#3f3f3f;
 }
 
 .header .logodiv a img {

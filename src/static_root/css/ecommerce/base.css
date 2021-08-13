@@ -1,6 +1,26 @@
 @font-face{
     font-family: Avenir;
-    src: url(../../fonts/AvenirNextLTPro-Regular.otf);
+    src: url(../../fonts/AvenirNextLTPro-Regular.otf) format("opentype");
+}
+
+@font-face{
+    font-family: AvenirBold;
+    src: url(../../fonts/AvenirNextLTPro-Bold.otf) format("opentype");
+}
+
+@font-face{
+    font-family: AvenirLight;
+    src: url(../../fonts/AvenirNextLTPro-Demi.otf) format("opentype");
+}
+
+@font-face{
+    font-family: BaskervilleBold;
+    src: url(../../fonts/LibreBaskerville-Bold.ttf) format("opentype");
+}
+
+@font-face{
+    font-family: BaskervilleRegular;
+    src: url(../../fonts/LibreBaskerville-Regular.ttf) format("opentype");
 }
 
 body{
@@ -43,3 +63,4 @@ body{
     margin-top: 5%;
     margin-bottom: 5%;
 }
+

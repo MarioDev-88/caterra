@@ -1,7 +1,6 @@
 {% load static %}
 
 {% block estilos-adicionales %}
-<link href="{% static 'css/nav.css' %}" rel="stylesheet">
 
 <style>
         #CaterraLogo{
@@ -16,10 +15,12 @@
 
         .top-header-back{
                 background-color: transparent !important;
+                position: relative;
+                z-index:9999;
         }
 
         .top-header{
-                color: #000000 !important;
+                /*color: #000000 !important;*/
         }
 
         .btn-transparent{
@@ -32,7 +33,7 @@
         .btn-transparent:hover{
                 background-color: #000000;
                 color: #ffffff;
-        }
+        }        
 </style>
 
 {% endblock estilos-adicionales %}
@@ -48,7 +49,7 @@
                         <p><i class="fas fa-map-marker-alt"></i> Blvd. Jesus García Morales km. 6.5 #335</p>
                 </div>
                 <div class="col col-md-auto caterra_info">
-                        <p><i class="far fa-envelope"></i> administracion@caterra.mx</p>
+                        <p><i class="far fa-envelope" style="color:#ffffff;"></i> administracion@caterra.mx</p>
                 </div>
                 <div class="col col-md-auto socials">
                         <p>
@@ -76,20 +77,19 @@
         <input class="menu-btn" type="checkbox" id="menu-btn" />
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
         <ul class="menu" >
-                <li><a class="{% if request.path == '/' %}active{% endif %}"
-                                href="{% url 'ecommerce:home' %}">Inicio</a></li>
+                <li><a class="{% if request.path == '/' %}active{% endif %}" href="{% url 'ecommerce:home' %}">Inicio</a><div class="{% if request.path == '/' %}bar-active{% endif %}"></div></li>
                 <li><a class="{% if request.path|slice:'10' == '/acerca-de' %}active {% endif %}"
-                                href="{% url 'ecommerce:about' %}">Nosotros</a></li>
+                                href="{% url 'ecommerce:about' %}">Nosotros</a><div class="{% if request.path|slice:'10' == '/acerca-de' %}bar-active{% endif %}"></div></li>
                 <li><a class="{% if request.path|slice:'12' == '/propiedades' %}active {% endif %}"
-                                href="{% url 'ecommerce:properties' %}">Propiedades</a></li>
+                                href="{% url 'ecommerce:properties' %}">Propiedades</a><div class="{% if request.path|slice:'12' == '/propiedades' %}bar-active{% endif %}"></div></li>
                 <li><a class="{% if request.path|slice:'8' == '/agentes' %}active {% endif %}"
-                                href="{% url 'ecommerce:agents' %}">Agentes</a></li>
+                                href="{% url 'ecommerce:agents' %}">Agentes</a><div class="{% if request.path|slice:'8' == '/agentes' %}bar-active{% endif %}"></div></li>
                 <li><a class="{% if request.path|slice:'12' == '/desarrollos' %}active {% endif %}"
-                                href="{% url 'ecommerce:desarrollos' %}">Desarrollos</a></li>
+                                href="{% url 'ecommerce:desarrollos' %}">Desarrollos</a><div class="{% if request.path|slice:'12' == '/desarrollos' %}bar-active{% endif %}"></div></li>
                 <li><a class="{% if request.path|slice:'5' == '/blog' %}active {% endif %}"
-                                href="{% url 'ecommerce:posts_list' %}">Blog</a></li>
+                                href="{% url 'ecommerce:posts_list' %}">Blog</a><div class="{% if request.path|slice:'5' == '/blog' %}bar-active{% endif %}"></div></li>
                 <li><a class="{% if request.path|slice:'9' == '/contacto' %}active {% endif %}"
-                                href="{% url 'ecommerce:contact' %}">Contacto</a></li>
+                                href="{% url 'ecommerce:contact' %}">Contacto</a><div class="{% if request.path|slice:'9' == '/contacto' %}bar-active{% endif %}"></div></li>
         </ul>
 
 </header>

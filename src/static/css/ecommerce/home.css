@@ -1,5 +1,5 @@
 .header{
-    background-color: rgba(0, 0, 0, 0.2) !important;
+    background-color: #807f797d !important;
     position: fixed !important;
 }
 .header ul{
@@ -8,12 +8,21 @@
 .sticky_nav{
     top: 0 !important;
 }
+.bar-active {
+    background-color: #938d83 !important;
+    height: 5px;
+    margin:0;
+}
+.black-title {
+    color:#353535 !important;
+}
 /* Agente */
 .agente-nombre{
     font-size: 20px;
     color: #66932f;
     font-weight: bold;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Avenir;
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
 }
 .btn-agente{
     font-size: 16px;

@@ -22271,9 +22271,9 @@ input:focus,
 }
 
 #header_section_back {
-  background-image: url("../ecommerce/img/banner-titulo.png");
+  background: url("../ecommerce/img/banner-titulo.png") no-repeat center;
   background-size: cover;
-  height: 450px;
+  min-height: 100vh;
   background-color: #6b6b6b;
   display: flex;
   justify-content: center;
@@ -22476,7 +22476,7 @@ div.main-slider {
 }
 
 .main-slider__item {
-  height: 500px;
+  height: 650px;
   width: 1920px;
   display: flex !important;
   position: relative;
@@ -23034,22 +23034,22 @@ div#ssl_section_back {
   }
 
   div.main-slider__content {
-    margin-top: 150px;
+    margin-top: 500px;
     align-self: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.4);
     display: flex;
     flex-direction: column;
-    max-width: 500px;
+    max-width: 100%;
     padding: 20px;
     z-index: 5;
   }
 
   h2.main-slider__content__title {
     color: white;
-    font-size: 2em;
+    font-size: 2.5rem;
     font-weight: bolder;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 
   btn.main-slider__content__action {
@@ -23283,6 +23283,8 @@ div#ssl_section_back {
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 5%;
+  font-family: 'BaskervilleRegular';
+  padding-top: 10px;
 }
 
 .mision-vision > h1:after {
@@ -23386,6 +23388,7 @@ article.post {
 
 .contact-section-form {
   width: 85%;
+  margin-top:20px;
 }
 
 .contact-text > h1 {

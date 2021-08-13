@@ -28,14 +28,15 @@
     <!-- Styles -->
     <link href="{% static 'css/bundle.dist.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/ecommerce/base.css' %}">
+    <link href="{% static 'css/nav.css' %}" rel="stylesheet">
 
     {% block estilos-adicionales %}
         
     {% endblock estilos-adicionales %}
 </head>
 
-<body>
-    <div class="content">
+<body class="">
+    <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
         {% block content %}{% endblock content %}
     </div>
 
@@ -77,11 +78,15 @@
                 <div class="socials" style="margin-top: 2em;">
                     
                     <div class="col col-md-auto socials">
-                        <p>
-                            <a href='https://www.facebook.com/CATERRA.mx/' target='_blank'><i class="fab fa-facebook-f"></i></a>&nbsp;&nbsp;
-                            <a href=""><i class="fab fa-twitter"></i></a>&nbsp;&nbsp;
+                        <div class="circle-social text-center">
+                            <a href='https://www.facebook.com/CATERRA.mx/' target='_blank'><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                        <div class="circle-social text-center">
+                            <a href=""><i class="fab fa-twitter"></i></a>
+                        </div>
+                        <div class="circle-social text-center">
                             <a href=""><i class="fab fa-instagram"></i></a>
-                        </p>
+                        </div>
                     </div>
                 </div>
                 

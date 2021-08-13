@@ -21,9 +21,24 @@
     }
 
     #header_section_back{
-        background-image: url("{% static 'img/img-24.png' %}");
-        background-position: bottom;
+        background: url("{% static 'img/img-24.png' %}") no-repeat center;
+        background-size: cover;
+        min-height: 100vh;
     }
+    .top-header {
+        color:#000 !important;
+    }
+    .btn-transparent{
+            border-color: #000000 !important;
+            border-radius: 0px !important;
+            padding: 5px !important;
+            color: #000000 !important;
+    }
+
+    .btn-transparent:hover{
+            background-color: #000000 !important;
+            color: #ffffff !important;
+    } 
 </style>
 {% endblock estilos-adicionales %}    
 
@@ -43,7 +58,7 @@
                         <img src="{{agente.foto.url}}">
                     </div>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-12" style="color: #000;">
                     <br>
                     <h1 style="font-size: 20pt;">{{agente.user|title}}</h1>
                     <br>
@@ -53,7 +68,7 @@
                     <br>
                     <p><span style="color: #486600"><i class="far fa-envelope"></i></span>    {{agente.user.email}}</p>
                     <div align="right" style="margin: 3% 0;">
-                        <a href="{%url 'ecommerce:agent_profile' agente.id %}" class="btn clear-button"> VER PERIL</a>
+                        <a href="{%url 'ecommerce:agent_profile' agente.id %}" class="btn clear-button rounded-pill"> VER PERIL</a>
                     </div>
                 </div>
             </div>

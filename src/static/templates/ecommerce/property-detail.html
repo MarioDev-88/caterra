@@ -7,6 +7,22 @@
 
 {% block estilos-adicionales %}
 <link rel="stylesheet" href="{% static 'css/ecommerce/property-detail.css' %}">
+<style>
+    .top-header {
+        color:#000 !important;
+    }
+    .btn-transparent{
+            border-color: #000000 !important;
+            border-radius: 0px !important;
+            padding: 5px !important;
+            color: #000000 !important;
+    }
+
+    .btn-transparent:hover{
+            background-color: #000000 !important;
+            color: #ffffff !important;
+    } 
+</style>
 {% endblock estilos-adicionales %}
 
 
@@ -26,7 +42,6 @@
             <!-- Video -->
             <div>
             </div>
-
             <!-- Informacion de propiedad -->
             <div class="row property-card">
                 <div class="col-lg-6 col-sm-12">
@@ -42,7 +57,7 @@
 
             <!-- Características -->
             <div class="property-card">
-                <h1 class="text-center">CARACTERÍSTICAS</h1>
+                <h1 class="text-center" style="font-family: 'AvenirBold';">CARACTERÍSTICAS</h1>
                 <br>
                 <div class="row">
                     <div class="col-lg-4 col-sm-12">
@@ -113,7 +128,7 @@
 
             <!-- Detalles -->
             <div class="property-card">
-                <h1 class="text-center">DETALLES</h1>
+                <h1 class="text-center" style="font-family: 'AvenirBold';">DETALLES</h1>
                 <br>
                 <p class="text-justify">
                     {{propiedad.observaciones}}
@@ -124,13 +139,17 @@
 
         </div>
         <div class="col-lg-4">
-
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <button class="btn btn-verde">${{propiedad.precio}}</button>
+                </div>
+            </div>
             <div id="" align="center" style="margin-bottom: 6%;">
                 <!-- <div class="contact-content-section"> -->
                 <form class="contact-section-form" action="" method="POST">
                     {% csrf_token %}
                     <div align="left" style="margin-bottom: 2em;">
-                        <h3 style="color: #223300;">CONTACTA AL AGENTE</h3>
+                        <h3 style="color: #223300;font-size: 1.75rem;">CONTACTA AL AGENTE</h3>
 
                     </div>
                     <!-- <div class="row">
@@ -150,8 +169,7 @@
                         <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" required>
                     </div>
                     <div class="form-group">
-                        <textarea name="message" class="form-control" id="message" rows="8"
-                            placeholder="Mensaje"></textarea>
+                        <textarea name="message" class="form-control" id="message" rows="8" style="height: auto !important" placeholder="Mensaje"></textarea>
                     </div>
                     <!-- </div>
                         </div> -->
@@ -160,13 +178,17 @@
                     </div>
                 </form>
                 <!-- </div> -->
-                <div class="property-card">
+                <div class="row mt-3">
                     <img src="{{propiedad.agente.foto.url}}" alt="">
-                    <h1>{{propiedad.agente.user}}</h1>
-                    <br>
-                    <p><i class="fas fa-phone-volume"></i> {{propiedad.agente.user.phone}}</p>
+                    <div class="format-name">
+                        <h1>{{propiedad.agente.user}}</h1>                        
+                    </div>                    
+                </div>
+                <div class="row">
+                    <p><i class="fas fa-phone-volume"></i> {{propiedad.agente.user.phone}}</p>                    
+                </div>
+                <div class="row">
                     <p><i class="far fa-envelope"></i> {{propiedad.agente.user.email}}</p>
-
                 </div>
             </div>
 

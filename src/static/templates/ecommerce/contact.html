@@ -29,9 +29,25 @@
     }
 
     #header_section_back{
-        background-image: url("{% static 'img/img-24.png' %}");
-        background-position: bottom;
+        background: url("{% static 'img/img-24.png' %}") no-repeat center;
+        background-size: cover;
+        min-height: 100vh;
     }
+
+    .top-header {
+        color:#000 !important;
+    }
+    .btn-transparent{
+            border-color: #000000 !important;
+            border-radius: 0px !important;
+            padding: 5px !important;
+            color: #000000 !important;
+    }
+
+    .btn-transparent:hover{
+            background-color: #000000 !important;
+            color: #ffffff !important;
+    } 
     
 </style>
 
@@ -51,8 +67,7 @@
 </div> -->
 
 
-<div id="contact_back" style="margin-top: 4%;">
-
+<div class="container mt-3">
     <div class="contact-content-section">
         <img src="{% static 'ecommerce/img/banner-carro.png' %}" alt="">
         
@@ -70,25 +85,22 @@
         </div> -->
 
         <div class="contact-text">
-            <h1 style="margin-bottom: 2%;">ENVÍANOS UN MENSAJE</h1>
+            <h1 style="font-family: 'BaskervilleRegular';">ENVÍANOS UN MENSAJE</h1>
             <p style="
             text-align: center;
             color: #707070;
             ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur facilisis consequat quam sed porta. Integer at dolor consequat, rhoncus urna eu, eleifend est. Nam auctor justo ut mi venenatis, id aliquet metus venenatis. Nunc eget gravida felis. Vestibulum vel enim non ligula facilisis tincidunt. Suspendisse felis augue, fermentum quis rhoncus a, laoreet vitae urna. Pellentesque sollicitudin elementum euismod. Fusce rhoncus vulputate erat, eu tempor elit.</p>
         </div>
-    
     </div>
-
 </div>
-
-<div class="contact-content-section container">
+<div class="contact-content-section container mt-3">
     <div class="row">
         <div class="col-md-4">
-            <div class="row" style="align-items: center;">
-                <div class="col-md-4">
-                    <img src="{% static 'ecommerce/img/ic-phone.png' %}">
+            <div class="row">
+                <div class="col-sm-3">
+                    <i style="color: #223300;" class="fa fa-phone"></i>                   
                 </div>
-                <div class="col-md-8">
+                <div class="col-sm-9">
                     <h3 style="color: #223300;">TELÉFONOS</h3>
                 </div>
             </div>
@@ -96,27 +108,27 @@
             <p style="color: #707070;">+52 (662) 123 4567</p>
         </div>
         <div class="col-md-4">
-            <div class="row" style="align-items: center;">
-                <div class="col-md-4">
-                    <img src="{% static 'ecommerce/img/ic-mail.png' %}">
+            <div class="row">
+                <div class="col-sm-3">
+                    <i style="color: #223300;" class="fa fa-envelope"></i>
                 </div>
-                <div class="col-md-8">
+                <div class="col-sm-9">
                     <h3 style="color: #223300;">E-MAIL</h3>
                 </div>
             </div>
             <p style="color: #707070;">contacto@caterra.com.mx</p>
         </div>
-        <div class="col-md-4" style="align-items: center;">
-            <h3 style="color: #223300; padding-top: 9%; margin-bottom: 5%;">REDES SOCIALES</h3>
-            <div class="row" style="align-items: center;">
+        <div class="col-md-4 text-center">
+            <h3 style="color: #223300;">REDES SOCIALES</h3>
+            <div class="row">
                 <div class="col-md-4 text-center">
-                    <a href=""><img src="{% static 'ecommerce/img/ic-facebook.png' %}" width="30px"></a>
+                    <a href=""><img class="img-fluid" src="{% static 'ecommerce/img/ic-facebook.png' %}" width="30px"></a>
                 </div>
                 <div class="col-md-4 text-center">
-                    <a href=""><img src="{% static 'ecommerce/img/ic-twitter.png' %}" width="38px"></a>
+                    <a href=""><img class="img-fluid" src="{% static 'ecommerce/img/ic-twitter.png' %}" width="38px"></a>
                 </div>
                 <div class="col-md-4 text-center">
-                    <a href=""><img src="{% static 'ecommerce/img/ic-instagram.png' %}" width="30px"></a>
+                    <a href=""><img class="img-fluid" src="{% static 'ecommerce/img/ic-instagram.png' %}" width="30px"></a>
                 </div>
             </div>
         </div>
@@ -145,12 +157,12 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="message">Mensaje:</label>
-                        <textarea name="message" class="form-control" id="message" rows="8"></textarea>
+                        <textarea name="message" class="form-control" id="message" style="height: auto !important;" rows="8"></textarea>
                     </div>
                 </div>
             </div>
             <div align="center">
-                <button type="submit" class="btn btn-verde">Enviar</button>
+                <button type="submit" class="btn btn-verde rounded-pill">Enviar</button>
             </div>
         </form>
     </div>

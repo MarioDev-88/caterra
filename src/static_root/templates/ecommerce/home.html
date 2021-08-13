@@ -40,8 +40,7 @@
         color: #000000;
     }
 
-    .complete-header{
-    }
+    .complete-header{}
 
 </style>
 {% endblock estilos-adicionales %}
@@ -55,7 +54,13 @@
         <div id="slider_back">
             <section class="slider">
                 <ul class="sliders">
-    
+                    <li class="glide__slide main-slider__item">
+                        <img src="{% static 'img/banner-carro.png' %}" alt=""/>
+                        <div class="main-slider__content">
+                            <h2 class="main-slider__content__title">Conoce nuestros</h2>
+                            <h2 class="main-slider__content__title">Recorridos Virtuales</h2>         
+                        </div>
+                    </li>
                     {% for slider in sliders %}
                     <li class="glide__slide main-slider__item">
                         <img src="{{ slider.image.url }}" alt="">

@@ -1,9 +1,10 @@
 .property-card{
-    background-color: #f0f0f0;
+    background-color: #dedede;
     border-radius: 4px;
     line-height: 40px;
     margin: 3% 0;
     padding: 3%;
+    color:#000;
 }
 
 h1{
@@ -13,6 +14,13 @@ h1{
     text-align: center;
 }
 
-.fa-check{
+.fa-check, .fa-phone-volume, .fa-envelope{
     color: #223300;
+}
+
+
+.format-name {
+    font-family: 'Avenir';
+    text-transform: uppercase;
+    float: left;
 }

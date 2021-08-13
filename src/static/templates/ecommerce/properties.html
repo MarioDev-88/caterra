@@ -5,14 +5,26 @@
 <link rel="stylesheet" href="{% static 'css/ecommerce/properties.css' %}">
 <style>
     #header_section_back{
-        background-image: url("{% static 'img/img-24.png' %}");
-        background-position: bottom;
+        background: url("{% static 'img/img-24.png' %}") no-repeat center;
+        background-size: cover;
+        min-height: 100vh;
     }
+    .top-header {
+        color:#000 !important;
+    }
+    .btn-transparent{
+            border-color: #000000 !important;
+            border-radius: 0px !important;
+            padding: 5px !important;
+            color: #000000 !important;
+    }
+
+    .btn-transparent:hover{
+            background-color: #000000 !important;
+            color: #ffffff !important;
+    }  
 </style>
 {% endblock estilos-adicionales %}
-    
-
-
 {% block content %}
 {% include './includes/header.html' with seccion="PROPIEDADES" %}
 <!-- -------------------------------------------------------------------------- -->
@@ -102,16 +114,16 @@
                         <div class="row">
                             <div class="col">
                                 <label>RECÁMARAS</label>
+                            </div>                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="number" placeholder="Desde" class="form-control" name="recamaras-desde"
+                                    id="recamaras-desde">
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input type="number" placeholder="Desde" class="form-control" name="recamaras-desde"
-                                        id="recamaras-desde">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="number" placeholder="Hasta" class="form-control" name="recamaras-hasta"
-                                        id="recamaras-hasta">
-                                </div>
+                            <div class="col-md-6">
+                                <input type="number" placeholder="Hasta" class="form-control" name="recamaras-hasta"
+                                    id="recamaras-hasta">
                             </div>
                         </div>
                     </div>
@@ -119,44 +131,43 @@
                         <div class="row">
                             <div class="col">
                                 <label>BAÑOS</label>
+                            </div>                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="number" placeholder="Desde" class="form-control" name="banos-desde"
+                                    id="banos-desde">
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input type="number" placeholder="Desde" class="form-control" name="banos-desde"
-                                        id="banos-desde">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="number" placeholder="Hasta" class="form-control" name="banos-hasta"
-                                        id="banos-hasta">
-                                </div>
+                            <div class="col-md-6">
+                                <input type="number" placeholder="Hasta" class="form-control" name="banos-hasta"
+                                    id="banos-hasta">
                             </div>
                         </div>
-
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col">
                                 <label>TAMAÑO DE LA PROPIEDAD</label>
+                            </div>                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="number" placeholder="Desde" class="form-control" name="tamano-desde"
+                                    id="tamano-desde">
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input type="number" placeholder="Desde" class="form-control" name="tamano-desde"
-                                        id="tamano-desde">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="number" placeholder="Hasta" class="form-control" name="tamano-hasta"
-                                        id="tamano-hasta">
-                                </div>
+                            <div class="col-md-6">
+                                <input type="number" placeholder="Hasta" class="form-control" name="tamano-hasta"
+                                    id="tamano-hasta">
                             </div>
                         </div>
                     </div>
                     <!-- </div> -->
                     <div class="row">
                         <div class="col-md-6">
-                            <button type="reset" class="btn btn-block clear-button">LIMPIAR</button>
+                            <button type="reset" class="btn btn-block clear-button rounded-pill">LIMPIAR</button>
                         </div>
                         <div class="col-md-6">
-                            <button type="submit" class="btn btn-block btn-verde text-center">FILTRAR</button>
+                            <button type="submit" class="btn btn-block btn-verde text-center rounded-pill">FILTRAR</button>
                         </div>
                     </div>
                 </form>
@@ -172,7 +183,6 @@
                 <button class="text-reset listp"><i class="fas fa-th-large fa-lg"></i></button>
                 <button class="text-reset gridp"><i class="fas fa-th-list fa-lg mr-1"></i></button>
             </div>
-
             {% for propiedad in object_list %}
             <ul class="list">
                 <li>
@@ -182,14 +192,14 @@
                         </div>
                         <div class="prop-style"
                             style="background-color: #f1f1f1; padding: 1em 1em; text-align: justify;">
-                            <h1 style=" font-size: 20pt;">{{propiedad.nombre}}</h1>
-                            <p>{{propiedad.direccion}}</p>
+                            <h1 style=" font-size: 20pt;color:#000;">{{propiedad.nombre}}</h1>
+                            <p style="color:#474747;">{{propiedad.direccion}}</p>
                             <p style="color: #486600;">${{propiedad.precio}}</p>
-                            <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i
+                            <p style="color: #000;"><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i
                                     class="fas fa-bath"></i>&nbsp;{{propiedad.banos}}&nbsp;&nbsp;&nbsp;<i
                                     class="fas fa-th-large"></i> {{propiedad.construccion}} m2
                             </p>
-                            <div class="row prop-bottom" style="padding-top:1em;">
+                            <div class="row prop-bottom" style="padding-top:1em;color: #000;">
                                 <div class="col" style="font-size: 10px; padding-top: 2%;">
                                     <!-- <p>Hace 3 Meses</p> -->
                                     <!-- <p>{{propiedad.created_at|timesince}}</p> -->
@@ -199,7 +209,7 @@
                                     <p style="font-size: 10px;"><i class="far fa-clone"></i> COMPARAR</p>
                                 </div>
                                 <div class="col-md-4">
-                                    <a href="{% url  'ecommerce:property_detail' propiedad.id %}" class="btn clear-button">DETALLES</a>
+                                    <a href="{% url  'ecommerce:property_detail' propiedad.id %}" class="btn clear-button rounded-pill">DETALLES</a>
                                 </div>
                             </div>
                         </div>

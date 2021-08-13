@@ -1,10 +1,30 @@
 @font-face{
     font-family: Avenir;
-    src: url(../../fonts/AvenirNextLTPro-Regular.otf);
+    src: url(../../fonts/AvenirNextLTPro-Regular.otf) format("opentype");
+}
+
+@font-face{
+    font-family: AvenirBold;
+    src: url(../../fonts/AvenirNextLTPro-Bold.otf) format("opentype");
+}
+
+@font-face{
+    font-family: AvenirLight;
+    src: url(../../fonts/AvenirNextLTPro-Demi.otf) format("opentype");
+}
+
+@font-face{
+    font-family: BaskervilleBold;
+    src: url(../../fonts/LibreBaskerville-Bold.ttf) format("opentype");
+}
+
+@font-face{
+    font-family: BaskervilleRegular;
+    src: url(../../fonts/LibreBaskerville-Regular.ttf) format("opentype");
 }
 
 body{
-    font-family: Avenir;
+    font-family: 'Avenir';
     letter-spacing: 1px;
 }
 
@@ -40,6 +60,56 @@ body{
 }
 
 .container{
-    margin-top: 5%;
-    margin-bottom: 5%;
+    /*margin-top: 5%;
+    margin-bottom: 5%;*/
+}
+
+.border-button {
+    border-radius: 25px;
+}
+
+.form-control {
+    border-color: #808080 !important;
+    height: 55px !important;
+}
+
+.circle-social {
+    background-color: #fff;
+    padding: 5px;
+    width: 30px;
+    height: auto;
+    border-radius: 50%;
+    margin:5px;
+}
+
+.circle-social > a {
+    color:#000;
+}
+
+.btn-transparent {
+    border-color: #fff !important;
+    border-radius: 0px !important;
+    padding: 5px !important;
+    color: #fff !important;
+}
+
+.btn-transparent:hover {
+    color: white !important;
+    background-color: #486600 !important;
+}
+
+.header{
+    background-color: #807f797d !important;
+    position: fixed !important;
+}
+.header ul{
+    color: white !important;
+}
+.sticky_nav{
+    top: 0 !important;
+}
+.bar-active {
+    background-color: #938d83 !important;
+    height: 5px;
+    margin:0;
 }

@@ -40,7 +40,10 @@
         color: #000000;
     }
 
-    .complete-header{
+    .complete-header{}
+    #slider_back {
+        position: relative;
+        top:-50px;
     }
 
 </style>
@@ -55,12 +58,18 @@
         <div id="slider_back">
             <section class="slider">
                 <ul class="sliders">
-    
+                    <li class="glide__slide main-slider__item">
+                        <img src="{% static 'img/banner-carro.png' %}" alt="" class="img-fluid" />
+                        <div class="main-slider__content">
+                            <h2 class="main-slider__content__title black-title">CONOCE NUESTROS</h2>
+                            <h2 class="main-slider__content__title black-title" style="font-family: AvenirBold;">RECORRIDOS VIRTUALES</h2>
+                        </div>
+                    </li>
                     {% for slider in sliders %}
                     <li class="glide__slide main-slider__item">
                         <img src="{{ slider.image.url }}" alt="">
                         <div class="main-slider__content">
-                            <h2 class="main-slider__content__title">{{ slider.title}}</h2>
+                            <h2 class="main-slider__content__title black-title">{{ slider.title}}</h2>
                             <a href="{{ slider.url }}" class="main-slider__content__action btn btn-success text-xs">Ver
                                 más</a>
                         </div>
@@ -348,21 +357,22 @@
     
             {% for propiedad in propiedades|slice:':6' %}
             <div class="col-md-4 property-card">
-                <img class="img-responsive" src="{{propiedad.imagen.image.url}}">
-                <div style="background-color: #f1f1f1; padding: 3%;">
-                    <h1 style="font-size: 20pt;">{{propiedad.nombre}}</h1>
-                    <p style="text-align: justify;">{{propiedad.direccion}}</p>
+                <img class="img-fluid" src="{{propiedad.imagen.image.url}}" style="border-color: #486600;border-width: 2px;">
+                <div style="background-color: #dcdcdc; padding: 3%;">
+                    <h1 style="font-size: 20pt;color:#000;">{{propiedad.nombre}}</h1>
+                    <p style="text-align: justify;color:#474747;">{{propiedad.direccion}}</p>
                     <p style="color: #486600">${{propiedad.precio}}</p>
-                    <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i class="fas fa-bath"></i>&nbsp;{{propiedad.banos}}&nbsp;&nbsp;&nbsp;<i class="fas fa-th-large"></i> {{propiedad.construccion}} m2</p>
+                    <p style="color:#000;"><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i class="fas fa-bath"></i>&nbsp;{{propiedad.banos}}&nbsp;&nbsp;&nbsp;<i class="fas fa-th-large"></i> {{propiedad.construccion}} m2</p>
+                    <br>
                     <div class="row">
-                        <div class="col-md-4">
-                            <p>Hace 3 Meses</p>
+                        <div class="col-md-3">
+                            <p style="color:#000;">Hace 3 Meses</p>
                         </div>
                         <div class="col-md-4">
-                            <p><i class="far fa-clone"></i> Comparar</p>
+                            <p style="color:#000;"><i class="far fa-clone"></i> Comparar</p>
                         </div>
-                        <div class="col-md-4">
-                            <a href="{% url  'ecommerce:property_detail' propiedad.id %}" class="btn clear-button">DETALLES</a>
+                        <div class="col-md-5 text-center">
+                            <a href="{% url  'ecommerce:property_detail' propiedad.id %}" class="btn clear-button">DETALLES <i class="fas fa-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -387,7 +397,7 @@
     <!-- end Propiedades -->
 
     <!-- Agentes -->
-    <div class="agentes" style="background: url('static/ecommerce/img/patron-agentes.png'); background-size: cover;">
+    <div class="agentes" style="background: url('../static/ecommerce/img/patron-agentes.png'); background-size: cover;">
         <h1 class="h1_title">CONOCE A NUESTROS AGENTES</h1>
         <div class="container">
         </div>
@@ -412,7 +422,7 @@
                             <br>
                             <p><span style="color: #486600"><i class="far fa-envelope"></i></span>    {{agente.user.email}}</p>
                             <div align="right" style="margin: 3% 0;">
-                                <a href="{% url 'ecommerce:agent_profile' agente.id %}" class="btn clear-button"> VER PERIL</a>
+                                <a href="{% url 'ecommerce:agent_profile' agente.id %}" class="btn clear-button border-button"> VER PERIL</a>
                             </div>
                         </div>
                     </div>
@@ -422,9 +432,9 @@
             </div>
             <div align="center" style="margin-top: 1%;">
                 <form action="{% url 'ecommerce:agents' %}">
-                    <button class="btn btn-verde">
-                        <p style="font-size: 24px;">
-                            CONOCE A NUESTROS AGENTES <strong>AQUí</strong>
+                    <button class="btn btn-verde text-center">
+                        <p style="font-family: BaskervilleRegular;">
+                            CONOCE A NUESTROS AGENTES<br><strong style="font-family: BaskervilleBold;">AQUí</strong>
                         </p>
                     </button>
                 </form>
@@ -440,7 +450,11 @@
 <script>
     document.getElementById("CaterraLogo").src = '{% static "img/logo-blanco.png" %}';
     $(document).ready(function () {
-        $('.sliders').slick();
+        $('.sliders').slick({
+            centerMode: true,
+            variableWidth: true,
+            adaptiveHeight: true,
+        });
     })
 </script>
 {% endblock scripts %}
