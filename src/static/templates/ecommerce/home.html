@@ -170,7 +170,7 @@
             border-top: 4px solid #000000;
             position: relative;
             ">
-        <form class="contact-section-form" action="{% url 'ecommerce:contact' %}" method="POST">
+        <form class="contact-section-form" action="{% url 'ecommerce:properties' %}" method="POST">
             {% csrf_token %}
             <!-- <div class="row">
                     <div class="col-md-6">
@@ -207,59 +207,54 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="tipo_propiedad" class="label">TIPO DE PROPIEDAD</label>
-                        <select class="form-control">
+                        <select class="form-control" name="tipo_propiedad">
                             <option value="">Tipo de Propiedad</option>
-                            <option value="">Opcion 1</option>
-                            <option value="">Opcion 2</option>
-                            <option value="">Opcion 3</option>
+                            <option value="CASA">Casa</option>
+                            <option value="CASA_SUELO_MIXTO">Casa con uso de suelo mixto</option>
+                            <option value="OFICINA">Oficina</option>
+                            <option value="TERRENO">Terreno</option>
+                            <option value="LOCAL_COMERCIAL">Local Comercial</option>
+                            <option value="EDIFICIO">Edificio</option>
+                            <option value="BODEGA">Bodega</option>
+                            <option value="OTRO">Otro</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="ciudad" class="label">CIUDAD</label>
-                        <select class="form-control">
-                            <option value="">Ciudad</option>
-                            <option value="">Opcion 1</option>
-                            <option value="">Opcion 2</option>
-                            <option value="">Opcion 3</option>
-                        </select>
+                        <input type="text" placeholder="Ciudad" class="form-control" name="ciudad" id="ciudad">
                     </div>
                     <div class="form-group">
                         <label for="habitaciones" class="label">HABITACIONES</label>
-                        <select class="form-control">
-                            <option value="">Habitaciones</option>
-                            <option value="">Opcion 1</option>
-                            <option value="">Opcion 2</option>
-                            <option value="">Opcion 3</option>
-                        </select>
+                        <input type="text" placeholder="Habitaciones" class="form-control" name="rooms" id="rooms">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="tipo_oferta" class="label">TIPO DE OFERTA</label>
-                        <select class="form-control">
+                        <select class="form-control" name="tipo_operacion">
                             <option value="">Tipo de Oferta</option>
-                            <option value="">Opcion 1</option>
-                            <option value="">Opcion 2</option>
-                            <option value="">Opcion 3</option>
+                            <option value="VENTA">Venta</option>
+                            <option value="RENTA">Renta</option>
+                            <option value="EXCLUSIVA">Exclusiva</option>
+                            <option value="OTRO">Otro</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="estado" class="label">ESTADO</label>
-                        <select class="form-control">
-                            <option value="">Estado</option>
-                            <option value="">Opcion 1</option>
-                            <option value="">Opcion 2</option>
-                            <option value="">Opcion 3</option>
-                        </select>
+                        <label for="estado" class="label">COLONIA</label>
+                        <input type="text" placeholder="Colonia" class="form-control" name="colonia" id="colonia">
                     </div>
                     <div class="form-group">
                         <label for="tamano" class="label">TAMAÑO</label>
-                        <select class="form-control">
-                            <option value="">Tamaño</option>
-                            <option value="">Opcion 1</option>
-                            <option value="">Opcion 2</option>
-                            <option value="">Opcion 3</option>
-                        </select>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="number" min="1" placeholder="Desde" class="form-control" name="tamano-desde"
+                                    id="tamano-desde">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="number" placeholder="Hasta" class="form-control" name="tamano-hasta"
+                                    id="tamano-hasta">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -280,12 +275,16 @@
                     </div>
                     <div class="form-group">
                         <label for="numero_banos" class="label">BAÑOS</label>
-                        <select class="form-control">
-                            <option value="">Número de Baños</option>
-                            <option value="">Opcion 1</option>
-                            <option value="">Opcion 2</option>
-                            <option value="">Opcion 3</option>
-                        </select>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="number" min="1" placeholder="Desde" class="form-control" name="banos-desde"
+                                    id="banos-desde">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="number" placeholder="Hasta" class="form-control" name="banos-hasta"
+                                    id="banos-hasta">
+                            </div>
+                        </div>
                     </div>
                     <br>
                     <div class="row">

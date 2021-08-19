@@ -1,7 +1,7 @@
 import os
 import json
 
-from django.shortcuts import render, HttpResponseRedirect, reverse, HttpResponse
+from django.shortcuts import get_object_or_404, render, HttpResponseRedirect, reverse, HttpResponse
 from django.utils.decorators import method_decorator
 from django.views.generic import View, TemplateView, ListView, DetailView
 from django.core.mail import send_mail
@@ -67,6 +67,28 @@ class PropertiesView(ListView):
         context["subtitle"] = "Propiedades"
 
         return context
+
+    def post(self, request):
+
+        context = self.model
+        if request.POST.get('tipo_propiedad'):
+            context = context.objects.filter(tipo_inmueble=request.POST.get('tipo_propiedad'))
+        if request.POST.get('tipo_operacion'):
+            context = context.objects.filter(tipo_operacion=request.POST.get('tipo_operacion'))
+        if request.POST.get('precio-desde') and request.POST.get('precio-hasta'):
+            context = context.objects.filter(precio__gte=request.POST.get('precio-desde'), precio__lte=request.POST.get('precio-hasta'))
+        if request.POST.get('ciudad'):
+            context = context.objects.filter(ciudad=request.POST.get('ciudad'))
+        if request.POST.get('colonia'):
+            context = context.objects.filter(colonia=request.POST.get('colonia'))
+        if request.POST.get('cp'):
+            context = context.objects.filter(cp=request.POST.get('cp'))
+        if request.POST.get('banos-desde') and request.POST.get('banos-hasta'):
+            context = context.objects.filter(banos__gte=request.POST.get('banos-desde'), banos__lte=request.POST.get('banos-hasta'))
+        if request.POST.get('tamano-desde') and request.POST.get('tamano-hasta'):
+            context = context.objects.filter(construccion__gte=request.POST.get('tamano-desde'), construccion__lte=request.POST.get('tamano-hasta'))
+        
+        return render(request, self.template_name, {'object_list':context})
 
 class PropertyDetailView(DetailView):
     template_name = "ecommerce/property-detail.html"

@@ -34,7 +34,7 @@
     <div class="col-md-4">
         <div align="center" style="margin: 6% 2% 6% 2%;">
             <div class="sticky-top">
-                <form class="contact-section-form" action="{% url 'ecommerce:contact' %}" method="POST">
+                <form class="contact-section-form" action="{% url 'ecommerce:properties' %}" method="POST">
                     {% csrf_token %}
                     <!-- <div class="row"> -->
                     <div class="form-group">
@@ -42,16 +42,16 @@
                             <div class="col">
                                 <label for="tipo_inmueble">TIPO DE PROPIEDAD</label>
                             </div>
-                            <select class="form-control">
+                            <select class="form-control" name="tipo_propiedad">
                                 <option value="">Tipo de Propiedad</option>
-                                <option value="casa">Casa</option>
-                                <option value="casa_suelo_mixto">Casa con uso de suelo mixto</option>
-                                <option value="oficina">Oficina</option>
-                                <option value="terreno">Terreno</option>
-                                <option value="local_comercial">Local Comercial</option>
-                                <option value="edificio">Edificio</option>
-                                <option value="bodega">Bodega</option>
-                                <option value="otro">Otro</option>
+                                <option value="CASA">Casa</option>
+                                <option value="CASA_SUELO_MIXTO">Casa con uso de suelo mixto</option>
+                                <option value="OFICINA">Oficina</option>
+                                <option value="TERRENO">Terreno</option>
+                                <option value="LOCAL_COMERCIAL">Local Comercial</option>
+                                <option value="EDIFICIO">Edificio</option>
+                                <option value="BODEGA">Bodega</option>
+                                <option value="OTRO">Otro</option>
                             </select>
                         </div>
                     </div>
@@ -60,12 +60,12 @@
                             <div class="col">
                                 <label for="tipo_operacion">TIPO DE OFERTA</label>
                             </div>
-                            <select class="form-control">
+                            <select class="form-control" name="tipo_operacion">
                                 <option value="">Tipo de Oferta</option>
-                                <option value="venta">Venta</option>
-                                <option value="renta">Renta</option>
-                                <option value="exclusiva">Exclusiva</option>
-                                <option value="otro">Otro</option>
+                                <option value="VENTA">Venta</option>
+                                <option value="RENTA">Renta</option>
+                                <option value="EXCLUSIVA">Exclusiva</option>
+                                <option value="OTRO">Otro</option>
                             </select>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type="number" placeholder="Desde" class="form-control" name="precio-desde"
+                                    <input type="number" min="1" placeholder="Desde" class="form-control" name="precio-desde"
                                         id="precio-desde">
                                 </div>
                                 <div class="col-md-6">
@@ -135,7 +135,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="number" placeholder="Desde" class="form-control" name="banos-desde"
+                                <input type="number" min="1" placeholder="Desde" class="form-control" name="banos-desde"
                                     id="banos-desde">
                             </div>
                             <div class="col-md-6">
@@ -152,7 +152,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="number" placeholder="Desde" class="form-control" name="tamano-desde"
+                                <input type="number" min="1" placeholder="Desde" class="form-control" name="tamano-desde"
                                     id="tamano-desde">
                             </div>
                             <div class="col-md-6">
@@ -183,69 +183,73 @@
                 <button class="text-reset listp"><i class="fas fa-th-large fa-lg"></i></button>
                 <button class="text-reset gridp"><i class="fas fa-th-list fa-lg mr-1"></i></button>
             </div>
-            {% for propiedad in object_list %}
-            <ul class="list">
-                <li>
-                    <div class="property-card">
-                        <div class="image_p">
-                            <img class="img-responsive" src="{{propiedad.imagen.image.url}}">
-                        </div>
-                        <div class="prop-style"
-                            style="background-color: #f1f1f1; padding: 1em 1em; text-align: justify;">
-                            <h1 style=" font-size: 20pt;color:#000;">{{propiedad.nombre}}</h1>
-                            <p style="color:#474747;">{{propiedad.direccion}}</p>
-                            <p style="color: #486600;">${{propiedad.precio}}</p>
-                            <p style="color: #000;"><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i
-                                    class="fas fa-bath"></i>&nbsp;{{propiedad.banos}}&nbsp;&nbsp;&nbsp;<i
-                                    class="fas fa-th-large"></i> {{propiedad.construccion}} m2
-                            </p>
-                            <div class="row prop-bottom" style="padding-top:1em;color: #000;">
-                                <div class="col" style="font-size: 10px; padding-top: 2%;">
-                                    <!-- <p>Hace 3 Meses</p> -->
-                                    <!-- <p>{{propiedad.created_at|timesince}}</p> -->
-                                    <p>Hace 3 meses</p>
-                                </div>
-                                <div class="col" style="padding-top: 2%;">
-                                    <p style="font-size: 10px;"><i class="far fa-clone"></i> COMPARAR</p>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="{% url  'ecommerce:property_detail' propiedad.id %}" class="btn clear-button rounded-pill">DETALLES</a>
+            {% if object_list %}
+                {% for propiedad in object_list %}
+                <ul class="list">
+                    <li>
+                        <div class="property-card">
+                            <div class="image_p">
+                                <img class="img-responsive" src="{{propiedad.imagen.image.url}}">
+                            </div>
+                            <div class="prop-style"
+                                style="background-color: #f1f1f1; padding: 1em 1em; text-align: justify;">
+                                <h1 style=" font-size: 20pt;color:#000;">{{propiedad.nombre}}</h1>
+                                <p style="color:#474747;">{{propiedad.direccion}}</p>
+                                <p style="color: #486600;">${{propiedad.precio}}</p>
+                                <p style="color: #000;"><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i
+                                        class="fas fa-bath"></i>&nbsp;{{propiedad.banos}}&nbsp;&nbsp;&nbsp;<i
+                                        class="fas fa-th-large"></i> {{propiedad.construccion}} m2
+                                </p>
+                                <div class="row prop-bottom" style="padding-top:1em;color: #000;">
+                                    <div class="col" style="font-size: 10px; padding-top: 2%;">
+                                        <!-- <p>Hace 3 Meses</p> -->
+                                        <!-- <p>{{propiedad.created_at|timesince}}</p> -->
+                                        <p>Hace 3 meses</p>
+                                    </div>
+                                    <div class="col" style="padding-top: 2%;">
+                                        <p style="font-size: 10px;"><i class="far fa-clone"></i> COMPARAR</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="{% url  'ecommerce:property_detail' propiedad.id %}" class="btn clear-button rounded-pill">DETALLES</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- <div class="property-card">
-                        <div class="image_p">
-                            <img class="img-responsive" src="{{propiedad.imagen.image.url}}">
-                        </div>
-                        <div class="prop-style"
-                            style="background-color: #f1f1f1; padding: 1em 1em; text-align: justify;">
-                            <h1 style=" font-size: 20pt;">{{propiedad.nombre}}</h1>
-                            <p>{{propiedad.direccion}}</p>
-                            <p style="color: #486600;">${{propiedad.precio}}</p>
-                            <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i
-                                    class="fas fa-bath"></i>&nbsp;{{propiedad.banos}}&nbsp;&nbsp;&nbsp;<i
-                                    class="fas fa-th-large"></i> {{propiedad.construccion}} m2
-                            </p>
-                            <div class="row prop-bottom" style="padding-top:1em;">
-                                <div class="col" style="font-size: 10px; padding-top: 2%;">
-                                    <p>Hace 3 meses</p>
-                                </div>
-                                <div class="col" style="padding-top: 2%;">
-                                    <p style="font-size: 10px;"><i class="far fa-clone"></i> COMPARAR</p>
-                                </div>
-                                <div class="col">
-                                    <button
-                                        onClick="location.href='{% url  'ecommerce:property_detail' propiedad.id %}'"
-                                        class="prop-button">DETALLES</button>
+                        <!-- <div class="property-card">
+                            <div class="image_p">
+                                <img class="img-responsive" src="{{propiedad.imagen.image.url}}">
+                            </div>
+                            <div class="prop-style"
+                                style="background-color: #f1f1f1; padding: 1em 1em; text-align: justify;">
+                                <h1 style=" font-size: 20pt;">{{propiedad.nombre}}</h1>
+                                <p>{{propiedad.direccion}}</p>
+                                <p style="color: #486600;">${{propiedad.precio}}</p>
+                                <p><i class="fas fa-bed"></i>&nbsp;3&nbsp;&nbsp;&nbsp;<i
+                                        class="fas fa-bath"></i>&nbsp;{{propiedad.banos}}&nbsp;&nbsp;&nbsp;<i
+                                        class="fas fa-th-large"></i> {{propiedad.construccion}} m2
+                                </p>
+                                <div class="row prop-bottom" style="padding-top:1em;">
+                                    <div class="col" style="font-size: 10px; padding-top: 2%;">
+                                        <p>Hace 3 meses</p>
+                                    </div>
+                                    <div class="col" style="padding-top: 2%;">
+                                        <p style="font-size: 10px;"><i class="far fa-clone"></i> COMPARAR</p>
+                                    </div>
+                                    <div class="col">
+                                        <button
+                                            onClick="location.href='{% url  'ecommerce:property_detail' propiedad.id %}'"
+                                            class="prop-button">DETALLES</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div> -->
+                        </div> -->
 
-                </li>
-            </ul>
-            {% endfor %}
+                    </li>
+                </ul>
+                {% endfor %}
+            {% else %}
+                <h2>No propiedades para mostrar</h2>
+            {% endif %}
 
         </div>
         <div align="center" style="margin: 6% 2% 6% 2%;">
